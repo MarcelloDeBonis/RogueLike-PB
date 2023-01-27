@@ -53,6 +53,15 @@ public bool IsDied()
     return life == 0;
 }
 
+public Vector3 GetAlignmentPosition()
+{
+    return alignmentPosition;
+}
+
+public Vector3 GetAttackPosition()
+{
+    return attackPosition;
+}
 
 #endregion
 

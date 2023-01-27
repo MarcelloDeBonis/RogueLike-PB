@@ -9,21 +9,20 @@ public class CombatSystem : Singleton<CombatSystem>
 
 [SerializeField] private GameObject player;
 [SerializeField] private List<GameObject> enemyList;
-
+[SerializeField] private float speedMovementEntities;
 #endregion
 
 #region MonoBehaviour
 
-    // Awake is called when the script instance is being loaded
-    void Awake()
-    {
-	    base.Awake();
-    }
+protected override void Awake()
+{
+    base.Awake();
+}
 
-    // Start is called before the first frame update
+// Start is called before the first frame update
     void Start()
     {
-        
+        OnCombatStart();
     }
 
     // Update is called once per frame
@@ -36,11 +35,13 @@ public class CombatSystem : Singleton<CombatSystem>
 
 #region Methods
 
+#region Pre Combat
+
 public void OnCombatStart()
 {
     //TODO
     PrepareCombat();
-    CombatLoop();
+    StartCoroutine(CombatLoop());
 }
 
 private void PrepareCombat()
@@ -51,17 +52,18 @@ private void PrepareCombat()
    
 }
 
-private void CombatLoop()
+#endregion
+
+private IEnumerator CombatLoop()
 {
-    
     while (!SomeoneIsDied())
     {
-        CharacterAttacks(player);
+        yield return StartCoroutine(CharacterAttacks(player));
 
         foreach (GameObject enemy in enemyList)
         {
-            CharacterAttacks(enemy);
-            PlayerDefend();
+            yield return StartCoroutine(CharacterAttacks(enemy));
+            yield return StartCoroutine(PlayerDefend());
         }
         
     }
@@ -72,25 +74,34 @@ private void CombatLoop()
 
 #region CombatFases
 
-private void CharacterAttacks(GameObject character)
-{
-    MoveCharacter(character);
-    PrepareUiForAttack(character.GetComponent<Character>());
+private IEnumerator CharacterAttacks(GameObject character) {
+    yield return StartCoroutine(MoveCharacter(character, character.GetComponent<Character>().combatInfo.GetAlignmentPosition(), character.GetComponent<Character>().combatInfo.GetAttackPosition()));
+    Debug.Log("Arrived!");
+    yield return StartCoroutine(PrepareUiForAttack(character.GetComponent<Character>()));
 }
 
-private void MoveCharacter(GameObject character)
+private IEnumerator MoveCharacter(GameObject character, Vector3 start, Vector3 end)
 {
-    //StartCoroutine(Move)
-}
-
-private void PlayerDefend()
-{
+    float time = 0f;
+    while (time < 1)
+    {
+        time += Time.deltaTime * speedMovementEntities;
+        character.transform.position = Vector3.Lerp(start, end, time);
+        yield return null;
+    }
     
 }
 
-private void PrepareUiForAttack(Character character)
+private IEnumerator PlayerDefend()
 {
-    
+    //TODO
+    yield return null;
+}
+
+private IEnumerator PrepareUiForAttack(Character character)
+{
+    //TODO
+    yield return null;
 }
 
 #endregion
@@ -106,7 +117,11 @@ private void EndCombat()
 }
 
 
+#region MyRegion
 
+
+
+#endregion
 
 
 
