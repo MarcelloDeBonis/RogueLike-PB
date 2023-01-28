@@ -53,6 +53,12 @@ public void DeactiveIsSelected()
     isSelected = false;
 }
 
+public bool GetIsSelected()
+{
+    return isSelected;
+}
+
+
 #endregion
 
 }

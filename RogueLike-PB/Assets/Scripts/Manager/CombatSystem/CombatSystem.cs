@@ -11,6 +11,7 @@ public class CombatSystem : Singleton<CombatSystem>
 [SerializeField] private List<GameObject> enemyList;
 [SerializeField] private float speedMovementEntities;
 private EnumBattlePhase battlePhase = EnumBattlePhase.NoBattlePhase;
+private GameObject enemySelected;
 
 #endregion
 
@@ -82,35 +83,49 @@ private IEnumerator CharacterAttacks(GameObject character)
    // yield return StartCoroutine(ChooseMove());
    battlePhase = EnumBattlePhase.SelectingPhase;
    yield return StartCoroutine(ChooseTarget(character));
-    yield return StartCoroutine(MoveCharacter(character, character.GetComponent<Character>().combatInfo.GetAlignmentPosition(), character.GetComponent<Character>().combatInfo.GetAttackPosition()));
-    Debug.Log("Arrived!");
-    yield return StartCoroutine(PrepareUiForAttack(character.GetComponent<Character>()));
+   yield return StartCoroutine(MoveCharacterAndEnemySelected(character));
+   yield return StartCoroutine(PrepareUiForAttack(character.GetComponent<Character>()));
 }
 
 
 private IEnumerator ChooseTarget(GameObject character)
 {
-    
-    if (character.GetComponent<Player>() != null)
+
+    bool choosen = false;
+
+    while (!choosen)
     {
-        foreach (GameObject enemy in enemyList)
+        if (character.GetComponent<Player>() != null)
         {
-            
-        } 
-    }
-    else
-    {
+            foreach (GameObject enemy in enemyList)
+            {
+                if (enemy.GetComponent<Character>().GetIsSelected())
+                {
+                    enemy.GetComponent<Character>().DeactiveIsSelected();
+                    enemySelected = enemy;
+                    choosen = true;
+                }
+            }
+        }
         
+        if (character.GetComponent<Enemy>() != null)
+        {
+            enemySelected = player;
+            choosen = true;
+        }
+        
+        yield return null;
     }
-    yield return null;
+    
 }
 
 
-private IEnumerator MoveCharacter(GameObject character, Vector3 start, Vector3 end)
+private IEnumerator MoveCharacterAndEnemySelected(GameObject character)
 {
-    while (character.transform.position != end)
+    while (character.transform.position != character.GetComponent<Character>().combatInfo.GetAttackPosition())
     {
-        character.transform.position = Vector3.MoveTowards(character.transform.position, end, speedMovementEntities * Time.deltaTime);
+        character.transform.position = Vector3.MoveTowards(character.GetComponent<Character>().combatInfo.GetAlignmentPosition(), character.GetComponent<Character>().combatInfo.GetAttackPosition(), speedMovementEntities * Time.deltaTime);
+        enemySelected.transform.position= Vector3.MoveTowards(enemySelected.GetComponent<Character>().combatInfo.GetAlignmentPosition(), enemySelected.GetComponent<Character>().combatInfo.GetAttackPosition(), speedMovementEntities * Time.deltaTime);
         yield return null;
     }
     
