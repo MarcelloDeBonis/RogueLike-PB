@@ -110,7 +110,7 @@ private IEnumerator MoveCharacter(GameObject character, Vector3 start, Vector3 e
 {
     while (character.transform.position != end)
     {
-        character.transform.position = Vector3.Lerp(character.transform.position, end, speedMovementEntities * Time.deltaTime);
+        character.transform.position = Vector3.MoveTowards(character.transform.position, end, speedMovementEntities * Time.deltaTime);
         yield return null;
     }
     
