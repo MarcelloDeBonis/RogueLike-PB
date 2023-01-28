@@ -62,13 +62,21 @@ private IEnumerator CombatLoop()
     while (!SomeoneIsDied())
     {
         yield return StartCoroutine(CharacterAttacks(player));
-
+        yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().combatInfo.GetAlignmentPosition(), enemySelected, enemySelected.GetComponent<Character>().combatInfo.GetAlignmentPosition()));
+        
         foreach (GameObject enemy in enemyList)
         {
+            //TODO
+            //Firstenemy and player moves to the centre
+            //else only enemies moves to centre
             yield return StartCoroutine(CharacterAttacks(enemy));
             yield return StartCoroutine(PlayerDefend());
+            
+            //EnemyComesBacks
         }
         
+        //TODO
+        //player comes back
     }
 
     EndCombat();
@@ -83,8 +91,12 @@ private IEnumerator CharacterAttacks(GameObject character)
    // yield return StartCoroutine(ChooseMove());
    battlePhase = EnumBattlePhase.SelectingPhase;
    yield return StartCoroutine(ChooseTarget(character));
-   yield return StartCoroutine(MoveCharacterAndEnemySelected(character));
+   yield return StartCoroutine(MoveCharacterAndEnemySelected(character, character.GetComponent<Character>().combatInfo.GetAttackPosition(), enemySelected, enemySelected.GetComponent<Character>().combatInfo.GetAttackPosition()));
    yield return StartCoroutine(PrepareUiForAttack(character.GetComponent<Character>()));
+   
+   //TODO
+   //Rhythm attack + calculate damage
+   
 }
 
 
@@ -120,15 +132,25 @@ private IEnumerator ChooseTarget(GameObject character)
 }
 
 
-private IEnumerator MoveCharacterAndEnemySelected(GameObject character)
+private IEnumerator MoveCharacterAndEnemySelected(GameObject character1, Vector3 end1, GameObject character2, Vector3 end2)
 {
-    while (character.transform.position != character.GetComponent<Character>().combatInfo.GetAttackPosition())
+    while (character1.transform.position != end1)
     {
-        character.transform.position = Vector3.MoveTowards(character.GetComponent<Character>().combatInfo.GetAlignmentPosition(), character.GetComponent<Character>().combatInfo.GetAttackPosition(), speedMovementEntities * Time.deltaTime);
-        enemySelected.transform.position= Vector3.MoveTowards(enemySelected.GetComponent<Character>().combatInfo.GetAlignmentPosition(), enemySelected.GetComponent<Character>().combatInfo.GetAttackPosition(), speedMovementEntities * Time.deltaTime);
+        character1.transform.position = Vector3.MoveTowards(character1.transform.position, end1, speedMovementEntities * Time.deltaTime);
+        enemySelected.transform.position= Vector3.MoveTowards(enemySelected.transform.position, end2, speedMovementEntities * Time.deltaTime);
         yield return null;
     }
     
+}
+
+private IEnumerator MoveCharacter(GameObject character, Vector3 end)
+{
+    while (character.transform.position != character.GetComponent<Character>().combatInfo.GetAttackPosition())
+    {
+        character.transform.position = Vector3.MoveTowards(character.transform.position, character.GetComponent<Character>().combatInfo.GetAttackPosition(), speedMovementEntities * Time.deltaTime);
+        enemySelected.transform.position= Vector3.MoveTowards(enemySelected.transform.position, enemySelected.GetComponent<Character>().combatInfo.GetAttackPosition(), speedMovementEntities * Time.deltaTime);
+        yield return null;
+    } 
 }
 
 private IEnumerator PlayerDefend()

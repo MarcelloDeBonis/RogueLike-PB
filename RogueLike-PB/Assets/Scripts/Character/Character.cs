@@ -4,7 +4,7 @@ using UnityEditor.AssetImporters;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Character : MonoBehaviour, IPointerClickHandler
+public class Character : MonoBehaviour
 {
 
 #region Variables & Properties
@@ -40,10 +40,12 @@ private bool isSelected=false;
 
 #region Clickable
 
-public void OnPointerClick(PointerEventData pointerEventData)
+public void OnMouseDown()
 {
-    if(CombatSystem.Instance.GetEnumBattlePhase()==EnumBattlePhase.SelectingPhase)
-    isSelected = true;
+    if (CombatSystem.Instance.GetEnumBattlePhase() == EnumBattlePhase.SelectingPhase)
+    {
+        isSelected = true;
+    }
 }
 
 #endregion
