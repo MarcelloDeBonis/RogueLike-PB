@@ -10,6 +10,8 @@ public class CombatSystem : Singleton<CombatSystem>
 [SerializeField] private GameObject player;
 [SerializeField] private List<GameObject> enemyList;
 [SerializeField] private float speedMovementEntities;
+private EnumBattlePhase battlePhase = EnumBattlePhase.NoBattlePhase;
+
 #endregion
 
 #region MonoBehaviour
@@ -74,19 +76,41 @@ private IEnumerator CombatLoop()
 
 #region CombatFases
 
-private IEnumerator CharacterAttacks(GameObject character) {
+private IEnumerator CharacterAttacks(GameObject character) 
+{
+    //TODO
+   // yield return StartCoroutine(ChooseMove());
+   battlePhase = EnumBattlePhase.SelectingPhase;
+   yield return StartCoroutine(ChooseTarget(character));
     yield return StartCoroutine(MoveCharacter(character, character.GetComponent<Character>().combatInfo.GetAlignmentPosition(), character.GetComponent<Character>().combatInfo.GetAttackPosition()));
     Debug.Log("Arrived!");
     yield return StartCoroutine(PrepareUiForAttack(character.GetComponent<Character>()));
 }
 
+
+private IEnumerator ChooseTarget(GameObject character)
+{
+    
+    if (character.GetComponent<Player>() != null)
+    {
+        foreach (GameObject enemy in enemyList)
+        {
+            
+        } 
+    }
+    else
+    {
+        
+    }
+    yield return null;
+}
+
+
 private IEnumerator MoveCharacter(GameObject character, Vector3 start, Vector3 end)
 {
-    float time = 0f;
-    while (time < 1)
+    while (character.transform.position != end)
     {
-        time += Time.deltaTime * speedMovementEntities;
-        character.transform.position = Vector3.Lerp(start, end, time);
+        character.transform.position = Vector3.Lerp(character.transform.position, end, speedMovementEntities * Time.deltaTime);
         yield return null;
     }
     
@@ -101,7 +125,10 @@ private IEnumerator PlayerDefend()
 private IEnumerator PrepareUiForAttack(Character character)
 {
     //TODO
-    yield return null;
+    while (true)
+    {
+        yield return null;
+    }
 }
 
 #endregion
@@ -117,9 +144,12 @@ private void EndCombat()
 }
 
 
-#region MyRegion
+#region Getters
 
-
+public EnumBattlePhase GetEnumBattlePhase()
+{
+    return battlePhase;
+}
 
 #endregion
 

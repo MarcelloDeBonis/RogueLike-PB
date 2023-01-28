@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.AssetImporters;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour, IPointerClickHandler
 {
 
 #region Variables & Properties
 
 [SerializeField] public CombatInfo combatInfo;
+private bool isSelected=false;
 
 #endregion
 
@@ -35,6 +37,21 @@ public class Character : MonoBehaviour
 #endregion
 
 #region Methods
+
+#region Clickable
+
+public void OnPointerClick(PointerEventData pointerEventData)
+{
+    if(CombatSystem.Instance.GetEnumBattlePhase()==EnumBattlePhase.SelectingPhase)
+    isSelected = true;
+}
+
+#endregion
+
+public void DeactiveIsSelected()
+{
+    isSelected = false;
+}
 
 #endregion
 
