@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arrow : ObjectPoolable
+public class ArrowColliderComponent : MonoBehaviour
 {
 
 #region Variables & Properties
 
-private float speed;
+
 
 #endregion
 
@@ -35,24 +35,7 @@ private float speed;
 
 #region Methods
 
-public void SetSpeed(float NewSpeed)
-{
-    speed = NewSpeed;
-}
 
-public void StartMove()
-{
-    StartCoroutine(MoveDown());
-}
-
-private IEnumerator MoveDown()
-{
-    while ()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-        yield return null;
-    }
-}
 
 #endregion
 
