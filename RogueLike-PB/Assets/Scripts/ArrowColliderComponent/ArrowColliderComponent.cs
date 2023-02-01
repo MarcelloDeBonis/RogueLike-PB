@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,9 +14,19 @@ public class ArrowColliderComponent : MonoBehaviour
 
 #region Methods
 
-public int GetPoints()
+private void OnCollisionEnter(Collision collision)
 {
-    return pointsWhenPlayerClick;
+    if (collision.gameObject.GetComponent<ArrowPoolable>() != null)
+    {
+        if (pointsWhenPlayerClick != 0)
+        {
+            collision.gameObject.GetComponent<ArrowPoolable>().SetPoints(pointsWhenPlayerClick);
+        }
+        else
+        {
+            ArrowManager.Instance.DeleteFromArrowInSceneList(collision.gameObject);
+        }
+    }
 }
 
 #endregion

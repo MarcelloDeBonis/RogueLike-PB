@@ -8,12 +8,18 @@ public class CombatSystem : Singleton<CombatSystem>
 #region Variables & Properties
 
 private int currentDamage = 0;
-private ScriptableMove choosenMove;
+
 [SerializeField] private GameObject player;
 [SerializeField] private List<GameObject> enemyList;
 [SerializeField] private float speedMovementEntities;
+
 private EnumBattlePhase battlePhase = EnumBattlePhase.NoBattlePhase;
 private GameObject opponentSelected;
+
+[SerializeField] private GameObject selectMovesParent;
+[SerializeField] private GameObject screenArrowPlayer;
+[SerializeField] private GameObject screenArrowEnemies;
+private ScriptableMove choosenMove;
 
 #endregion
 
@@ -63,11 +69,12 @@ private IEnumerator CombatLoop()
 {
     while (!SomeoneIsDied())
     {
-        yield return StartCoroutine(ChoosingAttack(player));
+        yield return StartCoroutine(ChooseMove(player));
+        battlePhase = EnumBattlePhase.SelectingPhase;
+        yield return StartCoroutine(ChooseTarget(player));
         yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().combatInfo.GetAttackPosition(), opponentSelected, opponentSelected.GetComponent<Character>().combatInfo.GetAttackPosition()));
-        yield return StartCoroutine(ChooseMove(player.GetComponent<Character>()));
-        //Try to attack
-        //Calculate damage
+        yield return StartCoroutine(PrepareUiForMove(player));
+        yield return StartCoroutine(StartMoveOnScreen());
         //EnemySelectedLoseThatDamage
         //EnemyAndPlayerComeBackToTheirDefaultPosition
         yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().combatInfo.GetAlignmentPosition(), opponentSelected, opponentSelected.GetComponent<Character>().combatInfo.GetAlignmentPosition()));
@@ -77,7 +84,7 @@ private IEnumerator CombatLoop()
         
         foreach (GameObject enemy in enemyList)
         {
-            yield return StartCoroutine(ChoosingAttack(enemy));
+            yield return StartCoroutine(ChooseTarget(enemy));
             
             if (enemy== firsteEnemy)
             {
@@ -109,15 +116,6 @@ private IEnumerator CombatLoop()
 
 #region CombatFases
 
-private IEnumerator ChoosingAttack(GameObject character) 
-{ 
-    //TODO
-   //yield return StartCoroutine(ChooseMove());
-   battlePhase = EnumBattlePhase.SelectingPhase;
-   yield return StartCoroutine(ChooseTarget(character));
-
-}
-
 
 private IEnumerator ChooseTarget(GameObject character)
 {
@@ -145,13 +143,7 @@ private IEnumerator ChooseTarget(GameObject character)
                     }
                 }
             }
-        
-            if (character.GetComponent<Enemy>() != null)
-            {
-                opponentSelected = player;
-                choosen = true;
-            }
-        
+
             yield return null;
         }
     }
@@ -186,19 +178,69 @@ private IEnumerator PlayerDefend()
     yield return null;
 }
 
-private IEnumerator ChooseMove(Character character)
+private IEnumerator ChooseMove(GameObject character)
 {
     //TODO
-    while (true)
+    
+    //if (character.GetComponent<Player>()!=null)
+    {
+      //  yield return StartCoroutine(SelectMoveScreen());
+    }
+ //   else
+    {
+        
+        
+    }
+    
+    choosenMove = character.GetComponent<Character>().GetCombatInfo().GetRandomScriptableMove();
+    yield return null;
+}
+
+private IEnumerator SelectMoveScreen()
+{
+    //TODO BETTER
+    //selectMovesParent.SetActive(true);
+    {
+        
+        yield return null;
+    }
+    //selectMovesParent.SetActive(false);
+}
+
+private IEnumerator PrepareUiForMove(GameObject character)
+{
+    //TODO
+
+    //  if (character.GetComponent<Player>() != null)
+    {
+            //SetPosition of UI Dipending of is a player or is a enemy
+    }
+  //  else
+    {
+        
+    }
+
+    
+    
+    yield return null;
+}
+
+private IEnumerator StartMoveOnScreen()
+{
+    ArrowManager.Instance.Startmove(choosenMove);
+    yield return null;
+    while (ArrowManager.Instance.GetArrowGoOn())
     {
         yield return null;
     }
-    
 }
 
 #endregion
 
-
+private void ResetDamage()
+{
+    currentDamage = 0;
+}
 
 private bool SomeoneIsDied()
 {
@@ -207,7 +249,7 @@ private bool SomeoneIsDied()
 
 private void EndCombat()
 {
-    
+    //TODO
 }
 
 

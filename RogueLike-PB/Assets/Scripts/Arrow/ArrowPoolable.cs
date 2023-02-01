@@ -47,9 +47,7 @@ public bool KeyIsPressed()
     return (Input.GetKeyDown(key));
 }
 
-
-
-private void SetPoints(int newPoints)
+public void SetPoints(int newPoints)
 {
     points = newPoints;
 }

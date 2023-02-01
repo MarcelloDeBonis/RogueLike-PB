@@ -60,6 +60,10 @@ public bool GetIsSelected()
     return isSelected;
 }
 
+public CombatInfo GetCombatInfo()
+{
+    return combatInfo;
+}
 
 #endregion
 

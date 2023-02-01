@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 public class ArrowManager : Singleton<ArrowManager>
@@ -15,12 +16,15 @@ private List<GameObject> arrowSpawnedList = new List<GameObject>();
 [SerializeField] private ArrowPooler upArrowPooler;
 [SerializeField] private ArrowPooler rightArrowPooler;
 
+private bool arrowsGoOn = false;
+
 #endregion
 
 #region Methods
 
 public void Startmove(ScriptableMove move)
 {
+    arrowsGoOn = true;
     StartCoroutine(NewMove(move));
 }
 
@@ -30,11 +34,12 @@ private  IEnumerator NewMove(ScriptableMove move)
     SoundManager.Instance.PlaySound(move.GetClip());
     yield return StartCoroutine(SpawnArrowsInTime(move));
     UiArrow.SetActive(false);
+    arrowsGoOn = false;
 }
 
 public IEnumerator SpawnArrowsInTime(ScriptableMove move)
 {
-    StartCoroutine(CheckImput());
+    StartCoroutine(CheckInput());
 
     foreach (ArrowProperties arrow in move.GetMove().GetArrowPropertiesList())
     {
@@ -77,7 +82,7 @@ public IEnumerator SpawnArrowsInTime(ScriptableMove move)
 
 }
 
-private IEnumerator CheckImput()
+private IEnumerator CheckInput()
 {
     while (true)
     {
@@ -106,12 +111,19 @@ private IEnumerator CheckAllListsEmpty()
     {
         yield return null;
     }
+    //TODO
+    //Not interrupt song
 }
 
 public void DeleteFromArrowInSceneList(GameObject arrow)
 {
     arrow.GetComponent<ArrowPoolable>().DeactiveAfterTime(0);
     arrowSpawnedList.Remove(arrow);
+}
+
+public bool GetArrowGoOn()
+{
+    return arrowsGoOn;
 }
 
 #endregion

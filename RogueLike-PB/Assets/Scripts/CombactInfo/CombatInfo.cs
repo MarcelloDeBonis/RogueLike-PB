@@ -11,32 +11,21 @@ public class CombatInfo
 [SerializeField] private int life;
 [SerializeField] private Vector3 alignmentPosition;
 [SerializeField] private Vector3 attackPosition;
-
-#endregion
-
-#region MonoBehaviour
-
-    // Awake is called when the script instance is being loaded
-    void Awake()
-    {
-	
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[SerializeField] private List<ScriptableMove> scriptableMoveList;
 
 #endregion
 
 #region Methods
+
+public List<ScriptableMove> GetScriptableMove()
+{
+    return scriptableMoveList;
+}
+
+public ScriptableMove GetRandomScriptableMove()
+{
+    return scriptableMoveList[Random.Range(0, scriptableMoveList.Count)];
+}
 
 public void ChangeLife(int newLife)
 {
