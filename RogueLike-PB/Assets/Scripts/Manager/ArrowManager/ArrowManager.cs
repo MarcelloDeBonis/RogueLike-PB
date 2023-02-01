@@ -94,7 +94,9 @@ private IEnumerator CheckInput()
             {
                 if (arrow.GetComponent<ArrowPoolable>().KeyIsPressed())
                 {
-                    
+                    //TODO
+                    //ToDoBetter
+                    CombatSystem.Instance.AddPointsToDamageCalculator(arrow.GetComponent<ArrowPoolable>().GetPoints())
                     DeleteFromArrowInSceneList(arrow);
                     break;
                 }

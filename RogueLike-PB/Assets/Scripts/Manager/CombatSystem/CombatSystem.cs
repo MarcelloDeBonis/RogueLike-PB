@@ -227,6 +227,7 @@ private IEnumerator PrepareUiForMove(GameObject character)
 
 private IEnumerator StartMoveOnScreen()
 {
+    ResetDamage();
     ArrowManager.Instance.Startmove(choosenMove);
     yield return null;
     while (ArrowManager.Instance.GetArrowGoOn())
@@ -236,6 +237,12 @@ private IEnumerator StartMoveOnScreen()
 }
 
 #endregion
+
+public void AddPointsToDamageCalculator(int damagePoints)
+{
+    currentDamage += damagePoints;
+    Debug.Log("Current damage: " + currentDamage);
+}
 
 private void ResetDamage()
 {

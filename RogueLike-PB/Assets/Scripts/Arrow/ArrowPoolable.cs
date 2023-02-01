@@ -52,6 +52,11 @@ public void SetPoints(int newPoints)
     points = newPoints;
 }
 
+public int GetPoints()
+{
+    return points
+}
+
 #endregion
 
 }
