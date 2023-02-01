@@ -7,6 +7,8 @@ public class CombatSystem : Singleton<CombatSystem>
 
 #region Variables & Properties
 
+private int currentDamage = 0;
+private ScriptableMove choosenMove;
 [SerializeField] private GameObject player;
 [SerializeField] private List<GameObject> enemyList;
 [SerializeField] private float speedMovementEntities;
@@ -63,7 +65,7 @@ private IEnumerator CombatLoop()
     {
         yield return StartCoroutine(ChoosingAttack(player));
         yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().combatInfo.GetAttackPosition(), opponentSelected, opponentSelected.GetComponent<Character>().combatInfo.GetAttackPosition()));
-        yield return StartCoroutine(PrepareUiForAttack(player.GetComponent<Character>()));
+        yield return StartCoroutine(ChooseMove(player.GetComponent<Character>()));
         //Try to attack
         //Calculate damage
         //EnemySelectedLoseThatDamage
@@ -184,7 +186,7 @@ private IEnumerator PlayerDefend()
     yield return null;
 }
 
-private IEnumerator PrepareUiForAttack(Character character)
+private IEnumerator ChooseMove(Character character)
 {
     //TODO
     while (true)
@@ -195,6 +197,8 @@ private IEnumerator PrepareUiForAttack(Character character)
 }
 
 #endregion
+
+
 
 private bool SomeoneIsDied()
 {

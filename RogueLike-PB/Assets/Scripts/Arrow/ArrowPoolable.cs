@@ -8,28 +8,9 @@ public class ArrowPoolable : ObjectPoolable
 #region Variables & Properties
 
 private float speed;
-
-#endregion
-
-#region MonoBehaviour
-
-    // Awake is called when the script instance is being loaded
-    void Awake()
-    {
-	
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+private EnumArrow enumArrow;
+private KeyCode key;
+private int points = 0;
 
 #endregion
 
@@ -40,10 +21,16 @@ private void SetSpeed(float newSpeed)
     speed = newSpeed;
 }
 
-public void StartMove(float newSpeed)
+public void StartArrow(float newSpeed, KeyCode newKey)
 {
+    SetKey(newKey);
     SetSpeed(newSpeed);
     StartCoroutine(MoveDown());
+}
+
+private void SetKey(KeyCode newKey)
+{
+    key = newKey;
 }
 
 private IEnumerator MoveDown()
@@ -53,6 +40,18 @@ private IEnumerator MoveDown()
         transform.position += Vector3.down * speed * Time.deltaTime;
         yield return null;
     }
+}
+
+public bool KeyIsPressed()
+{
+    return (Input.GetKeyDown(key));
+}
+
+
+
+private void SetPoints(int newPoints)
+{
+    points = newPoints;
 }
 
 #endregion

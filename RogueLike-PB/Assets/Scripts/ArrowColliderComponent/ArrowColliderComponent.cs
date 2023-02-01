@@ -7,35 +7,16 @@ public class ArrowColliderComponent : MonoBehaviour
 
 #region Variables & Properties
 
-
-
-#endregion
-
-#region MonoBehaviour
-
-    // Awake is called when the script instance is being loaded
-    void Awake()
-    {
-	
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[SerializeField] private int pointsWhenPlayerClick;
 
 #endregion
 
 #region Methods
 
-
+public int GetPoints()
+{
+    return pointsWhenPlayerClick;
+}
 
 #endregion
 

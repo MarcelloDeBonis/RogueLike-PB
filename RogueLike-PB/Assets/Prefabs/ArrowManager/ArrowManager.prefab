@@ -10,6 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2474343011319420749}
   - component: {fileID: 3345168783916559626}
+  - component: {fileID: 5800511068968367391}
+  - component: {fileID: 1504205091935379109}
+  - component: {fileID: 2907870111285471245}
+  - component: {fileID: 1099338053123163510}
   m_Layer: 0
   m_Name: ArrowManager
   m_TagString: Untagged
@@ -44,3 +48,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5fcf11dffcca02478d41d7b40e0bb2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsPersistent: 0
+  UiArrow: {fileID: 0}
+--- !u!114 &5800511068968367391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12251029413638748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f36f8908c341f46a1c447553d3504a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listObjectPoolables: []
+--- !u!114 &1504205091935379109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12251029413638748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f36f8908c341f46a1c447553d3504a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listObjectPoolables: []
+--- !u!114 &2907870111285471245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12251029413638748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f36f8908c341f46a1c447553d3504a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listObjectPoolables: []
+--- !u!114 &1099338053123163510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12251029413638748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f36f8908c341f46a1c447553d3504a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listObjectPoolables: []

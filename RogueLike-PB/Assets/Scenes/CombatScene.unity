@@ -596,6 +596,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 616594428}
+  - component: {fileID: 616594429}
   m_Layer: 5
   m_Name: Collider 1 point
   m_TagString: Untagged
@@ -623,6 +624,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0.059993, y: -180.06}
   m_SizeDelta: {x: 151.12, y: 14.202}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &616594429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616594427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8940db1ffc022ac4bb8045cac8d1e45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsWhenPlayerClick: 1
 --- !u!1 &628911064
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,6 +749,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682156620}
   m_CullTransparentMesh: 1
+--- !u!1001 &704901792
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5408362323374724416, guid: 58384dd8e1b49b7439c805adfd74ecb1, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408362323374724416, guid: 58384dd8e1b49b7439c805adfd74ecb1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408362323374724416, guid: 58384dd8e1b49b7439c805adfd74ecb1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408362323374724416, guid: 58384dd8e1b49b7439c805adfd74ecb1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408362323374724416, guid: 58384dd8e1b49b7439c805adfd74ecb1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408362323374724416, guid: 58384dd8e1b49b7439c805adfd74ecb1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408362323374724416, guid: 58384dd8e1b49b7439c805adfd74ecb1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408362323374724416, guid: 58384dd8e1b49b7439c805adfd74ecb1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408362323374724416, guid: 58384dd8e1b49b7439c805adfd74ecb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408362323374724416, guid: 58384dd8e1b49b7439c805adfd74ecb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5408362323374724416, guid: 58384dd8e1b49b7439c805adfd74ecb1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6650800618063011649, guid: 58384dd8e1b49b7439c805adfd74ecb1, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 58384dd8e1b49b7439c805adfd74ecb1, type: 3}
 --- !u!1 &717766058
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,6 +851,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 779367487}
+  - component: {fileID: 779367488}
   m_Layer: 5
   m_Name: ColliderDeleteArrows
   m_TagString: Untagged
@@ -807,6 +879,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0.11823, y: -190.05}
   m_SizeDelta: {x: 151.24, y: 5.7907}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &779367488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779367486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8940db1ffc022ac4bb8045cac8d1e45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsWhenPlayerClick: 0
 --- !u!1 &783278341 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4027924851633183352, guid: 87b9b41fef0fe8643b80c566cf3aa848, type: 3}
@@ -834,6 +919,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 827537777}
+  - component: {fileID: 827537778}
   m_Layer: 5
   m_Name: Collider 2 point
   m_TagString: Untagged
@@ -861,6 +947,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0, y: -168.51}
   m_SizeDelta: {x: 151.24, y: 8.8991}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &827537778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827537776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8940db1ffc022ac4bb8045cac8d1e45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsWhenPlayerClick: 2
 --- !u!1 &835126218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,6 +1191,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 924296505}
+  - component: {fileID: 924296506}
   m_Layer: 5
   m_Name: Collider 2 point
   m_TagString: Untagged
@@ -1119,6 +1219,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0.12, y: -145.41}
   m_SizeDelta: {x: 151.24, y: 8.8991}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &924296506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924296504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8940db1ffc022ac4bb8045cac8d1e45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsWhenPlayerClick: 2
 --- !u!1 &961296523
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,6 +1351,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1070942836}
+  - component: {fileID: 1070942837}
   m_Layer: 5
   m_Name: Collider Perfect
   m_TagString: Untagged
@@ -1265,6 +1379,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0.12, y: -156.96}
   m_SizeDelta: {x: 151.24, y: 14.198}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1070942837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070942835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8940db1ffc022ac4bb8045cac8d1e45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsWhenPlayerClick: 3
 --- !u!1 &1398610452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,7 +1833,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1900464805
 GameObject:
@@ -1914,7 +2041,7 @@ RectTransform:
   m_Children:
   - {fileID: 961296524}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1930,6 +2057,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2036190814}
+  - component: {fileID: 2036190815}
   m_Layer: 5
   m_Name: Collider 1 point
   m_TagString: Untagged
@@ -1957,6 +2085,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0.058405, y: -133.86}
   m_SizeDelta: {x: 151.12, y: 14.202}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2036190815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036190813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8940db1ffc022ac4bb8045cac8d1e45c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsWhenPlayerClick: 1
 --- !u!1 &2092462334
 GameObject:
   m_ObjectHideFlags: 0
@@ -2088,6 +2229,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArrowManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1099338053123163510, guid: b0dce57419ae01748b5feeaf043bde34, type: 3}
+      propertyPath: listObjectPoolables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504205091935379109, guid: b0dce57419ae01748b5feeaf043bde34, type: 3}
+      propertyPath: listObjectPoolables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2474343011319420749, guid: b0dce57419ae01748b5feeaf043bde34, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2131,6 +2280,18 @@ PrefabInstance:
     - target: {fileID: 2474343011319420749, guid: b0dce57419ae01748b5feeaf043bde34, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2907870111285471245, guid: b0dce57419ae01748b5feeaf043bde34, type: 3}
+      propertyPath: listObjectPoolables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3345168783916559626, guid: b0dce57419ae01748b5feeaf043bde34, type: 3}
+      propertyPath: UiArrow
+      value: 
+      objectReference: {fileID: 961296523}
+    - target: {fileID: 5800511068968367391, guid: b0dce57419ae01748b5feeaf043bde34, type: 3}
+      propertyPath: listObjectPoolables.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0dce57419ae01748b5feeaf043bde34, type: 3}

@@ -116,7 +116,7 @@ public class ObjectPooler<T> : MonoBehaviour where T : ObjectPooler<T>
         return null;
     }
 
-    protected void SpawnObjectPoolable<T>()
+    protected GameObject SpawnObjectPoolable<T>()
     {
 
         var type = typeof(T);
@@ -137,17 +137,19 @@ public class ObjectPooler<T> : MonoBehaviour where T : ObjectPooler<T>
                     objectPoolable.gameObject.SetActive(true);
                     objectPoolable.gameObject.GetComponent<ObjectPoolable>().OnSpawn();
                     
-                    return;
+                    return objectPoolable;
                 }
                 else
                 {
                     Debug.Log("Not founded");
-                    return;
+                    return null;
                 }
             }
 
             i++;
         }
+
+        return null;
     }
     
     

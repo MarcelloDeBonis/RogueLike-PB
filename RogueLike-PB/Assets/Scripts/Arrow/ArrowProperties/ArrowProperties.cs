@@ -15,12 +15,27 @@ public class ArrowProperties
 
 #endregion
 
-private KeyCode getkey()
+
+public KeyCode Getkey()
 {
-    if (key)
-    {
-        
-    }
+    
+    return key;
+}
+
+public float GetWaitingTime()
+{
+    return waitingTime;
+}
+
+
+public float GetSpeed()
+{
+    return speed;
+}
+
+public EnumArrow GetEnumArrow()
+{
+    return enumArrow;
 }
 
 }

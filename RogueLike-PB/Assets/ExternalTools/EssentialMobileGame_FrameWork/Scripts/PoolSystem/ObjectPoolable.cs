@@ -50,7 +50,12 @@ public class ObjectPoolable : MonoBehaviour
         return gameObject.activeInHierarchy;
     }
 
-    public IEnumerator DeactiveAfterTime(float dieTime)
+    public void DeactiveAfterTime(float dieTime)
+    {
+        StartCoroutine(CourutineDeactiveAfterTime(dieTime));
+    }
+    
+    private IEnumerator CourutineDeactiveAfterTime(float dieTime)
     {
         float time = 0f;
         while (time < dieTime)
