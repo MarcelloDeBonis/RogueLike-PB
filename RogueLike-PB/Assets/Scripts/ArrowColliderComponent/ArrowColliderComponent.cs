@@ -18,9 +18,15 @@ private void OnTriggerEnter2D(Collider2D other)
 {
     if (other.gameObject.GetComponent<ArrowPoolable>() != null)
     {
+        if (ArrowManager.Instance.GetAttackingEntity().GetComponent<Enemy>() != null && this.gameObject.name== "Collider Perfect")
+        {
+            CombatSystem.Instance.AddPointsToDamageCalculator(pointsWhenPlayerClick);
+            ArrowManager.Instance.DeleteFromArrowInSceneList(other.gameObject);
+        }
+        
         if (pointsWhenPlayerClick != 0)
         {
-                other.gameObject.GetComponent<ArrowPoolable>().SetPoints(pointsWhenPlayerClick);
+            other.gameObject.GetComponent<ArrowPoolable>().SetPoints(pointsWhenPlayerClick);
         }
         else
         {

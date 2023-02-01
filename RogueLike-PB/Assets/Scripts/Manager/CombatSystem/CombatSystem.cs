@@ -17,6 +17,7 @@ private EnumBattlePhase battlePhase = EnumBattlePhase.NoBattlePhase;
 private GameObject opponentSelected;
 
 [SerializeField] private GameObject selectMovesParent;
+
 [SerializeField] private GameObject screenArrowPlayer;
 [SerializeField] private GameObject screenArrowEnemies;
 private ScriptableMove choosenMove;
@@ -74,9 +75,9 @@ private IEnumerator CombatLoop()
         yield return StartCoroutine(ChooseTarget(player));
         yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().combatInfo.GetAttackPosition(), opponentSelected, opponentSelected.GetComponent<Character>().combatInfo.GetAttackPosition()));
         yield return StartCoroutine(PrepareUiForMove(player));
-        yield return StartCoroutine(StartMoveOnScreen());
-        //EnemySelectedLoseThatDamage
-        //EnemyAndPlayerComeBackToTheirDefaultPosition
+        battlePhase = EnumBattlePhase.CharacterAttackingPhase;
+        yield return StartCoroutine(StartMoveOnScreen(player));
+        yield return StartCoroutine(ApplyDamage(opponentSelected));
         yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().combatInfo.GetAlignmentPosition(), opponentSelected, opponentSelected.GetComponent<Character>().combatInfo.GetAlignmentPosition()));
         
         GameObject firsteEnemy = enemyList[0];
@@ -95,19 +96,25 @@ private IEnumerator CombatLoop()
                 yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().combatInfo.GetAttackPosition()));
             }
             
-            //TODO
-            //Rhythm attack + calculate damage
+          /*  yield return StartCoroutine(PrepareUiForMove(enemy));
+            battlePhase = EnumBattlePhase.CharacterAttackingPhase;
+            yield return StartCoroutine(StartMoveOnScreen(enemy));
+            battlePhase = EnumBattlePhase.PlayerDefendingPhase;
             yield return StartCoroutine(PlayerDefend());
-
+            yield return StartCoroutine(ApplyDamage(opponentSelected));
+                */
+          
             if (enemy == lastEnemy)
             {
                 yield return StartCoroutine(MoveCharacterAndEnemySelected(enemy, enemy.GetComponent<Character>().combatInfo.GetAlignmentPosition(), opponentSelected, opponentSelected.GetComponent<Character>().combatInfo.GetAlignmentPosition()));
             }
+            else
+            {
+                yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().combatInfo.GetAlignmentPosition()));
+            }
 
         }
         
-        //TODO
-        //player comes back
     }
 
     EndCombat();
@@ -164,16 +171,18 @@ private IEnumerator MoveCharacterAndEnemySelected(GameObject character1, Vector3
 
 private IEnumerator MoveCharacter(GameObject character, Vector3 end)
 {
-    while (character.transform.position != character.GetComponent<Character>().combatInfo.GetAttackPosition())
+    while (character.transform.position != end)
     {
-        character.transform.position = Vector3.MoveTowards(character.transform.position, character.GetComponent<Character>().combatInfo.GetAttackPosition(), speedMovementEntities * Time.deltaTime);
-        opponentSelected.transform.position= Vector3.MoveTowards(opponentSelected.transform.position, opponentSelected.GetComponent<Character>().combatInfo.GetAttackPosition(), speedMovementEntities * Time.deltaTime);
+        character.transform.position = Vector3.MoveTowards(character.transform.position, end, speedMovementEntities * Time.deltaTime);
         yield return null;
     } 
 }
 
 private IEnumerator PlayerDefend()
 {
+
+    yield return StartCoroutine(PrepareUiForMove(player));
+    yield return StartCoroutine(StartMoveOnScreen(player));
     //TODO
     yield return null;
 }
@@ -211,24 +220,27 @@ private IEnumerator PrepareUiForMove(GameObject character)
 {
     //TODO
 
-    //  if (character.GetComponent<Player>() != null)
+    if (character.GetComponent<Player>() != null)
     {
-            //SetPosition of UI Dipending of is a player or is a enemy
+        ArrowManager.Instance.GetUiArrow().transform.position = screenArrowPlayer.transform.position;
     }
-  //  else
+    else
     {
-        
+        ArrowManager.Instance.GetUiArrow().transform.position = screenArrowEnemies.transform.position;
     }
 
-    
-    
     yield return null;
 }
 
-private IEnumerator StartMoveOnScreen()
+private IEnumerator StartMoveOnScreen(GameObject character)
 {
-    ResetDamage();
-    ArrowManager.Instance.Startmove(choosenMove);
+
+    if (battlePhase == EnumBattlePhase.CharacterAttackingPhase)
+    {
+        ResetDamage();
+    }
+
+    ArrowManager.Instance.Startmove(choosenMove, character);
     yield return null;
     while (ArrowManager.Instance.GetArrowGoOn())
     {
@@ -236,7 +248,19 @@ private IEnumerator StartMoveOnScreen()
     }
 }
 
+private IEnumerator ApplyDamage(GameObject character)
+{
+    //TODO
+    yield return null;
+}
+
 #endregion
+
+public void RemovePointsToDamageCalculator(int damagePoints)
+{
+    currentDamage -= damagePoints;
+    Debug.Log("Current damage: " + currentDamage);
+}
 
 public void AddPointsToDamageCalculator(int damagePoints)
 {

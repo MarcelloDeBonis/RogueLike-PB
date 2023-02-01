@@ -16,14 +16,17 @@ private List<GameObject> arrowSpawnedList = new List<GameObject>();
 [SerializeField] private ArrowPooler upArrowPooler;
 [SerializeField] private ArrowPooler rightArrowPooler;
 
+private GameObject attackingEntity;
+
 private bool arrowsGoOn = false;
 
 #endregion
 
 #region Methods
 
-public void Startmove(ScriptableMove move)
+public void Startmove(ScriptableMove move, GameObject newCharacter)
 {
+    attackingEntity = newCharacter;
     arrowsGoOn = true;
     StartCoroutine(NewMove(move));
 }
@@ -84,19 +87,22 @@ public IEnumerator SpawnArrowsInTime(ScriptableMove move)
 
 private IEnumerator CheckInput()
 {
-    while (true)
+    while (arrowsGoOn)
     {
-        GameObject arrowSelected;
-
         if (arrowSpawnedList.Count > 0)
         {
             foreach (GameObject arrow in arrowSpawnedList)
             {
                 if (arrow.GetComponent<ArrowPoolable>().KeyIsPressed())
                 {
-                        //TODO
-                        //ToDoBetter
+                    if (CombatSystem.Instance.GetEnumBattlePhase() == EnumBattlePhase.CharacterAttackingPhase)
+                    {
                         CombatSystem.Instance.AddPointsToDamageCalculator(arrow.GetComponent<ArrowPoolable>().GetPoints());
+                    }
+                    else if(CombatSystem.Instance.GetEnumBattlePhase() == EnumBattlePhase.PlayerDefendingPhase)
+                    {
+                        CombatSystem.Instance.RemovePointsToDamageCalculator(arrow.GetComponent<ArrowPoolable>().GetPoints());
+                    }
                     DeleteFromArrowInSceneList(arrow);
                     break;
                 }
@@ -126,6 +132,16 @@ public void DeleteFromArrowInSceneList(GameObject arrow)
 public bool GetArrowGoOn()
 {
     return arrowsGoOn;
+}
+
+public GameObject GetUiArrow()
+{
+    return UiArrow;
+}
+
+public GameObject GetAttackingEntity()
+{
+    return attackingEntity;
 }
 
 #endregion

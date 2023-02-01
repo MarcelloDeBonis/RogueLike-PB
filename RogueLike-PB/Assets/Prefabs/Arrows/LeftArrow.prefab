@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3949817687665585772}
   - component: {fileID: 3558153241433834758}
   - component: {fileID: -2980010877315164396}
-  - component: {fileID: -5990332521873406285}
+  - component: {fileID: -6013282328852969611}
   m_Layer: 5
   m_Name: LeftArrow
   m_TagString: Untagged
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a89338da3f975904f84c6f92402f726e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &-5990332521873406285
+--- !u!61 &-6013282328852969611
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

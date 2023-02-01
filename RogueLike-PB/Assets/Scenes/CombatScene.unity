@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1165986300548129211, guid: 87b9b41fef0fe8643b80c566cf3aa848, type: 3}
       propertyPath: combatInfo.attackPosition.z
-      value: -2.34
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1165986300548129211, guid: 87b9b41fef0fe8643b80c566cf3aa848, type: 3}
       propertyPath: combatInfo.alignmentPosition.x
@@ -512,6 +512,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 441341965}
   m_CullTransparentMesh: 1
+--- !u!1 &446604795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 446604796}
+  m_Layer: 5
+  m_Name: ScreenArrowEnemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &446604796
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446604795}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2003822177}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -223, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &513118870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1278,7 +1314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4560240552544712464, guid: 6267550770445f545b058fdbeeaf099a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.58
+      value: -9.61
       objectReference: {fileID: 0}
     - target: {fileID: 4560240552544712464, guid: 6267550770445f545b058fdbeeaf099a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1322,7 +1358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7749592747458929449, guid: 6267550770445f545b058fdbeeaf099a, type: 3}
       propertyPath: combatInfo.alignmentPosition.x
-      value: -11.58
+      value: -9.61
       objectReference: {fileID: 0}
     - target: {fileID: 7749592747458929449, guid: 6267550770445f545b058fdbeeaf099a, type: 3}
       propertyPath: combatInfo.scriptableMoveList.Array.size
@@ -1466,7 +1502,7 @@ RectTransform:
   - {fileID: 364483025}
   - {fileID: 1015936748}
   m_Father: {fileID: 2003822177}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1839,6 +1875,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 889356951}
     - target: {fileID: 8763785975576318583, guid: 1fb10b59ad5fe7644b57dd4aa9ff7ecc, type: 3}
+      propertyPath: screenArrowPlayer
+      value: 
+      objectReference: {fileID: 1734321256}
+    - target: {fileID: 8763785975576318583, guid: 1fb10b59ad5fe7644b57dd4aa9ff7ecc, type: 3}
+      propertyPath: screenArrowEnemies
+      value: 
+      objectReference: {fileID: 446604795}
+    - target: {fileID: 8763785975576318583, guid: 1fb10b59ad5fe7644b57dd4aa9ff7ecc, type: 3}
       propertyPath: speedMovementEntities
       value: 5
       objectReference: {fileID: 0}
@@ -1932,6 +1976,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562028547}
   m_CullTransparentMesh: 1
+--- !u!1 &1734321256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1734321257}
+  m_Layer: 5
+  m_Name: ScreenArrowPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1734321257
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734321256}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2003822177}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 247, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1817456182 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6650800618063011649, guid: 58384dd8e1b49b7439c805adfd74ecb1, type: 3}
@@ -2209,6 +2289,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1734321257}
+  - {fileID: 446604796}
   - {fileID: 961296524}
   m_Father: {fileID: 0}
   m_RootOrder: 9
