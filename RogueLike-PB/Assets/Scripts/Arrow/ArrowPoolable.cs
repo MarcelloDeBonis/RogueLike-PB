@@ -54,7 +54,7 @@ public void SetPoints(int newPoints)
 
 public int GetPoints()
 {
-    return points
+        return points;
 }
 
 #endregion
