@@ -22,3 +22,20 @@ MonoBehaviour:
       speed: 0
       enumArrow: 0
       key: 0
+    - waitingTime: 0
+      speed: 0
+      enumArrow: 0
+      key: 0
+    - waitingTime: 0
+      speed: 0
+      enumArrow: 0
+      key: 0
+    - waitingTime: 0
+      speed: 0
+      enumArrow: 0
+      key: 0
+    - waitingTime: 0
+      speed: 0
+      enumArrow: 0
+      key: 0
+  clip: {fileID: 0}
