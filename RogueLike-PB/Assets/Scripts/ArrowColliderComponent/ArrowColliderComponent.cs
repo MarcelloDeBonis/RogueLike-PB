@@ -14,17 +14,17 @@ public class ArrowColliderComponent : MonoBehaviour
 
 #region Methods
 
-private void OnCollisionEnter(Collision collision)
+private void OnTriggerEnter2D(Collider2D other)
 {
-    if (collision.gameObject.GetComponent<ArrowPoolable>() != null)
+    if (other.gameObject.GetComponent<ArrowPoolable>() != null)
     {
         if (pointsWhenPlayerClick != 0)
         {
-            collision.gameObject.GetComponent<ArrowPoolable>().SetPoints(pointsWhenPlayerClick);
+                other.gameObject.GetComponent<ArrowPoolable>().SetPoints(pointsWhenPlayerClick);
         }
         else
         {
-            ArrowManager.Instance.DeleteFromArrowInSceneList(collision.gameObject);
+            ArrowManager.Instance.DeleteFromArrowInSceneList(other.gameObject);
         }
     }
 }
