@@ -21,11 +21,11 @@ private void SetSpeed(float newSpeed)
     speed = newSpeed;
 }
 
-public void StartArrow(float newSpeed, KeyCode newKey)
+public void StartArrow(GameObject colliderDeleteArrow ,float newSpeed, KeyCode newKey)
 {
     SetKey(newKey);
     SetSpeed(newSpeed);
-    StartCoroutine(MoveDown());
+    StartCoroutine(MoveDown(colliderDeleteArrow));
 }
 
 private void SetKey(KeyCode newKey)
@@ -33,11 +33,11 @@ private void SetKey(KeyCode newKey)
     key = newKey;
 }
 
-private IEnumerator MoveDown()
+private IEnumerator MoveDown(GameObject colliderDeleteArrow)
 {
     while (true)
     {
-        transform.position += Vector3.down * speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, colliderDeleteArrow.transform.position,  speed * Time.deltaTime);
         yield return null;
     }
 }

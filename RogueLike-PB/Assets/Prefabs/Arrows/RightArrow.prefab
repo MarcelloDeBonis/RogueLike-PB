@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 345529204003105578}
   - component: {fileID: -6451852206067431504}
   - component: {fileID: -485338440392093268}
-  - component: {fileID: 4756343690540372869}
+  - component: {fileID: 6442280147005098017}
   m_Layer: 5
   m_Name: RightArrow
   m_TagString: Untagged
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a89338da3f975904f84c6f92402f726e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &4756343690540372869
+--- !u!61 &6442280147005098017
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

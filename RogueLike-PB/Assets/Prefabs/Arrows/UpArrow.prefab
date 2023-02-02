@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3700457162370604244}
   - component: {fileID: -6567751778004869883}
   - component: {fileID: 519559025052135973}
-  - component: {fileID: -3015133426981339791}
+  - component: {fileID: -8320868065239214885}
   m_Layer: 5
   m_Name: UpArrow
   m_TagString: Untagged
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a89338da3f975904f84c6f92402f726e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &-3015133426981339791
+--- !u!61 &-8320868065239214885
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

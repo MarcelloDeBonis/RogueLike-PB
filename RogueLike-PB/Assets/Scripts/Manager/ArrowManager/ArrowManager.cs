@@ -16,6 +16,11 @@ private List<GameObject> arrowSpawnedList = new List<GameObject>();
 [SerializeField] private ArrowPooler upArrowPooler;
 [SerializeField] private ArrowPooler rightArrowPooler;
 
+[SerializeField] private GameObject colliderDeleteUp;
+[SerializeField] private GameObject colliderDeleteDown;
+[SerializeField] private GameObject colliderDeleteLeft;
+[SerializeField] private GameObject colliderDeleteRight;
+
 private GameObject attackingEntity;
 
 private bool arrowsGoOn = false;
@@ -54,28 +59,28 @@ public IEnumerator SpawnArrowsInTime(ScriptableMove move)
             case EnumArrow.LeftArrow:
                 
                 arrowSpawned=leftArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(arrow.GetSpeed(), arrow.Getkey());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteLeft, arrow.GetSpeed(), arrow.Getkey());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
             
             case EnumArrow.DownArrow:
                 
                 arrowSpawned=downArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(arrow.GetSpeed(), arrow.Getkey());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteDown, arrow.GetSpeed(), arrow.Getkey());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
             
             case EnumArrow.UpArrow:
                 
                 arrowSpawned=upArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(arrow.GetSpeed(), arrow.Getkey());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteUp, arrow.GetSpeed(), arrow.Getkey());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
             
             case EnumArrow.RightArrow:
                 
                 arrowSpawned=rightArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(arrow.GetSpeed(), arrow.Getkey());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteRight, arrow.GetSpeed(), arrow.Getkey());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
         }
