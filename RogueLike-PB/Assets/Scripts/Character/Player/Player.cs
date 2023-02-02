@@ -7,8 +7,6 @@ public class Player : Character
 
 #region Variables & Properties
 
-
-
 #endregion
 
 #region MonoBehaviour
@@ -34,8 +32,6 @@ public class Player : Character
 #endregion
 
 #region Methods
-
-
 
 #endregion
 

@@ -16,11 +16,13 @@ private int currentDamage = 0;
 private EnumBattlePhase battlePhase = EnumBattlePhase.NoBattlePhase;
 private GameObject opponentSelected;
 
-[SerializeField] private GameObject selectMovesParent;
-
 [SerializeField] private GameObject screenArrowPlayer;
 [SerializeField] private GameObject screenArrowEnemies;
 private ScriptableMove choosenMove;
+
+[SerializeField] private GameObject playerCanvas;
+[SerializeField] private GameObject moveCollector;
+[SerializeField] private GameObject move2DObjectPrefab;
 
 #endregion
 
@@ -70,6 +72,7 @@ private IEnumerator CombatLoop()
 {
     while (!SomeoneIsDied())
     {
+        yield return StartCoroutine(PrepareUiForMovesChooses());
         yield return StartCoroutine(ChooseMove(player));
         battlePhase = EnumBattlePhase.SelectingPhase;
         yield return StartCoroutine(ChooseTarget(player));
@@ -124,6 +127,19 @@ private IEnumerator CombatLoop()
 #region CombatFases
 
 
+private IEnumerator PrepareUiForMovesChooses()
+{
+    playerCanvas.SetActive(true);
+    foreach (ScriptableMove scriptableMove in player.GetComponent<Player>().GetCombatInfo().GetScriptableMove())
+    {
+        GameObject newCollectorMove = Instantiate(move2DObjectPrefab, moveCollector.transform.position, moveCollector.transform.rotation);
+        newCollectorMove.transform.parent = moveCollector.transform;
+        newCollectorMove.GetComponent<Move2DComponent>().InitObject(scriptableMove);
+    }
+
+    yield return null;
+}
+
 private IEnumerator ChooseTarget(GameObject character)
 {
 
@@ -153,6 +169,8 @@ private IEnumerator ChooseTarget(GameObject character)
 
             yield return null;
         }
+        
+        playerCanvas.SetActive(false);
     }
     
 }
@@ -189,31 +207,32 @@ private IEnumerator PlayerDefend()
 
 private IEnumerator ChooseMove(GameObject character)
 {
-    //TODO
-    
-    //if (character.GetComponent<Player>()!=null)
+    if (enemyList.Contains(character))
     {
-      //  yield return StartCoroutine(SelectMoveScreen());
+        choosenMove = character.GetComponent<Character>().GetCombatInfo().GetRandomScriptableMove();
     }
- //   else
+    else
     {
-        
-        
-    }
-    
-    choosenMove = character.GetComponent<Character>().GetCombatInfo().GetRandomScriptableMove();
-    yield return null;
-}
+        bool choosen = false;
 
-private IEnumerator SelectMoveScreen()
-{
-    //TODO BETTER
-    //selectMovesParent.SetActive(true);
-    {
-        
-        yield return null;
+        while (!choosen)
+        {
+            if (character.GetComponent<Player>() != null)
+            {
+                foreach (GameObject move in moveCollector.GetComponentsInChildren<GameObject>())
+                {
+                    if (move.GetComponent<Move2DComponent>().GetIsSelected())
+                    {
+                        move.GetComponent<Move2DComponent>().DeactiveIsSelected();
+                        choosenMove = move.GetComponent<Move2DComponent>().GetScriptableMove();
+                        choosen = true;
+                    }
+                }
+            }
+
+            yield return null;
+        }
     }
-    //selectMovesParent.SetActive(false);
 }
 
 private IEnumerator PrepareUiForMove(GameObject character)

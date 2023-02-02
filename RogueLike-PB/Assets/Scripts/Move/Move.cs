@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ public class Move
 
 #region Variables & Properties
 
+[SerializeField] private string name;
+[SerializeField] private AudioClip clip;
 [SerializeField] private List<ArrowProperties> arrowPropertiesList;
 
 #endregion
@@ -39,6 +42,16 @@ public class Move
 public List<ArrowProperties> GetArrowPropertiesList()
 {
     return arrowPropertiesList;
+}
+
+public AudioClip GetAudioClip()
+{
+    return clip;
+}
+
+public string GetName()
+{
+    return name;
 }
 
 #endregion

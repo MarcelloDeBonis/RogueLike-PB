@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: PlayerMove1
   m_EditorClassIdentifier: 
   move:
+    name: LA mossa di amir
+    clip: {fileID: 0}
     arrowPropertiesList:
     - waitingTime: 0.2
       speed: 120
@@ -62,4 +64,3 @@ MonoBehaviour:
       speed: 120
       enumArrow: 1
       key: 274
-  clip: {fileID: 8300000, guid: 92c0a374a1e358c44ba34132aaa1007b, type: 3}

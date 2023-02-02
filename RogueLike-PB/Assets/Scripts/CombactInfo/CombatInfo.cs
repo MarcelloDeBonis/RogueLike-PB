@@ -11,7 +11,9 @@ public class CombatInfo
 [SerializeField] private int life;
 [SerializeField] private Vector3 alignmentPosition;
 [SerializeField] private Vector3 attackPosition;
+
 [SerializeField] private List<ScriptableMove> scriptableMoveList;
+
 
 #endregion
 

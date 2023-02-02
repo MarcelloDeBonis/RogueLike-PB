@@ -9,7 +9,6 @@ public class ScriptableMove : ScriptableObject
 #region Variables & Properties
 
 [SerializeField] private Move move;
-[SerializeField] private AudioClip clip;
 
 #endregion
 
@@ -22,7 +21,12 @@ public Move GetMove()
 
 public AudioClip GetClip()
 {
-    return clip;
+    return move.GetAudioClip();
+}
+
+public string GetName()
+{
+    return move.GetName();
 }
 
 #endregion
