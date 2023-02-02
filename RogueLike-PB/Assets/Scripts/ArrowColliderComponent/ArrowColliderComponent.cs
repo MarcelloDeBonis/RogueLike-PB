@@ -18,6 +18,12 @@ private void OnCollisionEnter2D(Collision2D collision)
 {
     if (collision.gameObject.GetComponent<ArrowPoolable>() != null)
     {
+        if(pointsWhenPlayerClick == 0)
+        {
+            ArrowManager.Instance.DeleteFromArrowInSceneList(collision.gameObject);
+            return;
+        }
+        
         if (ArrowManager.Instance.GetAttackingEntity().GetComponent<Enemy>() != null && this.gameObject.name== "Collider Perfect")
         {
             CombatSystem.Instance.AddPointsToDamageCalculator(pointsWhenPlayerClick);
@@ -30,11 +36,7 @@ private void OnCollisionEnter2D(Collision2D collision)
             collision.gameObject.GetComponent<ArrowPoolable>().SetPoints(pointsWhenPlayerClick);
             return;
         }
-        else if(pointsWhenPlayerClick == 0)
-        {
-            ArrowManager.Instance.DeleteFromArrowInSceneList(collision.gameObject);
-            return;
-        }
+        
     }
 }
 
