@@ -47,7 +47,11 @@ private  IEnumerator NewMove(ScriptableMove move)
 
 public IEnumerator SpawnArrowsInTime(ScriptableMove move)
 {
-    StartCoroutine(CheckInput());
+
+    if (attackingEntity.GetComponent<Player>() != null)
+    {
+        StartCoroutine(CheckInput());
+    }
 
     foreach (ArrowProperties arrow in move.GetMove().GetArrowPropertiesList())
     {

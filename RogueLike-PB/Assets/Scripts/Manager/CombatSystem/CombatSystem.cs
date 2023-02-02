@@ -96,13 +96,13 @@ private IEnumerator CombatLoop()
                 yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().combatInfo.GetAttackPosition()));
             }
             
-          /*  yield return StartCoroutine(PrepareUiForMove(enemy));
+            yield return StartCoroutine(PrepareUiForMove(enemy));
             battlePhase = EnumBattlePhase.CharacterAttackingPhase;
             yield return StartCoroutine(StartMoveOnScreen(enemy));
             battlePhase = EnumBattlePhase.PlayerDefendingPhase;
             yield return StartCoroutine(PlayerDefend());
             yield return StartCoroutine(ApplyDamage(opponentSelected));
-                */
+            
           
             if (enemy == lastEnemy)
             {
