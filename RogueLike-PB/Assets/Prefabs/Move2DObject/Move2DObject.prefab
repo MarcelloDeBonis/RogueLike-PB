@@ -166,6 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8399953360962450838}
   - component: {fileID: 5467686683812223962}
+  - component: {fileID: 5176054262141345188}
   m_Layer: 5
   m_Name: Move2DObject
   m_TagString: Untagged
@@ -208,3 +209,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 6958208513743640372}
+--- !u!65 &5176054262141345188
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8587497349566802748}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 99.683136, y: 99.94437, z: 1}
+  m_Center: {x: 0.053146362, y: 0.28431702, z: 0}

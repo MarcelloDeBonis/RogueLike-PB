@@ -219,14 +219,18 @@ private IEnumerator ChooseMove(GameObject character)
         {
             if (character.GetComponent<Player>() != null)
             {
-                foreach (GameObject move in moveCollector.GetComponentsInChildren<GameObject>())
+                foreach (Transform child in moveCollector.transform)
                 {
+            if (child.gameObject.GetComponent<GameObject>() != null)
+                {
+                            GameObject move = child.gameObject.GetComponent<GameObject>();
                     if (move.GetComponent<Move2DComponent>().GetIsSelected())
                     {
                         move.GetComponent<Move2DComponent>().DeactiveIsSelected();
                         choosenMove = move.GetComponent<Move2DComponent>().GetScriptableMove();
                         choosen = true;
                     }
+                }
                 }
             }
 
