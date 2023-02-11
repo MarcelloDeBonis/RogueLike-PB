@@ -9,6 +9,7 @@ public class Dungeon
 #region Variables & Properties
 
 [SerializeField] private List<Floor> floorList;
+private Floor currentFloor;
 
 #endregion
 
@@ -36,7 +37,18 @@ public class Dungeon
 
 #region Methods
 
+public void GenerateDungeon()
+{
+    foreach (Floor floor in floorList)
+    {
+        floor.GenerateFloor();
+    }
+}
 
+public Floor GetCurrentFloor()
+{
+    return currentFloor;
+}
 
 #endregion
 

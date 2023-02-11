@@ -20,7 +20,7 @@ public class DungeonGenerator : Singleton<DungeonGenerator>
     // Awake is called when the script instance is being loaded
     void Awake()
     {
-	    
+	    GenerateDungeonList();
     }
 
     // Start is called before the first frame update
@@ -39,10 +39,20 @@ public class DungeonGenerator : Singleton<DungeonGenerator>
 
 #region Methods
 
-private void GenerateFloor()
+private void GenerateNewScene()
 {
     
 }
+
+private void GenerateDungeonList()
+{
+    foreach (Dungeon dungeon in dungeonList)
+    {
+        dungeon.GenerateDungeon();
+    }
+}
+
+
 
 #endregion
 
