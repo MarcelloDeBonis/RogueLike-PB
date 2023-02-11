@@ -8,6 +8,7 @@ public class CombatInfo
 
 #region Variables & Properties
 
+[SerializeField] private int difficult;
 [SerializeField] private int life;
 [SerializeField] private Vector3 alignmentPosition;
 [SerializeField] private Vector3 attackPosition;

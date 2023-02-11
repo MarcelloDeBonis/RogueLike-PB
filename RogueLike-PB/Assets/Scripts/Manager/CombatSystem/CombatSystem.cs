@@ -76,12 +76,12 @@ private IEnumerator CombatLoop()
         yield return StartCoroutine(ChooseMove(player));
         battlePhase = EnumBattlePhase.SelectingPhase;
         yield return StartCoroutine(ChooseTarget(player));
-        yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().combatInfo.GetAttackPosition(), opponentSelected, opponentSelected.GetComponent<Character>().combatInfo.GetAttackPosition()));
+        yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().GetCombatInfo().GetAttackPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAttackPosition()));
         yield return StartCoroutine(PrepareUiForMove(player));
         battlePhase = EnumBattlePhase.CharacterAttackingPhase;
         yield return StartCoroutine(StartMoveOnScreen(player));
         yield return StartCoroutine(ApplyDamage(opponentSelected));
-        yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().combatInfo.GetAlignmentPosition(), opponentSelected, opponentSelected.GetComponent<Character>().combatInfo.GetAlignmentPosition()));
+        yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
         
         GameObject firsteEnemy = enemyList[0];
         GameObject lastEnemy = enemyList[enemyList.Count - 1];
@@ -92,11 +92,11 @@ private IEnumerator CombatLoop()
             
             if (enemy== firsteEnemy)
             {
-                yield return StartCoroutine(MoveCharacterAndEnemySelected(enemy, enemy.GetComponent<Character>().combatInfo.GetAttackPosition(), opponentSelected, opponentSelected.GetComponent<Character>().combatInfo.GetAttackPosition()));
+                yield return StartCoroutine(MoveCharacterAndEnemySelected(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAttackPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAttackPosition()));
             }
             else
             {
-                yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().combatInfo.GetAttackPosition()));
+                yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAttackPosition()));
             }
             
             yield return StartCoroutine(PrepareUiForMove(enemy));
@@ -109,11 +109,11 @@ private IEnumerator CombatLoop()
           
             if (enemy == lastEnemy)
             {
-                yield return StartCoroutine(MoveCharacterAndEnemySelected(enemy, enemy.GetComponent<Character>().combatInfo.GetAlignmentPosition(), opponentSelected, opponentSelected.GetComponent<Character>().combatInfo.GetAlignmentPosition()));
+                yield return StartCoroutine(MoveCharacterAndEnemySelected(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
             }
             else
             {
-                yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().combatInfo.GetAlignmentPosition()));
+                yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
             }
 
         }

@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : Character
+[CreateAssetMenu(menuName = "New CombactInfo")]
+public class ScriptableCombactInfo : ScriptableObject
 {
 
 #region Variables & Properties
+
+[SerializeField] private CombatInfo combactinfo;
 
 #endregion
 
@@ -14,7 +17,7 @@ public class Enemy : Character
     // Awake is called when the script instance is being loaded
     void Awake()
     {
-        combatInfo = combactInfoReference.GetCombactInfo();
+	
     }
 
     // Start is called before the first frame update
@@ -33,7 +36,10 @@ public class Enemy : Character
 
 #region Methods
 
-
+public CombatInfo GetCombactInfo()
+{
+    return combactinfo;
+}
 
 #endregion
 

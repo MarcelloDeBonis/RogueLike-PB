@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a74d5d03100a04f41a662a7ebb98eea1, type: 3}
+  m_Name: New Room 2
+  m_EditorClassIdentifier: 
+  difficulty: 1
+  enemyList:
+  - {fileID: 11400000, guid: e7d1a34fb035e76449281b67b6cc8572, type: 2}
+  - {fileID: 11400000, guid: e7d1a34fb035e76449281b67b6cc8572, type: 2}
+  chestList:
+  - {fileID: 11400000, guid: ee2191225fbfb484c8c12ffa7cc2197e, type: 2}

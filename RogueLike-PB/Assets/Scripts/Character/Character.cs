@@ -8,7 +8,8 @@ public class Character : MonoBehaviour
 
 #region Variables & Properties
 
-[SerializeField] public CombatInfo combatInfo;
+[SerializeField] protected ScriptableCombactInfo combactInfoReference;
+protected CombatInfo combatInfo = new CombatInfo();
 private bool isSelected=false;
 
 #endregion
@@ -18,7 +19,7 @@ private bool isSelected=false;
     // Awake is called when the script instance is being loaded
     void Awake()
     {
-	
+	    
     }
 
     // Start is called before the first frame update
