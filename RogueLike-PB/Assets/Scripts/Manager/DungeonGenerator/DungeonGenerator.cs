@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "New Room")]
-public class ScriptableRoom : ScriptableObject
+public class DungeonGenerator : Singleton<DungeonGenerator>
 {
 
 #region Variables & Properties
 
-[SerializeField] private int difficulty;
-[SerializeField] private List<ScriptableCombactInfo> enemyList;
-[SerializeField] private List<ScriptableChest> chestList;
+//TODO
+//OGNI PIANO HA LA SEGUENTE STRUTTURA, QUINDI UN DUNGEON è UNA LISTA DI PIANI. CI SONO N DUNGEON, QUINDI UNA LISTA DI DUNGEON.
+    [SerializeField] private List<Dungeon> dungeonList;
+
 
 #endregion
 
@@ -19,7 +20,7 @@ public class ScriptableRoom : ScriptableObject
     // Awake is called when the script instance is being loaded
     void Awake()
     {
-	
+	    
     }
 
     // Start is called before the first frame update
@@ -38,7 +39,10 @@ public class ScriptableRoom : ScriptableObject
 
 #region Methods
 
-
+private void GenerateFloor()
+{
+    
+}
 
 #endregion
 
