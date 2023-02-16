@@ -24,6 +24,8 @@ private ScriptableMove choosenMove;
 [SerializeField] private GameObject moveCollector;
 [SerializeField] private GameObject move2DObjectPrefab;
 
+
+
 #endregion
 
 #region MonoBehaviour

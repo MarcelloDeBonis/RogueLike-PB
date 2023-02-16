@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowPooler : ObjectPooler<ArrowPooler>
+public class ArrowPooler : ObjectPooler
 {
 
     #region Methods

@@ -17,13 +17,14 @@ public class DungeonGenerator : Singleton<DungeonGenerator>
 
 #region MonoBehaviour
 
-    // Awake is called when the script instance is being loaded
-    void Awake()
+// Awake is called when the script instance is being loaded
+    protected override void Awake()
     {
-	    GenerateDungeonList();
+        base.Awake();
+        GenerateDungeonList();
     }
 
-    // Start is called before the first frame update
+// Start is called before the first frame update
     void Start()
     {
         

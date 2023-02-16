@@ -17,7 +17,7 @@ public class ObjectToPool
     public Transform transform;
 }
 
-public class ObjectPooler<T> : MonoBehaviour where T : ObjectPooler<T>
+public class ObjectPooler : MonoBehaviour
 {
     #region Variables & Properties
 

@@ -1,18 +1,15 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class Move
+public class PrimaryStrument
 {
 
 #region Variables & Properties
 
-[SerializeField] private string name;
-[SerializeField] private AudioClip clip;
-[SerializeField] private ScriptableElementTyping elementTyping;
-[SerializeField] private List<ArrowProperties> arrowPropertiesList;
+[SerializeField] private List<ScriptableMove> moveList;
+[SerializeField] private ScriptableSoundTyping soundTyping;
 
 #endregion
 
@@ -40,20 +37,7 @@ public class Move
 
 #region Methods
 
-public List<ArrowProperties> GetArrowPropertiesList()
-{
-    return arrowPropertiesList;
-}
 
-public AudioClip GetAudioClip()
-{
-    return clip;
-}
-
-public string GetName()
-{
-    return name;
-}
 
 #endregion
 

@@ -13,20 +13,34 @@ public class CombatInfo
 [SerializeField] private Vector3 alignmentPosition;
 [SerializeField] private Vector3 attackPosition;
 
-[SerializeField] private List<ScriptableMove> scriptableMoveList;
+[SerializeField] private ScriptableAlonePrimaryStrument scriptableAlonePrimaryStruments;
+[SerializeField] private ScriptableReliantPrimaryStrument scriptableReliantPrimaryStruments;
+[SerializeField] private ScriptableElementTyping defenceElementTyping;
+[SerializeField] private ScriptableSoundTyping defenceSoundTyping;
 
+//TODO
+//TO DELETE VBECAUSE IN THAT FUNCITON THAT I WILL GET THOSE, I WILL GET FROM INSTRUMENT AND NOT FROM GENERAL MOVESET
+private List<ScriptableMove> scriptableMoveList;
+
+//TODO
+//[SerializeField] private primaryStrumentSetted
 
 #endregion
 
 #region Methods
 
+
+
 public List<ScriptableMove> GetScriptableMove()
 {
+//TODO
+//PREPARE A NEW CHARACTER IF IT IS A PLAYER || ENEMY AND SET STRUMENTS NOW THE CHARACTER HAS SETTED. PLAYER CAN CHANGE, BUT ENEMY NOT (PROPOSE TO DESIGNERS HAVE A DIFFERENTS STRUMENTS THEY CAN CHANGE
     return scriptableMoveList;
 }
 
 public ScriptableMove GetRandomScriptableMove()
 {
+    //TODO
     return scriptableMoveList[Random.Range(0, scriptableMoveList.Count)];
 }
 
