@@ -18,7 +18,7 @@ public void OpenGame()
 {
    SceneManager.LoadScene("MapScene");
 }
-2
+
 
 public void ExitGame()
 {
