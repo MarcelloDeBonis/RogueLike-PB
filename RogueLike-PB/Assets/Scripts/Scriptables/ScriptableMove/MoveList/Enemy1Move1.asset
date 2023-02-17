@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Enemy1Move1
   m_EditorClassIdentifier: 
   move:
+    name: 
+    clip: {fileID: 0}
+    elementTyping: {fileID: 11400000, guid: 95bbcd9595191aa49b82ad0b760651c1, type: 2}
     arrowPropertiesList:
     - waitingTime: 0.2
       speed: 120
@@ -46,4 +49,3 @@ MonoBehaviour:
       speed: 120
       enumArrow: 3
       key: 275
-  clip: {fileID: 8300000, guid: 92c0a374a1e358c44ba34132aaa1007b, type: 3}

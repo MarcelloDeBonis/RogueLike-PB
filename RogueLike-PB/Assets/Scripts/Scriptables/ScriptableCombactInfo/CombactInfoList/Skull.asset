@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Skull
   m_EditorClassIdentifier: 
   combactinfo:
+    difficult: 0
     life: 0
     alignmentPosition: {x: 0, y: 0, z: 0}
     attackPosition: {x: 0, y: 0, z: 0}
-    scriptableMoveList: []
+    scriptableAlonePrimaryStruments: {fileID: 0}
+    scriptableReliantPrimaryStruments: {fileID: 0}
+    defenceElementTyping: {fileID: 0}
+    defenceSoundTyping: {fileID: 0}

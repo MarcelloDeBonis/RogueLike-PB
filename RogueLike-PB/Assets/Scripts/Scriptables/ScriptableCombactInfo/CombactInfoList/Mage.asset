@@ -17,5 +17,7 @@ MonoBehaviour:
     life: 0
     alignmentPosition: {x: 0, y: 0, z: 0}
     attackPosition: {x: 0, y: 0, z: 0}
-    scriptableMoveList: []
-    typing: {fileID: 11400000, guid: 95bbcd9595191aa49b82ad0b760651c1, type: 2}
+    scriptableAlonePrimaryStruments: {fileID: 0}
+    scriptableReliantPrimaryStruments: {fileID: 0}
+    defenceElementTyping: {fileID: 0}
+    defenceSoundTyping: {fileID: 0}

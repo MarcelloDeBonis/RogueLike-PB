@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: New Scriptable Reliant Primary Strument
   m_EditorClassIdentifier: 
   reliantPrimaryStrument:
-    moveList: []
+    moveList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     soundTyping: {fileID: 0}
-    secondayStrument: {fileID: 0}
+    secondayStrument: {fileID: 11400000, guid: 97a5b65b93573fc40905baaa106357b5, type: 2}

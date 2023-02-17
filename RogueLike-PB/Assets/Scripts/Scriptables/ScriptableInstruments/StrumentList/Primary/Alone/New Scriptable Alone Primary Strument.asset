@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: New Scriptable Alone Primary Strument
   m_EditorClassIdentifier: 
   alonePrimaryStrument:
-    moveList: []
+    moveList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     soundTyping: {fileID: 0}
+    damage: 0
