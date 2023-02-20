@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: RoomTest_2
   m_EditorClassIdentifier: 
   difficulty: 1
-  frontWall: {fileID: 0}
-  leftWall: {fileID: 0}
-  rightWall: {fileID: 0}
-  backWall: {fileID: 0}
+  frontWall: {fileID: 5982309805323285166, guid: cfd01bbf20865974292de391db7764f4, type: 3}
+  leftWall: {fileID: 1314652558363724462, guid: bfefaeae44450a742b58b5d86cd56017, type: 3}
+  rightWall: {fileID: 4275564368756720690, guid: 2d3b8d5b70fbb714d84a06b691af9bf7, type: 3}
+  backWall: {fileID: 7206863571038886644, guid: 11814997cc1997d459c8ba72ffe52b5f, type: 3}
   enemyList:
   - enemy: {fileID: 7157305429637844429, guid: d868efa3a2d9e1743b18791ecea4413a, type: 3}
     alignmentEnemyPosition: {x: 0, y: 0, z: 0}
