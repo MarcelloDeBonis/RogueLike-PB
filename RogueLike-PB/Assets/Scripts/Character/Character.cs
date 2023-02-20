@@ -9,7 +9,7 @@ public class Character : MonoBehaviour
 #region Variables & Properties
 
 [SerializeField] protected ScriptableCombactInfo combactInfoReference;
-protected CombatInfo combatInfo = new CombatInfo();
+protected CombatInfo combatInfo;
 private bool isSelected=false;
 
 #endregion
@@ -37,6 +37,14 @@ private bool isSelected=false;
 #endregion
 
 #region Methods
+
+public void InitCombactInfo(Vector3 allignmentPosition, Vector3 attackPosition)
+{
+    combatInfo = new CombatInfo();
+    combatInfo = combactInfoReference.GetCombactInfo();
+    combatInfo.SetPositions(allignmentPosition, attackPosition);
+    combatInfo.InitPrimaryStrumentEnemies();
+}
 
 #region Clickable
 

@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "New Room")]
-public class ScriptableRoom : ScriptableObject
+public class Chest : MonoBehaviour
 {
 
 #region Variables & Properties
 
-[SerializeField] private int difficulty;
-[SerializeField] private List<ScriptableCombactInfo> enemyList;
-[SerializeField] private List<ScriptableChest> chestList;
+[SerializeField] public ScriptableChest chestReference;
 
 #endregion
 

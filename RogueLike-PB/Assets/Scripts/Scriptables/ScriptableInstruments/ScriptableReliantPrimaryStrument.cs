@@ -8,7 +8,7 @@ public class ScriptableReliantPrimaryStrument : ScriptableObject
 
 #region Variables & Properties
 
-[SerializeField] private ReliantPrimaryStrument reliantPrimaryStrument;
+[SerializeField] public ReliantPrimaryStrument reliantPrimaryStrument;
 
 #endregion
 

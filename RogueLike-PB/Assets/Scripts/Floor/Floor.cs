@@ -123,11 +123,25 @@ private void GenerateRoomSequence()
         roomList.Add(bossRoom);
     }
     roomList.Add(endRoom);
+    
+    currentRoom = roomList[0];
 }
 
 public ScriptableRoom GetCurrentRoom()
 {
     return currentRoom;
+}
+
+public bool ExistNextRoom()
+{
+    int index = roomList.IndexOf(currentRoom);
+    return (roomList[index + 1] != null);
+}
+
+public void SetNextRoom()
+{
+    int index = roomList.IndexOf(currentRoom);
+    currentRoom = roomList[index + 1];
 }
 
 #endregion

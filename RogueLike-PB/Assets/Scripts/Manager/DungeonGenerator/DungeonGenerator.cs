@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DungeonGenerator : Singleton<DungeonGenerator>
 {
 
 #region Variables & Properties
 
-//TODO
-//OGNI PIANO HA LA SEGUENTE STRUTTURA, QUINDI UN DUNGEON è UNA LISTA DI PIANI. CI SONO N DUNGEON, QUINDI UNA LISTA DI DUNGEON.
-    [SerializeField] private List<Dungeon> dungeonList;
-
+[SerializeField] private List<Dungeon> dungeonList;
+private Dungeon currentDungeon;
 
 #endregion
 
@@ -40,9 +39,10 @@ public class DungeonGenerator : Singleton<DungeonGenerator>
 
 #region Methods
 
-private void GenerateNewScene()
+public void GenerateNewScene()
 {
-    
+    SceneManager.LoadScene("RoomScene");
+    RoomManager.Instance.PrepareNewRoom(currentDungeon.GetCurrentFloor().GetCurrentRoom());
 }
 
 private void GenerateDungeonList()
@@ -50,6 +50,16 @@ private void GenerateDungeonList()
     foreach (Dungeon dungeon in dungeonList)
     {
         dungeon.GenerateDungeon();
+    }
+
+    currentDungeon=dungeonList[0];
+}
+
+public void NextRoom()
+{
+    if (currentDungeon.GetCurrentFloor().ExistNextRoom())
+    {
+        currentDungeon.GetCurrentFloor().SetNextRoom();
     }
 }
 

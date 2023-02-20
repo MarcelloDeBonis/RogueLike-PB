@@ -9,8 +9,8 @@ public class CombatSystem : Singleton<CombatSystem>
 
 private int currentDamage = 0;
 
-[SerializeField] private GameObject player;
-[SerializeField] private List<GameObject> enemyList;
+private GameObject player;
+private List<GameObject> enemyList;
 [SerializeField] private float speedMovementEntities;
 
 private EnumBattlePhase battlePhase = EnumBattlePhase.NoBattlePhase;
@@ -38,7 +38,7 @@ protected override void Awake()
 // Start is called before the first frame update
     void Start()
     {
-        OnCombatStart();
+        
     }
 
     // Update is called once per frame
@@ -53,19 +53,20 @@ protected override void Awake()
 
 #region Pre Combat
 
-public void OnCombatStart()
+public void OnCombatStart(GameObject _player, List<GameObject> _enemyList)
 {
-    //TODO
-    PrepareCombat();
+    PrepareCombat(_player, _enemyList);
     StartCoroutine(CombatLoop());
 }
 
-private void PrepareCombat()
+private void PrepareCombat(GameObject _player, List<GameObject> _enemylist)
 {
-   
-    //TODO
-    //Teleport every character
-   
+    player = _player;
+    foreach (GameObject enemy in _enemylist)
+    {
+        enemyList.Add(enemy);
+    }
+
 }
 
 #endregion
@@ -74,56 +75,64 @@ private IEnumerator CombatLoop()
 {
     while (!SomeoneIsDied())
     {
-        yield return StartCoroutine(PrepareUiForMovesChooses());
-        yield return StartCoroutine(ChooseMove(player));
-        battlePhase = EnumBattlePhase.SelectingPhase;
-        yield return StartCoroutine(ChooseTarget(player));
-        yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().GetCombatInfo().GetAttackPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAttackPosition()));
-        yield return StartCoroutine(PrepareUiForMove(player));
-        battlePhase = EnumBattlePhase.CharacterAttackingPhase;
-        yield return StartCoroutine(StartMoveOnScreen(player));
-        yield return StartCoroutine(ApplyDamage(opponentSelected));
-        yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
-        
-        GameObject firsteEnemy = enemyList[0];
-        GameObject lastEnemy = enemyList[enemyList.Count - 1];
-        
-        foreach (GameObject enemy in enemyList)
-        {
-            yield return StartCoroutine(ChooseTarget(enemy));
-            
-            if (enemy== firsteEnemy)
-            {
-                yield return StartCoroutine(MoveCharacterAndEnemySelected(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAttackPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAttackPosition()));
-            }
-            else
-            {
-                yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAttackPosition()));
-            }
-            
-            yield return StartCoroutine(PrepareUiForMove(enemy));
-            battlePhase = EnumBattlePhase.CharacterAttackingPhase;
-            yield return StartCoroutine(StartMoveOnScreen(enemy));
-            battlePhase = EnumBattlePhase.PlayerDefendingPhase;
-            yield return StartCoroutine(PlayerDefend());
-            yield return StartCoroutine(ApplyDamage(opponentSelected));
-            
-          
-            if (enemy == lastEnemy)
-            {
-                yield return StartCoroutine(MoveCharacterAndEnemySelected(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
-            }
-            else
-            {
-                yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
-            }
-
-        }
-        
+        yield return StartCoroutine(PlayerPhase());
+        yield return StartCoroutine(EnemiesPhase());
     }
 
     EndCombat();
 
+}
+
+private IEnumerator PlayerPhase()
+{
+    yield return StartCoroutine(PrepareUiForMovesChooses());
+    yield return StartCoroutine(ChooseMove(player));
+    battlePhase = EnumBattlePhase.SelectingPhase;
+    yield return StartCoroutine(ChooseTarget(player));
+    yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().GetCombatInfo().GetAttackPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAttackPosition()));
+    yield return StartCoroutine(PrepareUiForMove(player));
+    battlePhase = EnumBattlePhase.CharacterAttackingPhase;
+    yield return StartCoroutine(StartMoveOnScreen(player));
+    yield return StartCoroutine(ApplyDamage(opponentSelected));
+    yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
+}
+
+private IEnumerator EnemiesPhase()
+{
+    GameObject firsteEnemy = enemyList[0];
+    GameObject lastEnemy = enemyList[enemyList.Count - 1];
+        
+    foreach (GameObject enemy in enemyList)
+    {
+        yield return StartCoroutine(ChooseTarget(enemy));
+            
+        if (enemy== firsteEnemy)
+        {
+            yield return StartCoroutine(MoveCharacterAndEnemySelected(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAttackPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAttackPosition()));
+        }
+        else
+        {
+            yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAttackPosition()));
+        }
+            
+        yield return StartCoroutine(PrepareUiForMove(enemy));
+        battlePhase = EnumBattlePhase.CharacterAttackingPhase;
+        yield return StartCoroutine(StartMoveOnScreen(enemy));
+        battlePhase = EnumBattlePhase.PlayerDefendingPhase;
+        yield return StartCoroutine(PlayerDefend());
+        yield return StartCoroutine(ApplyDamage(opponentSelected));
+            
+          
+        if (enemy == lastEnemy)
+        {
+            yield return StartCoroutine(MoveCharacterAndEnemySelected(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
+        }
+        else
+        {
+            yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
+        }
+
+    }
 }
 
 #region CombatFases
@@ -305,7 +314,7 @@ private bool SomeoneIsDied()
 
 private void EndCombat()
 {
-    //TODO
+    Debug.Log("End Combact");
 }
 
 

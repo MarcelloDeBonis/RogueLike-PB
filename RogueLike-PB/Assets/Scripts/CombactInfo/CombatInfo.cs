@@ -10,38 +10,59 @@ public class CombatInfo
 
 [SerializeField] private int difficult;
 [SerializeField] private int life;
-[SerializeField] private Vector3 alignmentPosition;
-[SerializeField] private Vector3 attackPosition;
+private Vector3 alignmentPosition;
+private Vector3 attackPosition;
 
-[SerializeField] private ScriptableAlonePrimaryStrument scriptableAlonePrimaryStruments;
-[SerializeField] private ScriptableReliantPrimaryStrument scriptableReliantPrimaryStruments;
-[SerializeField] private ScriptableElementTyping defenceElementTyping;
-[SerializeField] private ScriptableSoundTyping defenceSoundTyping;
+[SerializeField] public ScriptableAlonePrimaryStrument scriptableAlonePrimaryStruments;
+[SerializeField] public ScriptableReliantPrimaryStrument scriptableReliantPrimaryStruments;
+[SerializeField] public ScriptableElementTyping defenceElementTyping;
+[SerializeField] public ScriptableSoundTyping defenceSoundTyping;
 
-//TODO
-//TO DELETE VBECAUSE IN THAT FUNCITON THAT I WILL GET THOSE, I WILL GET FROM INSTRUMENT AND NOT FROM GENERAL MOVESET
-private List<ScriptableMove> scriptableMoveList;
-
-//TODO
-//[SerializeField] private primaryStrumentSetted
+private PrimaryStrument primaryStrumentEquipped= new PrimaryStrument();
 
 #endregion
 
 #region Methods
 
+public void InitPrimaryStrumentEnemies()
+{
+    if (scriptableAlonePrimaryStruments != null)
+    {
+        SetNewPrimaryStrument(scriptableAlonePrimaryStruments.alonePrimaryStrument);
+    }
+    else if(scriptableReliantPrimaryStruments != null)
+    {
+        SetNewPrimaryStrument(scriptableReliantPrimaryStruments.reliantPrimaryStrument);
+    }
+    else if (scriptableAlonePrimaryStruments == null && scriptableReliantPrimaryStruments == null)
+    {
+        Debug.Log("Attention! There is one enemy that hasn't strument so there isn't any strument assigned");
+    }
+    else if (scriptableAlonePrimaryStruments != null && scriptableReliantPrimaryStruments != null)
+    {
+        Debug.Log("Attention! There are multiple instrument and no one of those is assigned!");
+    }
+}
 
+public void SetNewPrimaryStrument(PrimaryStrument strument)
+{
+    primaryStrumentEquipped = strument;
+}
+
+public void SetPositions(Vector3 _alignmentPosition, Vector3 _attackPosition)
+{
+    alignmentPosition = _alignmentPosition;
+    attackPosition = _attackPosition;
+}
 
 public List<ScriptableMove> GetScriptableMove()
 {
-//TODO
-//PREPARE A NEW CHARACTER IF IT IS A PLAYER || ENEMY AND SET STRUMENTS NOW THE CHARACTER HAS SETTED. PLAYER CAN CHANGE, BUT ENEMY NOT (PROPOSE TO DESIGNERS HAVE A DIFFERENTS STRUMENTS THEY CAN CHANGE
-    return scriptableMoveList;
+    return primaryStrumentEquipped.moveList;
 }
 
 public ScriptableMove GetRandomScriptableMove()
 {
-    //TODO
-    return scriptableMoveList[Random.Range(0, scriptableMoveList.Count)];
+    return primaryStrumentEquipped.moveList[Random.Range(0, primaryStrumentEquipped.moveList.Count)];
 }
 
 public void ChangeLife(int newLife)

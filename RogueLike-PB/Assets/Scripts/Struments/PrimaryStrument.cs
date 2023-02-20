@@ -8,8 +8,8 @@ public class PrimaryStrument
 
 #region Variables & Properties
 
-[SerializeField] private List<ScriptableMove> moveList;
-[SerializeField] private ScriptableSoundTyping soundTyping;
+[SerializeField] public List<ScriptableMove> moveList;
+[SerializeField] public ScriptableSoundTyping soundTyping;
 
 #endregion
 

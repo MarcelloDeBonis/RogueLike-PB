@@ -14,7 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty: 1
   enemyList:
-  - {fileID: 11400000, guid: e7d1a34fb035e76449281b67b6cc8572, type: 2}
-  - {fileID: 11400000, guid: e7d1a34fb035e76449281b67b6cc8572, type: 2}
+  - enemy: {fileID: 0}
+    alignmentEnemyPosition: {x: 0, y: 0, z: 0}
+    attackEnemyPosition: {x: 0, y: 0, z: 0}
+  - enemy: {fileID: 0}
+    alignmentEnemyPosition: {x: 0, y: 0, z: 0}
+    attackEnemyPosition: {x: 0, y: 0, z: 0}
+  - enemy: {fileID: 0}
+    alignmentEnemyPosition: {x: 0, y: 0, z: 0}
+    attackEnemyPosition: {x: 0, y: 0, z: 0}
   chestList:
-  - {fileID: 11400000, guid: ee2191225fbfb484c8c12ffa7cc2197e, type: 2}
+  - chest: {fileID: 0}
+    chestPosition: {x: 0, y: 0, z: 0}

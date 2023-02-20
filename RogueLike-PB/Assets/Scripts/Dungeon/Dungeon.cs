@@ -43,6 +43,8 @@ public void GenerateDungeon()
     {
         floor.GenerateFloor();
     }
+
+    currentFloor = floorList[0];
 }
 
 public Floor GetCurrentFloor()

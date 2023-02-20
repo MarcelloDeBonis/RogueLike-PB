@@ -8,7 +8,7 @@ public class ScriptableAlonePrimaryStrument : ScriptableObject
 
 #region Variables & Properties
 
-[SerializeField] private AlonePrimaryStrument alonePrimaryStrument;
+[SerializeField] public AlonePrimaryStrument alonePrimaryStrument;
 
 #endregion
 
