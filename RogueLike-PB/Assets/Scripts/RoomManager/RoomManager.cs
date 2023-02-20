@@ -28,6 +28,8 @@ public class RoomManager : Singleton<RoomManager>
     protected override void Awake()
     {
         base.Awake();
+        PrepareNewRoom(DungeonGenerator.Instance.GetCurrentDungeon().GetCurrentFloor().GetCurrentRoom());
+        
     }
 
     // Start is called before the first frame update

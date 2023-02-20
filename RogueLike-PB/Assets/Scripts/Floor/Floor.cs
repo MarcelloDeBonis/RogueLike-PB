@@ -113,11 +113,10 @@ private void GenerateRoomSequence()
         }
     }
 
-    //For Debugging
-    if (lootRoomNumber != 0 || enemyRoomNumber != 0)
-    {
-        Debug.Log("Error");
-    }
+   
+        Debug.Log(lootRoomNumber + " loot room created");
+        Debug.Log(enemyRoomNumber + " enemy room created");
+    
 
     if (bossFloor)
     {
