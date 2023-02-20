@@ -215,6 +215,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].allPossibleEnemiesRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: f238ac273a9aa4d439749f19ece109d0, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].allPossibleEnemiesRooms.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0849f1ca0beaba646baa9fa619030682, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
       propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].allPossibleLootOnlyRooms.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 548d33b70c1c24747b3fff674a6020b4, type: 2}

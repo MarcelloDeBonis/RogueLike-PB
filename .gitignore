@@ -13,8 +13,6 @@
 [Aa]ssets/DataCityAssets*
 [Aa]ssets/Data City Assets*
 
-*.dwlt
-
 # Visual Studio cache directory
 .vs/
 .rider/

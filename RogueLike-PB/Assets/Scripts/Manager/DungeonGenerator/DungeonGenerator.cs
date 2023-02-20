@@ -10,7 +10,7 @@ public class DungeonGenerator : Singleton<DungeonGenerator>
 #region Variables & Properties
 
 [SerializeField] private List<Dungeon> dungeonList;
-private Dungeon currentDungeon;
+private Dungeon currentDungeon = new Dungeon();
 
 #endregion
 
