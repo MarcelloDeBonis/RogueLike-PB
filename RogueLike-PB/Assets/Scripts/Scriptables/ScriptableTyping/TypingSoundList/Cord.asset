@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Cord
   m_EditorClassIdentifier: 
   self: {fileID: 0}
-  superEffectiveList: []
-  notEffectiveList: []
-  normalEffectiveList: []
+  superEffectiveList:
+  - {fileID: 11400000, guid: 7b7b28c49956727498f092882d1e0e93, type: 2}
+  notEffectiveList:
+  - {fileID: 11400000, guid: d54035af0fccd864f920b19c8d37548a, type: 2}
+  normalEffectiveList:
+  - {fileID: 11400000}

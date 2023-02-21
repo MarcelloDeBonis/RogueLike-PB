@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   self: {fileID: 0}
-  superEffectiveList: []
-  notEffectiveList: []
-  normalEffectiveList: []
+  superEffectiveList:
+  - {fileID: 11400000, guid: 95bbcd9595191aa49b82ad0b760651c1, type: 2}
+  notEffectiveList:
+  - {fileID: 11400000, guid: dc6442a5a8701e14eb06699b583958c3, type: 2}
+  normalEffectiveList:
+  - {fileID: 11400000}
+  - {fileID: 11400000, guid: 83b0091983311be46962e73fa54a367f, type: 2}
