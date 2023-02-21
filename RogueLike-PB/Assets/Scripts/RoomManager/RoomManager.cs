@@ -88,6 +88,7 @@ private void ActiveAllChests()
 private void RoomEmpty()
 {
     ActiveAllChests();
+    SetFreeRoomCamera();
 }
 
 private void SetFreeRoomCamera()
@@ -151,7 +152,7 @@ private void LockUnlockAccess()
 }
 
 
-public void RoomComplete(GameObject obj)
+public void RoomComplete()
 {
     DungeonGenerator.Instance.NextRoom();
 }
