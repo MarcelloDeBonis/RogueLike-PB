@@ -10,7 +10,7 @@ public class DungeonGenerator : Singleton<DungeonGenerator>
 #region Variables & Properties
 
 [SerializeField] private List<Dungeon> dungeonList;
-private Dungeon currentDungeon;
+private Dungeon currentDungeon = new Dungeon();
 
 #endregion
 
@@ -42,8 +42,8 @@ private Dungeon currentDungeon;
 public void GenerateNewScene()
 {
     SceneManager.LoadScene("RoomScene");
-    RoomManager.Instance.PrepareNewRoom(currentDungeon.GetCurrentFloor().GetCurrentRoom());
 }
+
 
 private void GenerateDungeonList()
 {
@@ -63,7 +63,10 @@ public void NextRoom()
     }
 }
 
-
+public Dungeon GetCurrentDungeon()
+{
+    return currentDungeon;
+}
 
 #endregion
 

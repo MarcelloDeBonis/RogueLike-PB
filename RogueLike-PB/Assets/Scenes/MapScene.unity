@@ -123,6 +123,115 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &696934795
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1371454439324343164, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371454439324343164, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371454439324343164, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371454439324343164, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371454439324343164, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371454439324343164, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371454439324343164, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371454439324343164, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371454439324343164, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371454439324343164, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1371454439324343164, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].endRoom
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].startingRoom
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].maxNumberRoom
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].minNumberRoom
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].allPossibleLootRoom.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].percentageRoomsWithEnemiesAtLeast
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].allPossibleEnemiesRooms.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].allPossibleLootOnlyRooms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].allPossibleEnemiesRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: f238ac273a9aa4d439749f19ece109d0, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].allPossibleEnemiesRooms.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0849f1ca0beaba646baa9fa619030682, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].allPossibleLootOnlyRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 548d33b70c1c24747b3fff674a6020b4, type: 2}
+    - target: {fileID: 5929971288816147768, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: m_Name
+      value: DungeonGenerator
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
 --- !u!1 &905243034
 GameObject:
   m_ObjectHideFlags: 0

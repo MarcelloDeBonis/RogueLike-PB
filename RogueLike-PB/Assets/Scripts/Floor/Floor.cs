@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [System.Serializable]
 public class Floor
@@ -12,7 +13,7 @@ public class Floor
 [SerializeField] public bool encounterRoom;
 
 [SerializeField] public List<ScriptableRoom> allPossibleEnemiesRooms;
-[SerializeField] public List<ScriptableRoom> allPossibleLootRoom;
+[SerializeField] public List<ScriptableRoom> allPossibleLootOnlyRooms;
 
 [SerializeField] public ScriptableRoom startingRoom;
 [SerializeField] public ScriptableRoom endRoom;
@@ -94,7 +95,7 @@ private void GenerateRoomSequence()
             else
             {
                 lootRoomNumber--;
-                roomList.Add(allPossibleLootRoom[Random.Range(0,allPossibleLootRoom.Count)]);
+                roomList.Add(allPossibleLootOnlyRooms[Random.Range(0,allPossibleLootOnlyRooms.Count)]);
             }
         }
         else
@@ -107,16 +108,15 @@ private void GenerateRoomSequence()
             else if (lootRoomNumber > 0)
             {
                 lootRoomNumber--;
-                roomList.Add(allPossibleLootRoom[Random.Range(0,allPossibleLootRoom.Count)]);
+                roomList.Add(allPossibleLootOnlyRooms[Random.Range(0,allPossibleLootOnlyRooms.Count)]);
             }
         }
     }
 
-    //For Debugging
-    if (lootRoomNumber != 0 || enemyRoomNumber != 0)
-    {
-        Debug.Log("Error");
-    }
+   
+        Debug.Log(lootRoomNumber + " loot room created");
+        Debug.Log(enemyRoomNumber + " enemy room created");
+    
 
     if (bossFloor)
     {
