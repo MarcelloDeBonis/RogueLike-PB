@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CombatSystem : Singleton<CombatSystem>
 {
@@ -73,7 +74,7 @@ private void PrepareCombat(GameObject _player, List<GameObject> _enemylist)
 
 private IEnumerator CombatLoop()
 {
-    while (!SomeoneIsDied())
+    while (TeamWon())
     {
         yield return StartCoroutine(PlayerPhase());
         yield return StartCoroutine(EnemiesPhase());
@@ -307,14 +308,28 @@ private void ResetDamage()
     currentDamage = 0;
 }
 
-private bool SomeoneIsDied()
+private bool TeamWon()
 {
+    if (player.GetComponent<Player>().GetCombatInfo().GetLife() == 0 || enemyList.Count == 0)
+    {
+        return true;
+    }
     return false;
 }
 
 private void EndCombat()
 {
-    Debug.Log("End Combact");
+    if (player.GetComponent<Player>().GetCombatInfo().GetLife() == 0)
+    {
+        Debug.Log("You lost!!");
+        SceneManager.LoadScene("GameOver");
+    }
+    else if (enemyList.Count == 0)
+    {
+        RoomManager.Instance.RoomEmpty();
+    }
+    
+    
 }
 
 

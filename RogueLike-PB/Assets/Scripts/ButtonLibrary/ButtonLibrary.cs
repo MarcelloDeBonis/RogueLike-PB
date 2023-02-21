@@ -19,6 +19,10 @@ public void OpenGame()
    SceneManager.LoadScene("MapScene");
 }
 
+public void OpenMainMenu()
+{
+    SceneManager.LoadScene("MenùScene");
+}
 
 public void ExitGame()
 {
