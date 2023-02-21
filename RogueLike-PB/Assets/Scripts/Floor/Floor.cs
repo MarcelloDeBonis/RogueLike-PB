@@ -22,7 +22,6 @@ public class Floor
 [SerializeField] public int minNumberRoom;
 [SerializeField] public int percentageRoomsWithEnemiesAtLeast;
 
-[SerializeField] private List<ScriptableRoom> roomList;
 private ScriptableRoom currentRoom;
 
 //TODO for setting every room scene
@@ -31,6 +30,9 @@ private ScriptableRoom currentRoom;
 private int roomNumbers;
 private int enemyRoomNumber;
 private int lootRoomNumber;
+
+//Don't Touch in Editor
+[SerializeField] private List<ScriptableRoom> roomList;
 
 #endregion
 
