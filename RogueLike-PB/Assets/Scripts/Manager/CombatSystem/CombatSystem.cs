@@ -11,7 +11,7 @@ public class CombatSystem : Singleton<CombatSystem>
 private int currentDamage = 0;
 
 private GameObject player;
-private List<GameObject> enemyList;
+private List<GameObject> enemyList = new List<GameObject>();
 [SerializeField] private float speedMovementEntities;
 
 private EnumBattlePhase battlePhase = EnumBattlePhase.NoBattlePhase;
