@@ -8,7 +8,6 @@ public class NextRoomButton : MonoBehaviour
 #region Variables & Properties
 
 public delegate void MouseEventHandler();
-public static event MouseEventHandler OnMouseDownEvent;
 
 #endregion
 
@@ -38,10 +37,7 @@ public static event MouseEventHandler OnMouseDownEvent;
 
 private void OnMouseDown()
 {
-    if (OnMouseDownEvent != null)
-    {
-        OnMouseDownEvent();
-    }
+    RoomManager.Instance.RoomComplete();
 }
 
 #endregion

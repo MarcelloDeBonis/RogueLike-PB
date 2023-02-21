@@ -175,6 +175,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: IsPersistent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
       propertyPath: dungeonList.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -187,7 +191,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
     - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[1].endRoom
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[2].endRoom
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
       propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].startingRoom
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[1].startingRoom
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[2].startingRoom
       value: 
       objectReference: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
     - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
@@ -199,6 +219,22 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[1].maxNumberRoom
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[1].minNumberRoom
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[2].maxNumberRoom
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[2].minNumberRoom
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
       propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].allPossibleLootRoom.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -207,11 +243,35 @@ PrefabInstance:
       value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[1].percentageRoomsWithEnemiesAtLeast
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[2].percentageRoomsWithEnemiesAtLeast
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
       propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].allPossibleEnemiesRooms.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[1].allPossibleEnemiesRooms.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[2].allPossibleEnemiesRooms.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
       propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].allPossibleLootOnlyRooms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[1].allPossibleLootOnlyRooms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[2].allPossibleLootOnlyRooms.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
@@ -223,7 +283,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0849f1ca0beaba646baa9fa619030682, type: 2}
     - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[1].allPossibleEnemiesRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: f238ac273a9aa4d439749f19ece109d0, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[1].allPossibleEnemiesRooms.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0849f1ca0beaba646baa9fa619030682, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[2].allPossibleEnemiesRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: f238ac273a9aa4d439749f19ece109d0, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[2].allPossibleEnemiesRooms.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0849f1ca0beaba646baa9fa619030682, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
       propertyPath: dungeonList.Array.data[0].floorList.Array.data[0].allPossibleLootOnlyRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 548d33b70c1c24747b3fff674a6020b4, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[1].allPossibleLootOnlyRooms.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 548d33b70c1c24747b3fff674a6020b4, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[2].allPossibleLootOnlyRooms.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 548d33b70c1c24747b3fff674a6020b4, type: 2}
     - target: {fileID: 5929971288816147768, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}

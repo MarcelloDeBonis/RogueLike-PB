@@ -35,7 +35,7 @@ public class RoomManager : Singleton<RoomManager>
     // Start is called before the first frame update
     void Start()
     {
-        NextRoomButton.OnMouseDownEvent += RoomComplete;
+        
     }
 
     // Update is called once per frame

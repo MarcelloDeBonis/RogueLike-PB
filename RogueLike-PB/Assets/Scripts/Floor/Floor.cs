@@ -22,7 +22,7 @@ public class Floor
 [SerializeField] public int minNumberRoom;
 [SerializeField] public int percentageRoomsWithEnemiesAtLeast;
 
-private List<ScriptableRoom> roomList = new List<ScriptableRoom>();
+[SerializeField] private List<ScriptableRoom> roomList;
 private ScriptableRoom currentRoom;
 
 //TODO for setting every room scene
@@ -67,7 +67,7 @@ public void GenerateFloor()
 private void GenerateRoomNumbers()
 {
     //DON'T TOUCH
-    int roomNumbers = Random.Range(minNumberRoom, maxNumberRoom + 1);
+    roomNumbers = Random.Range(minNumberRoom, maxNumberRoom + 1);
     int roomWithEnemiesMinimun = Mathf.CeilToInt(roomNumbers * percentageRoomsWithEnemiesAtLeast / 100);
     enemyRoomNumber = roomWithEnemiesMinimun + Random.Range(0, roomNumbers - roomWithEnemiesMinimun + 1);
     lootRoomNumber = roomNumbers - enemyRoomNumber;
@@ -83,6 +83,9 @@ private void GenerateRoomSequence()
 {
     roomList.Add(startingRoom);
 
+    Debug.Log(lootRoomNumber + " loot room created");
+    Debug.Log(enemyRoomNumber + " enemy room created");
+    
     for (int i = 0; i < roomNumbers; i++)
     {
         if (enemyRoomNumber > 0 && lootRoomNumber > 0)
@@ -112,12 +115,7 @@ private void GenerateRoomSequence()
             }
         }
     }
-
-   
-        Debug.Log(lootRoomNumber + " loot room created");
-        Debug.Log(enemyRoomNumber + " enemy room created");
     
-
     if (bossFloor)
     {
         roomList.Add(bossRoom);
