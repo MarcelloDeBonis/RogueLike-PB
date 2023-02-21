@@ -35,7 +35,7 @@ public class RoomManager : Singleton<RoomManager>
     // Start is called before the first frame update
     void Start()
     {
-        
+        NextRoomButton.OnMouseDownEvent += RoomComplete;
     }
 
     // Update is called once per frame
@@ -153,7 +153,7 @@ private void LockUnlockAccess()
 }
 
 
-public void RoomComplete()
+public void RoomComplete(GameObject obj)
 {
     DungeonGenerator.Instance.NextRoom();
 }
