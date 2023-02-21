@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Wind
   m_EditorClassIdentifier: 
   self: {fileID: 0}
-  superEffectiveList: []
-  notEffectiveList: []
-  normalEffectiveList: []
+  superEffectiveList:
+  - {fileID: 11400000, guid: d1b59811785e12248bd75af5e346c742, type: 2}
+  notEffectiveList:
+  - {fileID: 11400000, guid: 7b7b28c49956727498f092882d1e0e93, type: 2}
+  normalEffectiveList:
+  - {fileID: 11400000}
