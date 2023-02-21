@@ -98,7 +98,7 @@ private void ActiveAllChests()
     }
 }
 
-private void RoomEmpty()
+public void RoomEmpty()
 {
     ActiveAllChests();
     SetFreeRoomCamera();
