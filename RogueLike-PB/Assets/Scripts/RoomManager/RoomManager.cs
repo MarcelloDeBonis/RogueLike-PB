@@ -9,10 +9,11 @@ public class RoomManager : Singleton<RoomManager>
 
 #region Variables & Properties
 
+private GameObject rightWall;
 [SerializeField] private Camera camera;
 [SerializeField] private Transform combatCamera;
 [SerializeField] private Transform freeRoomCamera;
-[SerializeField] private GameObject Player;
+[SerializeField] private GameObject player;
 
 //Don't Touch In Editor
 
@@ -52,6 +53,7 @@ public void PrepareNewRoom(ScriptableRoom _room)
 {
     roomInfo = _room;
     PrepareWalls();
+    PreparePlayer();
     if (IsThereChests())
     {
        PrepareChests();
@@ -68,7 +70,16 @@ public void PrepareNewRoom(ScriptableRoom _room)
         RoomEmpty();
     }
     
-    LockUnlockAccess();
+}
+
+private void ActiveRightWalls()
+{
+    rightWall.SetActive(true);
+}
+
+private void DeactiveRightWall()
+{
+    rightWall.SetActive(false);
 }
 
 private void DeactiveAllChests()
@@ -91,6 +102,7 @@ private void RoomEmpty()
 {
     ActiveAllChests();
     SetFreeRoomCamera();
+    ActiveRightWalls();
 }
 
 private void SetFreeRoomCamera()
@@ -115,6 +127,12 @@ private bool IsThereEnemies()
     return roomInfo.enemyList.Count > 0;
 }
 
+private void PreparePlayer()
+{
+    player.transform.position = roomInfo.playerAlignmentPosition;
+    player.GetComponent<Player>().InitCombactInfo(roomInfo.playerAlignmentPosition, roomInfo.playerAttackPosition);
+}
+
 private void PrepareEnemyList()
 {
     foreach (StructEnemyCombact enemydata in roomInfo.enemyList)
@@ -128,7 +146,8 @@ private void PrepareEnemyList()
 private void StartCombact()
 {
     SetCombatCamera();
-    
+    DeactiveRightWall();
+    CombatSystem.Instance.OnCombatStart(player, enemiesInGame);
 }
 
 private void PrepareChests()
@@ -144,13 +163,8 @@ private void PrepareWalls()
 {
     Instantiate(roomInfo.frontWall);
     Instantiate(roomInfo.backWall);
-    Instantiate(roomInfo.rightWall);
+    rightWall = Instantiate(roomInfo.rightWall);
     Instantiate(roomInfo.leftWall);
-}
-
-private void LockUnlockAccess()
-{
-    
 }
 
 
