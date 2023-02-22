@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CombatSystem : Singleton<CombatSystem>
 {
@@ -24,6 +25,8 @@ private ScriptableMove choosenMove;
 [SerializeField] private GameObject playerCanvas;
 [SerializeField] private GameObject moveCollector;
 [SerializeField] private GameObject move2DObjectPrefab;
+
+//[SerializeField] private Text 
 
 bool choosen = false;
 
@@ -66,6 +69,13 @@ private void PrepareCombat(GameObject _player, List<GameObject> _enemylist)
     foreach (GameObject enemy in _enemylist)
     {
         enemyList.Add(enemy);
+    }
+    
+    foreach (ScriptableMove scriptableMove in player.GetComponent<Player>().GetCombatInfo().GetScriptableMove())
+    {
+        GameObject newCollectorMove = Instantiate(move2DObjectPrefab, moveCollector.transform.position, moveCollector.transform.rotation);
+        newCollectorMove.transform.parent = moveCollector.transform;
+        newCollectorMove.GetComponent<Move2DComponent>().InitObject(scriptableMove);
     }
 
 }
@@ -142,13 +152,6 @@ private IEnumerator EnemiesPhase()
 private IEnumerator PrepareUiForMovesChooses()
 {
     playerCanvas.SetActive(true);
-    foreach (ScriptableMove scriptableMove in player.GetComponent<Player>().GetCombatInfo().GetScriptableMove())
-    {
-        GameObject newCollectorMove = Instantiate(move2DObjectPrefab, moveCollector.transform.position, moveCollector.transform.rotation);
-        newCollectorMove.transform.parent = moveCollector.transform;
-        newCollectorMove.GetComponent<Move2DComponent>().InitObject(scriptableMove);
-    }
-
     yield return null;
 }
 
@@ -193,7 +196,7 @@ private IEnumerator MoveCharacterAndEnemySelected(GameObject character1, Vector3
     while (character1.transform.position != end1)
     {
         character1.transform.position = Vector3.MoveTowards(character1.transform.position, end1, speedMovementEntities * Time.deltaTime);
-        opponentSelected.transform.position= Vector3.MoveTowards(opponentSelected.transform.position, end2, speedMovementEntities * Time.deltaTime);
+        character2.transform.position= Vector3.MoveTowards( character2.transform.position, end2, speedMovementEntities * Time.deltaTime);
         yield return null;
     }
     
