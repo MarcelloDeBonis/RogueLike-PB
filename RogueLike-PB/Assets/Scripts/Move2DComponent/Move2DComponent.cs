@@ -51,7 +51,7 @@ private void SetMoveName()
     text.text = move.GetName();
 }
 
-public void OnMouseDown()
+public void SelectMove()
 {
     if (CombatSystem.Instance.GetEnumBattlePhase() == EnumBattlePhase.SelectingPhase)
     {

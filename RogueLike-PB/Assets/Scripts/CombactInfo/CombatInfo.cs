@@ -40,7 +40,7 @@ public CombatInfo Clone()
     clone.defenceElementTyping = this.defenceElementTyping;
     clone.defenceSoundTyping = this.defenceSoundTyping;
 
-    return Clone();
+    return clone;
 }
 
 public void InitPrimaryStrument()

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3044449934729538280}
   - component: {fileID: 3189291111322276959}
   - component: {fileID: 5253076757825626754}
+  - component: {fileID: -4780371618469711791}
   m_Layer: 0
   m_Name: Mage
   m_TagString: Untagged
@@ -97,3 +98,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   combactInfoReference: {fileID: 11400000, guid: f8819b63d938d484ea7f6116e117f8b2, type: 2}
+--- !u!65 &-4780371618469711791
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157305429637844429}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

@@ -15,9 +15,9 @@ public class SelectorManager : Singleton<SelectorManager>
 #region MonoBehaviour
 
     // Awake is called when the script instance is being loaded
-    void Awake()
+    protected override void Awake()
     {
-	
+        base.Awake();
     }
 
     // Start is called before the first frame update

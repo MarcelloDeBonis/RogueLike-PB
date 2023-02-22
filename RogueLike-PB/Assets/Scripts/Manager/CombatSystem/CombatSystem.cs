@@ -74,7 +74,7 @@ private void PrepareCombat(GameObject _player, List<GameObject> _enemylist)
 
 private IEnumerator CombatLoop()
 {
-    while (TeamWon())
+    while (!TeamWon())
     {
         yield return StartCoroutine(PlayerPhase());
         yield return StartCoroutine(EnemiesPhase());

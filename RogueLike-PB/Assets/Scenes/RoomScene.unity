@@ -370,10 +370,10 @@ RectTransform:
   m_Father: {fileID: 1351081093}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.078, y: 0}
-  m_AnchorMax: {x: 0.24147917, y: 0.26137042}
-  m_AnchoredPosition: {x: 0, y: -0.000015259}
-  m_SizeDelta: {x: 0.000061035, y: 0.000030518}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.48163638, y: 0.26445997}
+  m_AnchoredPosition: {x: 0.049987793, y: -0.50001526}
+  m_SizeDelta: {x: -0.10001, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &397049634
 MonoBehaviour:
@@ -384,21 +384,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 397049632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 34
+    m_Left: 0
     m_Right: 0
-    m_Top: 27
+    m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 100, y: 100}
-  m_Spacing: {x: 29.03, y: 25.9}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &431892706
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,7 +2054,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1351081090
 MonoBehaviour:
   m_ObjectHideFlags: 0
