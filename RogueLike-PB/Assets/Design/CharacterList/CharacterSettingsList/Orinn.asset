@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e46afd9f9583fd49a1ff44ad8255085, type: 3}
-  m_Name: Bell
+  m_Name: Orinn
   m_EditorClassIdentifier: 
   combactinfo:
     difficult: -1
-    life: 0
-    scriptableAlonePrimaryStruments: {fileID: 0}
+    life: 300
+    scriptableAlonePrimaryStruments: {fileID: 11400000, guid: 8ee13b9b8f3abdd4d87a7a44b050def7, type: 2}
     scriptableReliantPrimaryStruments: {fileID: 0}
-    defenceElementTyping: {fileID: 0}
-    defenceSoundTyping: {fileID: 0}
+    defenceElementTyping: {fileID: 11400000, guid: 699accfba8b6dd240a1203ce1e748f11, type: 2}
+    defenceSoundTyping: {fileID: 11400000, guid: d4cfeacc4288288419a3eab4569cd44e, type: 2}

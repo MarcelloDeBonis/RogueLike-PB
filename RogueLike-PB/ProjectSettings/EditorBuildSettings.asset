@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: "Assets/Scenes/Men\xF9Scene.unity"
     guid: a004db9441164bd4ab8ba4e0de00aecf
   - enabled: 1
+    path: Assets/Scenes/CharacterSelectorScene.unity
+    guid: 7c6bb6513d9570e4bae8dd4e5810ff8d
+  - enabled: 1
     path: Assets/Scenes/MapScene.unity
     guid: 6e2e7a03849cd624291985a9884c610b
   - enabled: 1
     path: Assets/Scenes/RoomScene.unity
     guid: 6e30bf160922e7745a63a51575c313c0
-  - enabled: 1
-    path: Assets/Scenes/CombatScene.unity
-    guid: 2a0c43d0118706a47999f09e8c060e07
   m_configObjects: {}
