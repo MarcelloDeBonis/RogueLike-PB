@@ -22,13 +22,13 @@ MonoBehaviour:
   enemyList:
   - enemy: {fileID: 7157305429637844429, guid: d868efa3a2d9e1743b18791ecea4413a, type: 3}
     alignmentEnemyPosition: {x: -8.5, y: 3, z: 3.65}
-    attackEnemyPosition: {x: 3.3, y: 3, z: 7.65}
+    attackEnemyPosition: {x: -3.3, y: 3, z: 7.65}
   - enemy: {fileID: 7157305429637844429, guid: 346dd92899efbdb49a039a02a5d3e3b3, type: 3}
     alignmentEnemyPosition: {x: -8.5, y: 3, z: 7.65}
-    attackEnemyPosition: {x: 3.3, y: 3, z: 7.65}
+    attackEnemyPosition: {x: -3.3, y: 3, z: 7.65}
   - enemy: {fileID: 7157305429637844429, guid: d868efa3a2d9e1743b18791ecea4413a, type: 3}
     alignmentEnemyPosition: {x: -8.5, y: 3, z: 11.65}
-    attackEnemyPosition: {x: 3.3, y: 3, z: 7.65}
+    attackEnemyPosition: {x: -3.3, y: 3, z: 7.65}
   chestList:
   - chest: {fileID: 2625566710361416691, guid: fd50b033a0568904d8b13499a43b62f7, type: 3}
     chestPosition: {x: -1, y: -1.5, z: -1.5}
