@@ -20,7 +20,6 @@ private Dungeon currentDungeon;
     protected override void Awake()
     {
         base.Awake();
-        GenerateDungeonList();
     }
 
 // Start is called before the first frame update
@@ -45,7 +44,7 @@ public void GenerateNewScene()
 }
 
 
-private void GenerateDungeonList()
+public void GenerateDungeonList()
 {
     foreach (Dungeon dungeon in dungeonList)
     {

@@ -18,14 +18,13 @@ public class MapController : MonoBehaviour
     void Awake()
     {
 	    //TODO
-        //FOR NOW NO MAP
-        DungeonGenerator.Instance.GenerateNewScene();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        DungeonGenerator.Instance.GenerateDungeonList();
+        DungeonGenerator.Instance.GenerateNewScene();
     }
 
     // Update is called once per frame
