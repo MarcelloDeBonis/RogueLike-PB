@@ -31,7 +31,7 @@ private bool isSelected=false;
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
 #endregion
@@ -50,10 +50,7 @@ public void InitCombactInfo(Vector3 allignmentPosition, Vector3 attackPosition)
 
 public void OnMouseDown()
 {
-    if (CombatSystem.Instance.GetEnumBattlePhase() == EnumBattlePhase.SelectingPhase)
-    {
-        isSelected = true;
-    }
+    isSelected = true;
 }
 
 #endregion

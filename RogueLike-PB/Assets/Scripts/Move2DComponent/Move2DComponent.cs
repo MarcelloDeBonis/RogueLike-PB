@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Move2DComponent : MonoBehaviour
@@ -51,27 +52,9 @@ private void SetMoveName()
     text.text = move.GetName();
 }
 
-public void SelectMove()
+public void Click()
 {
-    if (CombatSystem.Instance.GetEnumBattlePhase() == EnumBattlePhase.SelectingPhase)
-    {
-        isSelected = true;
-    }
-}
-
-public void DeactiveIsSelected()
-{
-    isSelected = false;
-}
-
-public bool GetIsSelected()
-{
-    return isSelected;
-}
-
-public ScriptableMove GetScriptableMove()
-{
-    return scriptableMove;
+    CombatSystem.Instance.ChooseMove(scriptableMove);
 }
 
 #endregion

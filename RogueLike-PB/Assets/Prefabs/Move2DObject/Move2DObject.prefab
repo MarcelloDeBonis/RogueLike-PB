@@ -166,7 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8399953360962450838}
   - component: {fileID: 5467686683812223962}
-  - component: {fileID: -7222334953254229112}
+  - component: {fileID: -4647318950611301428}
   m_Layer: 5
   m_Name: Move2DObject
   m_TagString: Untagged
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 7480302520982675885}
---- !u!114 &-7222334953254229112
+--- !u!114 &-4647318950611301428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,13 +249,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 6153419179325578407}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5467686683812223962}
         m_TargetAssemblyTypeName: Move2DComponent, Assembly-CSharp
-        m_MethodName: SelectMove
+        m_MethodName: Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -25,7 +25,7 @@ private ScriptableMove choosenMove;
 [SerializeField] private GameObject moveCollector;
 [SerializeField] private GameObject move2DObjectPrefab;
 
-
+bool choosen = false;
 
 #endregion
 
@@ -225,30 +225,19 @@ private IEnumerator ChooseMove(GameObject character)
     }
     else
     {
-        bool choosen = false;
+        choosen = false;
 
         while (!choosen)
         {
-            if (character.GetComponent<Player>() != null)
-            {
-                foreach (Transform child in moveCollector.transform)
-                {
-            if (child.gameObject.GetComponent<GameObject>() != null)
-                {
-                            GameObject move = child.gameObject.GetComponent<GameObject>();
-                    if (move.GetComponent<Move2DComponent>().GetIsSelected())
-                    {
-                        move.GetComponent<Move2DComponent>().DeactiveIsSelected();
-                        choosenMove = move.GetComponent<Move2DComponent>().GetScriptableMove();
-                        choosen = true;
-                    }
-                }
-                }
-            }
-
             yield return null;
         }
     }
+}
+
+public void ChooseMove(ScriptableMove _move)
+{
+    choosenMove = _move;
+    choosen = true;
 }
 
 private IEnumerator PrepareUiForMove(GameObject character)
