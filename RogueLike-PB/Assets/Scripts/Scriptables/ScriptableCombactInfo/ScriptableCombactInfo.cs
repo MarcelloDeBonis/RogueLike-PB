@@ -36,6 +36,12 @@ public class ScriptableCombactInfo : ScriptableObject
 
 #region Methods
 
+public void SetCombactInfo(CombatInfo _combactInfo)
+{
+    combactinfo = _combactInfo;
+    combactinfo.InitPrimaryStrument();
+}
+
 public CombatInfo GetCombactInfo()
 {
     return combactinfo;

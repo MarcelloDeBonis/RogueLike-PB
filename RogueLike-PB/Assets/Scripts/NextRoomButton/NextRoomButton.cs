@@ -7,8 +7,6 @@ public class NextRoomButton : MonoBehaviour
 
 #region Variables & Properties
 
-public delegate void MouseEventHandler();
-
 #endregion
 
 #region MonoBehaviour

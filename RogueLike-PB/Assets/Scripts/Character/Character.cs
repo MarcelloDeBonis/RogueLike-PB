@@ -43,7 +43,7 @@ public void InitCombactInfo(Vector3 allignmentPosition, Vector3 attackPosition)
     combatInfo = new CombatInfo();
     combatInfo = combactInfoReference.GetCombactInfo();
     combatInfo.SetPositions(allignmentPosition, attackPosition);
-    combatInfo.InitPrimaryStrumentEnemies();
+    combatInfo.InitPrimaryStrument();
 }
 
 #region Clickable

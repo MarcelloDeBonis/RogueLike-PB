@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: PlayerMove2
   m_EditorClassIdentifier: 
   move:
+    name: Un 'altra mossa
+    clip: {fileID: 0}
+    elementTyping: {fileID: 0}
     arrowPropertiesList:
     - waitingTime: 0.2
       speed: 120
@@ -62,4 +65,3 @@ MonoBehaviour:
       speed: 120
       enumArrow: 2
       key: 273
-  clip: {fileID: 8300000, guid: 92c0a374a1e358c44ba34132aaa1007b, type: 3}

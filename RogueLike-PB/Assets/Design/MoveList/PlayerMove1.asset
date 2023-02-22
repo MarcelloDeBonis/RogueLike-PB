@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: PlayerMove1
   m_EditorClassIdentifier: 
   move:
-    name: LA mossa di amir
+    name: La mossa
     clip: {fileID: 0}
+    elementTyping: {fileID: 0}
     arrowPropertiesList:
     - waitingTime: 0.2
       speed: 120

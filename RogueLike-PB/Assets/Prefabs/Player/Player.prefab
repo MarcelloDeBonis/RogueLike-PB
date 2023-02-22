@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce80efafaec44832b881b6dc3b97c267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combactInfoReference: {fileID: 11400000, guid: f5a9b94421a5e7b43bf3a91a5eb078f1, type: 2}
+  combactInfoReference: {fileID: 11400000, guid: 22e8782e60d9b9742966cc0663aa2ee1, type: 2}
 --- !u!23 &5032079896489267665
 MeshRenderer:
   m_ObjectHideFlags: 0

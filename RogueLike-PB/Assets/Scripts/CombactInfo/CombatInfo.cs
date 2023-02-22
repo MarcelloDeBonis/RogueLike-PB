@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [System.Serializable]
-public class CombatInfo
+public class CombatInfo: ICloneable<CombatInfo>
 {
 
 #region Variables & Properties
@@ -24,7 +26,24 @@ private PrimaryStrument primaryStrumentEquipped= new PrimaryStrument();
 
 #region Methods
 
-public void InitPrimaryStrumentEnemies()
+public CombatInfo Clone()
+{
+    CombatInfo clone = new CombatInfo();
+    clone.difficult = this.difficult;
+    clone.life = this.life;
+    clone.alignmentPosition = this.alignmentPosition;
+    clone.attackPosition = this.attackPosition;
+    
+    //TODO Should be clonable
+    clone.scriptableAlonePrimaryStruments = this.scriptableAlonePrimaryStruments;
+    clone.scriptableReliantPrimaryStruments = this.scriptableReliantPrimaryStruments;
+    clone.defenceElementTyping = this.defenceElementTyping;
+    clone.defenceSoundTyping = this.defenceSoundTyping;
+
+    return Clone();
+}
+
+public void InitPrimaryStrument()
 {
     if (scriptableAlonePrimaryStruments != null)
     {
