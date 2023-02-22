@@ -16,7 +16,7 @@ public class ButtonLibrary : Singleton<ButtonLibrary>
 
 public void OpenGame()
 {
-   SceneManager.LoadScene("MapScene");
+   SceneManager.LoadScene("CharacterSelectorScene");
 }
 
 public void OpenMainMenu()

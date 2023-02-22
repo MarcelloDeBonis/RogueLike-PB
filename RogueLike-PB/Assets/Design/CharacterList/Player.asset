@@ -9,15 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a0faaff8a999c438fafe1b14a8b129, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e46afd9f9583fd49a1ff44ad8255085, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
   combactinfo:
     difficult: -1
     life: 0
-    alignmentPosition: {x: 0, y: 0, z: 0}
-    attackPosition: {x: 0, y: 0, z: 0}
     scriptableAlonePrimaryStruments: {fileID: 0}
     scriptableReliantPrimaryStruments: {fileID: 0}
-    defenceElementTyping: {fileID: 0}
-    defenceSoundTyping: {fileID: 0}
+    defenceElementTyping: {fileID: 11400000, guid: 699accfba8b6dd240a1203ce1e748f11, type: 2}
+    defenceSoundTyping: {fileID: 11400000, guid: d4cfeacc4288288419a3eab4569cd44e, type: 2}
