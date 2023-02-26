@@ -8,10 +8,9 @@ public class ScriptableSoundTyping : ScriptableObject
 
 #region Variables & Properties
 
-[SerializeField] private  ScriptableSoundTyping self;
-[SerializeField] private List< ScriptableSoundTyping> superEffectiveList;
-[SerializeField] private List< ScriptableSoundTyping> notEffectiveList;
-[SerializeField] private List< ScriptableSoundTyping> normalEffectiveList;
+[SerializeField] public List< ScriptableSoundTyping> superEffectiveList;
+[SerializeField] public List< ScriptableSoundTyping> notEffectiveList;
+[SerializeField] public List< ScriptableSoundTyping> normalEffectiveList;
 
 #endregion
 
