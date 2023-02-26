@@ -22,6 +22,6 @@ MonoBehaviour:
   enemyList: []
   chestList:
   - chest: {fileID: 2625566710361416691, guid: adb0a2ae81f499246821b2ed32e78325, type: 3}
-    chestPosition: {x: -1, y: -1.5, z: -1.5}
+    chestPosition: {x: -1, y: 1.5, z: 1.5}
   - chest: {fileID: 2625566710361416691, guid: fd50b033a0568904d8b13499a43b62f7, type: 3}
-    chestPosition: {x: -6, y: -1.5, z: -1.5}
+    chestPosition: {x: -6, y: 1.5, z: 1.5}
