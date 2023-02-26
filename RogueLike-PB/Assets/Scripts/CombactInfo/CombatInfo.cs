@@ -21,6 +21,7 @@ private Vector3 attackPosition;
 [SerializeField] public ScriptableSoundTyping defenceSoundTyping;
 
 private PrimaryStrument primaryStrumentEquipped= new PrimaryStrument();
+private SecondaryStrument secondaryStrument = new SecondaryStrument();
 
 #endregion
 

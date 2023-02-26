@@ -12,4 +12,9 @@ public class ReliantPrimaryStrument : PrimaryStrument
 
 #endregion
 
+public SecondaryStrument GetSecondaryStrumentClone()
+{
+    return secondayStrument.Clone();
+}
+
 }
