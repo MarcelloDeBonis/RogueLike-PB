@@ -144,6 +144,7 @@ private IEnumerator EnemiesPhase()
         }
             
         yield return StartCoroutine(PrepareUiForMove(enemy));
+        yield return StartCoroutine(ChooseMove(enemy));
         battlePhase = EnumBattlePhase.CharacterAttackingPhase;
         yield return StartCoroutine(StartMoveOnScreen(enemy));
         battlePhase = EnumBattlePhase.PlayerDefendingPhase;
