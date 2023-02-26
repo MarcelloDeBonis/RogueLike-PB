@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Skeleton
   m_EditorClassIdentifier: 
   combactinfo:
+    name: Skeleton
     difficult: 1
     life: 100
     scriptableAlonePrimaryStruments: {fileID: 11400000, guid: 120aaced17916e24f9f8e3579848d454, type: 2}
