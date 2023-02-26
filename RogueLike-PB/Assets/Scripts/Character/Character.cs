@@ -28,8 +28,7 @@ private bool isSelected=false;
     // Start is called before the first frame update
     void Start()
     {
-        UpgradeLife();
-        UpgradeName();
+        
     }
 
     // Update is called once per frame
@@ -48,6 +47,8 @@ public void InitCombactInfo(Vector3 allignmentPosition, Vector3 attackPosition)
     combatInfo = combactInfoReference.GetCombactInfo().Clone();
     combatInfo.SetPositions(allignmentPosition, attackPosition);
     combatInfo.InitPrimaryStrument();
+    UpgradeLife();
+    UpgradeName();
 }
 
 #region Clickable
@@ -97,6 +98,12 @@ public void TakeDamage(int damage)
     {
         combatInfo.ChangeLife(life - damage);
     }
+}
+
+public void Die()
+{
+    //TODO
+    Destroy(this.gameObject);
 }
 
 #endregion

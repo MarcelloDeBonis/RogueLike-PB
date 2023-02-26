@@ -216,7 +216,7 @@ private IEnumerator PlayerDefend()
 
     yield return StartCoroutine(PrepareUiForMove(player));
     yield return StartCoroutine(StartMoveOnScreen(player));
-    //TODO
+    //TODO dannometro a schermo
     yield return null;
 }
 
@@ -277,7 +277,15 @@ private IEnumerator StartMoveOnScreen(GameObject character)
 
 private IEnumerator ApplyDamage(GameObject character)
 {
-    //TODO
+    character.GetComponent<Character>().TakeDamage(currentDamage);
+
+    if (character.GetComponent<Character>().GetCombatInfo().IsDied())
+    {
+        if (enemyList.Contains(character))
+        {
+            enemyList.Remove(character);
+        }
+    }
     yield return null;
 }
 
@@ -285,12 +293,14 @@ private IEnumerator ApplyDamage(GameObject character)
 
 public void RemovePointsToDamageCalculator(int damagePoints)
 {
+    //TODO DANNOMETRO
     currentDamage -= damagePoints;
     Debug.Log("Current damage: " + currentDamage);
 }
 
 public void AddPointsToDamageCalculator(int damagePoints)
 {
+    //TODO DANNOMETRO
     currentDamage += damagePoints;
     Debug.Log("Current damage: " + currentDamage);
 }
