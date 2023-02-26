@@ -9,9 +9,9 @@ public class ScriptableElementTyping : ScriptableObject
 
 #region Variables & Properties
 
-[SerializeField] private List<ScriptableElementTyping> superEffectiveList;
-[SerializeField] private List<ScriptableElementTyping> notEffectiveList;
-[SerializeField] private List<ScriptableElementTyping> normalEffectiveList;
+[SerializeField] public List<ScriptableElementTyping> superEffectiveList;
+[SerializeField] public List<ScriptableElementTyping> notEffectiveList;
+[SerializeField] public List<ScriptableElementTyping> normalEffectiveList;
 
 #endregion
 

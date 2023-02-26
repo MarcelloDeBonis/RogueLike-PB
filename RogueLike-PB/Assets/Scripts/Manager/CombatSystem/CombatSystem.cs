@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class CombatSystem : Singleton<CombatSystem>
 {
@@ -16,11 +19,13 @@ private List<GameObject> enemyList = new List<GameObject>();
 [SerializeField] private float speedMovementEntities;
 
 private EnumBattlePhase battlePhase = EnumBattlePhase.NoBattlePhase;
+private GameObject characterIsDoingMove;
 private GameObject opponentSelected;
 
 [SerializeField] private GameObject screenArrowPlayer;
 [SerializeField] private GameObject screenArrowEnemies;
 private ScriptableMove choosenMove;
+private int strumentDamage;
 
 [SerializeField] private GameObject playerCanvas;
 [SerializeField] private GameObject moveCollector;
@@ -106,6 +111,7 @@ private IEnumerator CombatLoop()
 
 private IEnumerator PlayerPhase()
 {
+    characterIsDoingMove = player;
     yield return StartCoroutine(PrepareUiForMovesChooses());
     yield return StartCoroutine(ChooseMove(player));
     battlePhase = EnumBattlePhase.SelectingPhase;
@@ -132,6 +138,7 @@ private IEnumerator EnemiesPhase()
         
     foreach (GameObject enemy in enemyList)
     {
+        characterIsDoingMove = enemy;
         yield return StartCoroutine(ChooseTarget(enemy));
             
         if (enemy== firsteEnemy)
@@ -240,6 +247,8 @@ private IEnumerator PlayerDefend()
 
 private IEnumerator ChooseMove(GameObject character)
 {
+    strumentDamage=character.GetComponent<Character>().GetCombatInfo().GetStrumentDamage();
+    
     if (enemyList.Contains(character))
     {
         choosenMove = character.GetComponent<Character>().GetCombatInfo().GetRandomScriptableMove();
@@ -253,6 +262,8 @@ private IEnumerator ChooseMove(GameObject character)
             yield return null;
         }
     }
+    
+    
 }
 
 public void ChooseMove(ScriptableMove _move)
@@ -295,6 +306,9 @@ private IEnumerator StartMoveOnScreen(GameObject character)
 
 private IEnumerator ApplyDamage(GameObject character)
 {
+
+    CalculateDamage(character);
+    
     character.GetComponent<Character>().TakeDamage(currentDamage);
 
     if (character.GetComponent<Character>().GetCombatInfo().IsDied())
@@ -306,6 +320,88 @@ private IEnumerator ApplyDamage(GameObject character)
         character.GetComponent<Character>().Die();
     }
     yield return null;
+}
+
+private void CalculateDamage(GameObject character)
+{
+    float percentage = (float)choosenMove.GetMove().GetMaxDamagePossible() / (float)currentDamage;
+    percentage = percentage * 100 * strumentDamage * choosenMove.GetMove().GetDamage();
+    percentage = percentage / (character.GetComponent<Character>().GetCombatInfo().GetDefence() * 2);
+    percentage = percentage * CalculateMultiplier();
+
+    if (Crit())
+    {
+        percentage *= 2;
+    }
+
+    currentDamage = (int)Math.Ceiling(percentage);
+}
+
+private float CalculateMultiplier()
+{
+    float multiplier = 1f;
+
+    
+    
+    
+    //Elemental Multiplier
+    if (choosenMove.GetMove().GetElementTyping().normalEffectiveList
+        .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceElementTyping))
+    {
+        
+    }
+    else if (choosenMove.GetMove().GetElementTyping().superEffectiveList
+             .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceElementTyping))
+    {
+        //TODO DELETE THOSE MAGIC NUMBERS!!!
+        multiplier *= 2;
+    }
+    else if (choosenMove.GetMove().GetElementTyping().notEffectiveList
+             .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceElementTyping))
+    {
+        multiplier *= 0.5f;
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    //SoundMultiplier
+    if (characterIsDoingMove.GetComponent<Character>().GetCombatInfo().GetStrumentSoundTyping().normalEffectiveList
+        .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceSoundTyping))
+    {
+        
+    }
+    else if ((characterIsDoingMove.GetComponent<Character>().GetCombatInfo().GetStrumentSoundTyping().superEffectiveList
+                 .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceSoundTyping)))
+    {
+        multiplier *= 2;
+    }
+    else if (((characterIsDoingMove.GetComponent<Character>().GetCombatInfo().GetStrumentSoundTyping().notEffectiveList
+                 .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceSoundTyping))))
+    {
+        multiplier *= 0.5f;
+    }
+    
+    return multiplier;
+}
+
+private bool Crit()
+{
+    int critic = Random.Range(0, 101);
+
+    //TODO MAGIC NUMBER FOR CRITIC NO!!!! THEY COULD BE SETTED BY SOME STRUMENTS OR OTHER THINGS
+    if (critic < 5)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 #endregion

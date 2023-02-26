@@ -8,8 +8,13 @@ public class SecondaryStrument
 
 #region Variables & Properties
 
-[SerializeField] public int damage;
+[SerializeField] private int damage;
 
 #endregion
+
+public int GetDamage()
+{
+    return damage;
+}
 
 }

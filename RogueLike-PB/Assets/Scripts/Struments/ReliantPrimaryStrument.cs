@@ -8,8 +8,13 @@ public class ReliantPrimaryStrument : PrimaryStrument
 
 #region Variables & Properties
 
-[SerializeField] private ScriptableSecondaryStrument secondayStrument;
+[SerializeField] public ScriptableSecondaryStrument secondayStrument;
 
 #endregion
+
+public SecondaryStrument GetSecondaryStrumentClone()
+{
+    return secondayStrument.Clone();
+}
 
 }

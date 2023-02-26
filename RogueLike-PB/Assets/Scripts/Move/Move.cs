@@ -12,6 +12,7 @@ public class Move
 [SerializeField] private string name;
 [SerializeField] private AudioClip clip;
 [SerializeField] private ScriptableElementTyping elementTyping;
+[SerializeField] private int damage;
 [SerializeField] private List<ArrowProperties> arrowPropertiesList;
 
 #endregion
@@ -53,6 +54,22 @@ public AudioClip GetAudioClip()
 public string GetName()
 {
     return name;
+}
+
+public int GetMaxDamagePossible()
+{
+    //TODO FOR THE MOMENT BEST SCORE YOU CAN DO WITH A MOVE IS THREE
+    return arrowPropertiesList.Count * 3;
+}
+
+public int GetDamage()
+{
+    return damage;
+}
+
+public ScriptableElementTyping GetElementTyping()
+{
+    return elementTyping;
 }
 
 #endregion
