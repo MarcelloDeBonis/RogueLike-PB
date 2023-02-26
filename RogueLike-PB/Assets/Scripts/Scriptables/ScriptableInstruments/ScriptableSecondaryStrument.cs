@@ -8,7 +8,7 @@ public class ScriptableSecondaryStrument : ScriptableObject, ICloneable<Secondar
 
 #region Variables & Properties
 
-[SerializeField] private SecondaryStrument secondaryStrument;
+[SerializeField] public SecondaryStrument secondaryStrument;
 
 #endregion
 

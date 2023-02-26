@@ -253,6 +253,8 @@ private IEnumerator ChooseMove(GameObject character)
             yield return null;
         }
     }
+    
+    
 }
 
 public void ChooseMove(ScriptableMove _move)

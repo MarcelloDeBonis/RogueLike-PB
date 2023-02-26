@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -50,11 +51,12 @@ public void InitPrimaryStrument()
 {
     if (scriptableAlonePrimaryStruments != null)
     {
-        SetNewPrimaryStrument(scriptableAlonePrimaryStruments.alonePrimaryStrument);
+        SetNewPrimaryStrument(scriptableAlonePrimaryStruments.Clone());
     }
     else if(scriptableReliantPrimaryStruments != null)
     {
-        SetNewPrimaryStrument(scriptableReliantPrimaryStruments.reliantPrimaryStrument);
+        SetNewPrimaryStrument(scriptableReliantPrimaryStruments.Clone());
+        SetNewSecondaryStrument(scriptableReliantPrimaryStruments.reliantPrimaryStrument.GetSecondaryStrumentClone());
     }
     else if (scriptableAlonePrimaryStruments == null && scriptableReliantPrimaryStruments == null)
     {
@@ -69,6 +71,12 @@ public void InitPrimaryStrument()
 public void SetNewPrimaryStrument(PrimaryStrument strument)
 {
     primaryStrumentEquipped = strument;
+    
+}
+
+public void SetNewSecondaryStrument(SecondaryStrument strument)
+{
+    secondaryStrument = strument;
 }
 
 public void SetPositions(Vector3 _alignmentPosition, Vector3 _attackPosition)
@@ -100,6 +108,19 @@ public int GetLife()
 public bool IsDied()
 {
     return life == 0;
+}
+
+public int GetStrumentDamage()
+{
+    if (primaryStrumentEquipped is ReliantPrimaryStrument)
+    {
+        return secondaryStrument.GetDamage();
+    }
+    else
+    {
+        AlonePrimaryStrument strument = (AlonePrimaryStrument)primaryStrumentEquipped;
+        return strument.damage;
+    }
 }
 
 public Vector3 GetAlignmentPosition()

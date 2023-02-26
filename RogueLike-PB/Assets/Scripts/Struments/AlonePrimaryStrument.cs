@@ -8,7 +8,7 @@ public class AlonePrimaryStrument : PrimaryStrument
 
 #region Variables & Properties
 
-[SerializeField] private int damage;
+[SerializeField] public int damage;
 
 #endregion
 

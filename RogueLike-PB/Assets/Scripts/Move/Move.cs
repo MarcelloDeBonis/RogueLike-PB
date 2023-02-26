@@ -12,6 +12,7 @@ public class Move
 [SerializeField] private string name;
 [SerializeField] private AudioClip clip;
 [SerializeField] private ScriptableElementTyping elementTyping;
+[SerializeField] private int damage;
 [SerializeField] private List<ArrowProperties> arrowPropertiesList;
 
 #endregion
