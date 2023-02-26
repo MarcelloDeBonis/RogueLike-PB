@@ -14,7 +14,7 @@ public class Enemy : Character
     // Awake is called when the script instance is being loaded
     void Awake()
     {
-        combatInfo = combactInfoReference.GetCombactInfo();
+        combatInfo = combactInfoReference.GetCombactInfo().Clone();
     }
 
     // Start is called before the first frame update

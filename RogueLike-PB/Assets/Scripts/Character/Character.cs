@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Character : MonoBehaviour
 [SerializeField] protected ScriptableCombactInfo combactInfoReference;
 protected CombatInfo combatInfo;
 private bool isSelected=false;
+[SerializeField] private Text lifeText;
+[SerializeField] private Text nameText;
 
 #endregion
 
@@ -25,7 +28,8 @@ private bool isSelected=false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpgradeLife();
+        UpgradeName();
     }
 
     // Update is called once per frame
@@ -41,7 +45,7 @@ private bool isSelected=false;
 public void InitCombactInfo(Vector3 allignmentPosition, Vector3 attackPosition)
 {
     combatInfo = new CombatInfo();
-    combatInfo = combactInfoReference.GetCombactInfo();
+    combatInfo = combactInfoReference.GetCombactInfo().Clone();
     combatInfo.SetPositions(allignmentPosition, attackPosition);
     combatInfo.InitPrimaryStrument();
 }
@@ -54,6 +58,16 @@ public void OnMouseDown()
 }
 
 #endregion
+
+private void UpgradeLife()
+{
+    lifeText.text = combatInfo.GetLife().ToString();
+}
+
+private void UpgradeName()
+{
+    nameText.text = combatInfo.GetName();
+}
 
 public void DeactiveIsSelected()
 {
@@ -68,6 +82,21 @@ public bool GetIsSelected()
 public CombatInfo GetCombatInfo()
 {
     return combatInfo;
+}
+
+public void TakeDamage(int damage)
+{
+    int life = combatInfo.GetLife();
+    
+    if (damage > life)
+    {
+        combatInfo.ChangeLife(0);
+        UpgradeLife();
+    }
+    else
+    {
+        combatInfo.ChangeLife(life - damage);
+    }
 }
 
 #endregion

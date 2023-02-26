@@ -10,6 +10,7 @@ public class CombatInfo: ICloneable<CombatInfo>
 
 #region Variables & Properties
 
+[SerializeField] private string name;
 [SerializeField] private int difficult;
 [SerializeField] private int life;
 private Vector3 alignmentPosition;
@@ -29,6 +30,7 @@ private PrimaryStrument primaryStrumentEquipped= new PrimaryStrument();
 public CombatInfo Clone()
 {
     CombatInfo clone = new CombatInfo();
+    clone.name = this.name;
     clone.difficult = this.difficult;
     clone.life = this.life;
     clone.alignmentPosition = this.alignmentPosition;
@@ -107,6 +109,11 @@ public Vector3 GetAlignmentPosition()
 public Vector3 GetAttackPosition()
 {
     return attackPosition;
+}
+
+public string GetName()
+{
+    return name;
 }
 
 #endregion
