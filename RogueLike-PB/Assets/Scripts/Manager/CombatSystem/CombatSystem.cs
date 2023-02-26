@@ -66,9 +66,15 @@ public void OnCombatStart(GameObject _player, List<GameObject> _enemyList)
 private void PrepareCombat(GameObject _player, List<GameObject> _enemylist)
 {
     player = _player;
+    
+    player.GetComponent<Character>().UpgradeLife();
+    player.GetComponent<Character>().UpgradeName();
+    
     foreach (GameObject enemy in _enemylist)
     {
         enemyList.Add(enemy);
+        enemy.GetComponent<Character>().UpgradeLife();
+        enemy.GetComponent<Character>().UpgradeName();
     }
     
     foreach (ScriptableMove scriptableMove in player.GetComponent<Player>().GetCombatInfo().GetScriptableMove())
@@ -87,7 +93,11 @@ private IEnumerator CombatLoop()
     while (!TeamWon())
     {
         yield return StartCoroutine(PlayerPhase());
-        yield return StartCoroutine(EnemiesPhase());
+        
+        if (enemyList.Count > 0)
+        {
+            yield return StartCoroutine(EnemiesPhase());
+        }
     }
 
     EndCombat();
@@ -105,7 +115,14 @@ private IEnumerator PlayerPhase()
     battlePhase = EnumBattlePhase.CharacterAttackingPhase;
     yield return StartCoroutine(StartMoveOnScreen(player));
     yield return StartCoroutine(ApplyDamage(opponentSelected));
-    yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
+    if (opponentSelected != null)
+    {
+        yield return StartCoroutine(MoveCharacterAndEnemySelected(player, player.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
+    }
+    else
+    {
+        yield return StartCoroutine(MoveCharacter(player, player.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
+    }
 }
 
 private IEnumerator EnemiesPhase()
@@ -127,6 +144,7 @@ private IEnumerator EnemiesPhase()
         }
             
         yield return StartCoroutine(PrepareUiForMove(enemy));
+        yield return StartCoroutine(ChooseMove(enemy));
         battlePhase = EnumBattlePhase.CharacterAttackingPhase;
         yield return StartCoroutine(StartMoveOnScreen(enemy));
         battlePhase = EnumBattlePhase.PlayerDefendingPhase;
@@ -216,7 +234,7 @@ private IEnumerator PlayerDefend()
 
     yield return StartCoroutine(PrepareUiForMove(player));
     yield return StartCoroutine(StartMoveOnScreen(player));
-    //TODO
+    //TODO dannometro a schermo
     yield return null;
 }
 
@@ -277,7 +295,16 @@ private IEnumerator StartMoveOnScreen(GameObject character)
 
 private IEnumerator ApplyDamage(GameObject character)
 {
-    //TODO
+    character.GetComponent<Character>().TakeDamage(currentDamage);
+
+    if (character.GetComponent<Character>().GetCombatInfo().IsDied())
+    {
+        if (enemyList.Contains(character))
+        {
+            enemyList.Remove(character);
+        }
+        character.GetComponent<Character>().Die();
+    }
     yield return null;
 }
 
@@ -285,12 +312,14 @@ private IEnumerator ApplyDamage(GameObject character)
 
 public void RemovePointsToDamageCalculator(int damagePoints)
 {
+    //TODO DANNOMETRO
     currentDamage -= damagePoints;
     Debug.Log("Current damage: " + currentDamage);
 }
 
 public void AddPointsToDamageCalculator(int damagePoints)
 {
+    //TODO DANNOMETRO
     currentDamage += damagePoints;
     Debug.Log("Current damage: " + currentDamage);
 }
