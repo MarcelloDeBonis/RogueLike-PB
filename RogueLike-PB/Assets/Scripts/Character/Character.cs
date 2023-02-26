@@ -47,8 +47,6 @@ public void InitCombactInfo(Vector3 allignmentPosition, Vector3 attackPosition)
     combatInfo = combactInfoReference.GetCombactInfo().Clone();
     combatInfo.SetPositions(allignmentPosition, attackPosition);
     combatInfo.InitPrimaryStrument();
-    UpgradeLife();
-    UpgradeName();
 }
 
 #region Clickable
@@ -60,12 +58,12 @@ public void OnMouseDown()
 
 #endregion
 
-private void UpgradeLife()
+public void UpgradeLife()
 {
     lifeText.text = combatInfo.GetLife().ToString();
 }
 
-private void UpgradeName()
+public void UpgradeName()
 {
     nameText.text = combatInfo.GetName();
 }
@@ -97,7 +95,10 @@ public void TakeDamage(int damage)
     else
     {
         combatInfo.ChangeLife(life - damage);
+        UpgradeLife();
     }
+    
+    
 }
 
 public void Die()
