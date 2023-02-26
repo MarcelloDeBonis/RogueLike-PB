@@ -10,58 +10,58 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2fd780c901ed47408c17ea9e9b8cea0, type: 3}
-  m_Name: PlayerMove2
+  m_Name: PlayerMove3
   m_EditorClassIdentifier: 
   move:
-    name: Un 'altra mossa
+    name: Un' altra ancora
     clip: {fileID: 0}
     elementTyping: {fileID: 0}
     arrowPropertiesList:
     - waitingTime: 0.2
-      speed: 300
-      enumArrow: 1
-      key: 274
-    - waitingTime: 0.5
-      speed: 300
-      enumArrow: 2
-      key: 273
-    - waitingTime: 0.5
-      speed: 300
-      enumArrow: 1
-      key: 274
-    - waitingTime: 0.5
-      speed: 300
-      enumArrow: 2
-      key: 273
-    - waitingTime: 0.5
-      speed: 300
+      speed: 450
       enumArrow: 0
       key: 276
-    - waitingTime: 0.5
-      speed: 300
-      enumArrow: 0
-      key: 276
-    - waitingTime: 0.5
-      speed: 300
+    - waitingTime: 0
+      speed: 450
       enumArrow: 3
       key: 275
     - waitingTime: 0.5
-      speed: 300
+      speed: 450
+      enumArrow: 2
+      key: 273
+    - waitingTime: 0.5
+      speed: 450
+      enumArrow: 1
+      key: 274
+    - waitingTime: 0.5
+      speed: 450
+      enumArrow: 0
+      key: 276
+    - waitingTime: 0
+      speed: 450
       enumArrow: 3
       key: 275
     - waitingTime: 0.5
-      speed: 300
+      speed: 450
       enumArrow: 1
       key: 274
     - waitingTime: 0.5
-      speed: 300
+      speed: 450
       enumArrow: 2
       key: 273
     - waitingTime: 0.5
-      speed: 300
-      enumArrow: 1
-      key: 274
+      speed: 450
+      enumArrow: 0
+      key: 276
+    - waitingTime: 0
+      speed: 450
+      enumArrow: 3
+      key: 275
     - waitingTime: 0.5
-      speed: 300
-      enumArrow: 2
-      key: 273
+      speed: 450
+      enumArrow: 0
+      key: 276
+    - waitingTime: 0
+      speed: 450
+      enumArrow: 3
+      key: 275

@@ -15,5 +15,6 @@ MonoBehaviour:
   alonePrimaryStrument:
     moveList:
     - {fileID: 11400000, guid: acc9a4d1368c1d047a99345972ac6e17, type: 2}
+    - {fileID: 11400000, guid: 150bccaf000753849a594dc17bf85ed0, type: 2}
     soundTyping: {fileID: 11400000, guid: 7b7b28c49956727498f092882d1e0e93, type: 2}
     damage: 15
