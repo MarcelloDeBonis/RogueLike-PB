@@ -15,7 +15,8 @@ MonoBehaviour:
   move:
     name: Un 'altra mossa
     clip: {fileID: 0}
-    elementTyping: {fileID: 0}
+    elementTyping: {fileID: 11400000, guid: dc6442a5a8701e14eb06699b583958c3, type: 2}
+    damage: 60
     arrowPropertiesList:
     - waitingTime: 0.2
       speed: 450
