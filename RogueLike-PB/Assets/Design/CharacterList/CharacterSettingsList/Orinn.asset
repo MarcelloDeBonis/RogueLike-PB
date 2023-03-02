@@ -16,6 +16,7 @@ MonoBehaviour:
     name: Orinn
     difficult: -1
     life: 300
+    startDefence: 15
     scriptableAlonePrimaryStruments: {fileID: 11400000, guid: 8ee13b9b8f3abdd4d87a7a44b050def7, type: 2}
     scriptableReliantPrimaryStruments: {fileID: 0}
     defenceElementTyping: {fileID: 11400000, guid: 699accfba8b6dd240a1203ce1e748f11, type: 2}
