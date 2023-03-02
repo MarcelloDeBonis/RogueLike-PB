@@ -15,7 +15,8 @@ MonoBehaviour:
   move:
     name: La mossa
     clip: {fileID: 0}
-    elementTyping: {fileID: 0}
+    elementTyping: {fileID: 11400000, guid: 95bbcd9595191aa49b82ad0b760651c1, type: 2}
+    damage: 60
     arrowPropertiesList:
     - waitingTime: 0.2
       speed: 450
