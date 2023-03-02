@@ -133,7 +133,6 @@ public class ObjectPooler : MonoBehaviour
                     objectPoolable.transform.position = key.transform.position;
                     objectPoolable.transform.rotation = key.transform.rotation;
                     objectPoolable.gameObject.GetComponent<ObjectPoolable>().AttachToActivatedParent();
-                    Debug.Log("Object " + type.ToString() + " activated!");
                     objectPoolable.gameObject.SetActive(true);
                     objectPoolable.gameObject.GetComponent<ObjectPoolable>().OnSpawn();
                     

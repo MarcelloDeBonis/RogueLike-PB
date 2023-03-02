@@ -14,6 +14,7 @@ private GameObject rightWall;
 [SerializeField] private Transform combatCamera;
 [SerializeField] private Transform freeRoomCamera;
 [SerializeField] private GameObject player;
+private GameObject frontWall;
 
 //Don't Touch In Editor
 
@@ -29,14 +30,12 @@ private GameObject rightWall;
     protected override void Awake()
     {
         base.Awake();
-        PrepareNewRoom(DungeonGenerator.Instance.GetCurrentDungeon().GetCurrentFloor().GetCurrentRoom());
-        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        PrepareNewRoom(DungeonGenerator.Instance.GetCurrentDungeon().GetCurrentFloor().GetCurrentRoom());
     }
 
     // Update is called once per frame
@@ -100,6 +99,7 @@ private void ActiveAllChests()
 
 public void RoomEmpty()
 {
+    frontWall.GetComponentInChildren<NextRoomButton>().UnlockNextRoom();
     ActiveAllChests();
     SetFreeRoomCamera();
     ActiveRightWalls();
@@ -145,6 +145,7 @@ private void PrepareEnemyList()
 
 private void StartCombact()
 {
+    frontWall.GetComponentInChildren<NextRoomButton>().LockNextRoom();
     SetCombatCamera();
     DeactiveRightWall();
     CombatSystem.Instance.OnCombatStart(player, enemiesInGame);
@@ -161,7 +162,7 @@ private void PrepareChests()
 
 private void PrepareWalls()
 {
-    Instantiate(roomInfo.frontWall);
+    frontWall= Instantiate(roomInfo.frontWall);
     Instantiate(roomInfo.backWall);
     rightWall = Instantiate(roomInfo.rightWall);
     Instantiate(roomInfo.leftWall);

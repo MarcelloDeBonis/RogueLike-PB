@@ -27,7 +27,6 @@ private GameObject opponentSelected;
 private ScriptableMove choosenMove;
 private int strumentDamage;
 
-[SerializeField] private GameObject playerCanvas;
 [SerializeField] private GameObject moveCollector;
 [SerializeField] private GameObject move2DObjectPrefab;
 
@@ -82,13 +81,16 @@ private void PrepareCombat(GameObject _player, List<GameObject> _enemylist)
         enemy.GetComponent<Character>().UpgradeName();
     }
     
+    moveCollector.SetActive(true);
+    
     foreach (ScriptableMove scriptableMove in player.GetComponent<Player>().GetCombatInfo().GetScriptableMove())
     {
-        GameObject newCollectorMove = Instantiate(move2DObjectPrefab, moveCollector.transform.position, moveCollector.transform.rotation);
-        newCollectorMove.transform.parent = moveCollector.transform;
+      //  //TODO BUG MOVES
+        GameObject newCollectorMove = Instantiate(move2DObjectPrefab);
+        newCollectorMove.transform.position = moveCollector.transform.position;
+        newCollectorMove.transform.SetParent(moveCollector.transform);
         newCollectorMove.GetComponent<Move2DComponent>().InitObject(scriptableMove);
     }
-
 }
 
 #endregion
@@ -157,8 +159,12 @@ private IEnumerator EnemiesPhase()
         battlePhase = EnumBattlePhase.PlayerDefendingPhase;
         yield return StartCoroutine(PlayerDefend());
         yield return StartCoroutine(ApplyDamage(opponentSelected));
-            
-          
+
+        if (opponentSelected==null)
+        {
+            break;
+        }  
+        
         if (enemy == lastEnemy)
         {
             yield return StartCoroutine(MoveCharacterAndEnemySelected(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
@@ -176,7 +182,7 @@ private IEnumerator EnemiesPhase()
 
 private IEnumerator PrepareUiForMovesChooses()
 {
-    playerCanvas.SetActive(true);
+    moveCollector.SetActive(true);
     yield return null;
 }
 
@@ -210,7 +216,7 @@ private IEnumerator ChooseTarget(GameObject character)
             yield return null;
         }
         
-        playerCanvas.SetActive(false);
+        moveCollector.SetActive(false);
     }
     
 }
@@ -307,7 +313,7 @@ private IEnumerator StartMoveOnScreen(GameObject character)
 private IEnumerator ApplyDamage(GameObject character)
 {
 
-  //  CalculateDamage(character);
+    CalculateDamage(character);
     
     character.GetComponent<Character>().TakeDamage(currentDamage);
 
@@ -316,6 +322,10 @@ private IEnumerator ApplyDamage(GameObject character)
         if (enemyList.Contains(character))
         {
             enemyList.Remove(character);
+        }
+        else
+        {
+            //TODO IN CASE OF ALLIES
         }
         character.GetComponent<Character>().Die();
     }
@@ -326,8 +336,11 @@ private void CalculateDamage(GameObject character)
 {
     float percentage = (float)choosenMove.GetMove().GetMaxDamagePossible() / (float)currentDamage;
     percentage = percentage * 100 * strumentDamage * choosenMove.GetMove().GetDamage();
-    percentage = percentage / (character.GetComponent<Character>().GetCombatInfo().GetDefence() * 2);
-   // percentage = percentage * CalculateMultiplier();
+    if (character.GetComponent<Character>().GetCombatInfo().GetDefence() != 0)
+    {
+        percentage = percentage / (character.GetComponent<Character>().GetCombatInfo().GetDefence() * 2);
+    }
+    percentage = percentage * CalculateMultiplier();
 
    //TODO
     if (Crit())
@@ -342,6 +355,7 @@ private float CalculateMultiplier()
 {
     float multiplier = 1f;
 
+    
     
     
     
@@ -411,7 +425,6 @@ public void RemovePointsToDamageCalculator(int damagePoints)
 {
     //TODO DANNOMETRO
     currentDamage -= damagePoints;
-    Debug.Log("Current damage: " + currentDamage);
 }
 
 public void AddPointsToDamageCalculator(int damagePoints)
@@ -428,7 +441,7 @@ private void ResetDamage()
 
 private bool TeamWon()
 {
-    if (player.GetComponent<Player>().GetCombatInfo().GetLife() == 0 || enemyList.Count == 0)
+    if (player==null || enemyList.Count == 0)
     {
         return true;
     }
@@ -437,7 +450,7 @@ private bool TeamWon()
 
 private void EndCombat()
 {
-    if (player.GetComponent<Player>().GetCombatInfo().GetLife() == 0)
+    if (player==null)
     {
         Debug.Log("You lost!!");
         SceneManager.LoadScene("GameOver");

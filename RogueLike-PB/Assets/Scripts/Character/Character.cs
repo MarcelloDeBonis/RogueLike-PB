@@ -85,6 +85,7 @@ public CombatInfo GetCombatInfo()
 
 public void TakeDamage(int damage)
 {
+    Debug.Log( this.gameObject.name + " take " + damage + " damage!!");
     int life = combatInfo.GetLife();
     
     if (damage > life)

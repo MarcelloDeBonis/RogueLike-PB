@@ -7,6 +7,8 @@ public class NextRoomButton : MonoBehaviour
 
 #region Variables & Properties
 
+[SerializeField] public bool canGo;
+
 #endregion
 
 #region MonoBehaviour
@@ -33,9 +35,22 @@ public class NextRoomButton : MonoBehaviour
 
 #region Methods
 
+public void LockNextRoom()
+{
+    canGo = false;
+}
+
+public void UnlockNextRoom()
+{
+    canGo = true;
+}
+
 private void OnMouseDown()
 {
-    RoomManager.Instance.RoomComplete();
+    if (canGo)
+    {
+        RoomManager.Instance.RoomComplete();
+    }
 }
 
 #endregion
