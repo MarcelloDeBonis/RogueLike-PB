@@ -312,7 +312,8 @@ private IEnumerator StartMoveOnScreen(GameObject character)
 
 private IEnumerator ApplyDamage(GameObject character)
 {
-
+    Debug.Log(currentDamage);
+    
     CalculateDamage(character);
     
     character.GetComponent<Character>().TakeDamage(currentDamage);
@@ -334,12 +335,12 @@ private IEnumerator ApplyDamage(GameObject character)
 
 private void CalculateDamage(GameObject character)
 {
-    float percentage = (float)choosenMove.GetMove().GetMaxDamagePossible() / (float)currentDamage;
-    percentage = percentage * 100 * strumentDamage * choosenMove.GetMove().GetDamage();
-    if (character.GetComponent<Character>().GetCombatInfo().GetDefence() != 0)
-    {
-        percentage = percentage / (character.GetComponent<Character>().GetCombatInfo().GetDefence() * 2);
-    }
+    float percentage =(float)currentDamage / (float)choosenMove.GetMove().GetMaxDamagePossible() * 100;
+    percentage = percentage * strumentDamage * choosenMove.GetMove().GetDamage() / 100;
+    
+    percentage = percentage / (character.GetComponent<Character>().GetCombatInfo().GetDefence() * 2);
+    
+    
     percentage = percentage * CalculateMultiplier();
 
    //TODO
@@ -431,7 +432,6 @@ public void AddPointsToDamageCalculator(int damagePoints)
 {
     //TODO DANNOMETRO
     currentDamage += damagePoints;
-    Debug.Log("Current damage: " + currentDamage);
 }
 
 private void ResetDamage()

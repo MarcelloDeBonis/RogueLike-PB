@@ -41,14 +41,14 @@ public class CombatInfo : ICloneable<CombatInfo>
         clone.attackPosition = this.attackPosition;
         clone.startDefence = this.startDefence;
         //TODO BE careful with defence, That is modified if someone could use a move to upgrade this, or by the player adding/ removing armor
-        defence = startDefence;
+        clone.defence = clone.startDefence;
 
         //TODO Should be clonable
         clone.scriptableAlonePrimaryStruments = this.scriptableAlonePrimaryStruments;
         clone.scriptableReliantPrimaryStruments = this.scriptableReliantPrimaryStruments;
         clone.defenceElementTyping = this.defenceElementTyping;
         clone.defenceSoundTyping = this.defenceSoundTyping;
-
+        
         return clone;
     }
 

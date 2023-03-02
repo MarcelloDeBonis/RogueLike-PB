@@ -16,7 +16,7 @@ MonoBehaviour:
     name: Skull
     difficult: 1
     life: 50
-    startDefence: 150
+    startDefence: 15
     scriptableAlonePrimaryStruments: {fileID: 11400000, guid: 0666e14e5cb14204482161b84b17658b, type: 2}
     scriptableReliantPrimaryStruments: {fileID: 0}
     defenceElementTyping: {fileID: 11400000, guid: 83b0091983311be46962e73fa54a367f, type: 2}
