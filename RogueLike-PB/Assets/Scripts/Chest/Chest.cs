@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Chest : MonoBehaviour
@@ -8,6 +9,8 @@ public class Chest : MonoBehaviour
 #region Variables & Properties
 
 [SerializeField] public ScriptableChest chestReference;
+[SerializeField] public AudioClip clip;
+[SerializeField] public GameObject canvas;
 
 #endregion
 
@@ -35,7 +38,21 @@ public class Chest : MonoBehaviour
 
 #region Methods
 
+public void OnMouseDown()
+{
+    OpenChest();
+}
 
+private void OpenChest()
+{
+    SoundManager.Instance.PlayEffect(clip);
+    UIChestManager.Instance.SpawnChest(this.gameObject, GenerateChestLoot());
+}
+
+private ChestLoot GenerateChestLoot()
+{
+    return chestReference.chestLoot.Clone();
+}
 
 #endregion
 
