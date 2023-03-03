@@ -30,7 +30,7 @@ private int strumentDamage;
 [SerializeField] private GameObject moveCollector;
 [SerializeField] private GameObject move2DObjectPrefab;
 
-//[SerializeField] private Text 
+[SerializeField] private Slider damageSliderReference;
 
 bool choosen = false;
 
@@ -280,7 +280,7 @@ public void ChooseMove(ScriptableMove _move)
 
 private IEnumerator PrepareUiForMove(GameObject character)
 {
-    //TODO
+    damageSliderReference.gameObject.SetActive(true);
 
     if (character.GetComponent<Player>() != null)
     {
@@ -308,6 +308,12 @@ private IEnumerator StartMoveOnScreen(GameObject character)
     {
         yield return null;
     }
+    
+    //TODO Apply feedbacks for move, like spirte do animation ecc.
+    
+    //After all
+    
+    damageSliderReference.gameObject.SetActive(false);
 }
 
 private IEnumerator ApplyDamage(GameObject character)
@@ -342,8 +348,7 @@ private void CalculateDamage(GameObject character)
     
     
     percentage = percentage * CalculateMultiplier();
-
-   //TODO
+    
     if (Crit())
     {
         percentage *= 2;
@@ -424,19 +429,25 @@ private bool Crit()
 
 public void RemovePointsToDamageCalculator(int damagePoints)
 {
-    //TODO DANNOMETRO
     currentDamage -= damagePoints;
+    UpgradeDamageSlider();
 }
 
 public void AddPointsToDamageCalculator(int damagePoints)
 {
-    //TODO DANNOMETRO
     currentDamage += damagePoints;
+    UpgradeDamageSlider();
 }
 
 private void ResetDamage()
 {
     currentDamage = 0;
+    damageSliderReference.value = 0;
+}
+
+private void UpgradeDamageSlider()
+{
+    damageSliderReference.value = (float)currentDamage / (float)choosenMove.GetMove().GetMaxDamagePossible();
 }
 
 private bool TeamWon()
