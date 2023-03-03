@@ -52,6 +52,7 @@ public void PrepareNewRoom(ScriptableRoom _room)
 {
     roomInfo = _room;
     PrepareWalls();
+    PrepareAllOtherObjects();
     PreparePlayer();
     if (IsThereChests())
     {
@@ -163,15 +164,21 @@ private void PrepareChests()
 private void PrepareWalls()
 {
     frontWall= Instantiate(roomInfo.frontWall);
-    Instantiate(roomInfo.backWall);
     rightWall = Instantiate(roomInfo.rightWall);
-    Instantiate(roomInfo.leftWall);
 }
 
 
 public void RoomComplete()
 {
     DungeonGenerator.Instance.NextRoom();
+}
+
+public void PrepareAllOtherObjects()
+{
+    foreach (GameObjectRoomStruct objectToBeSpawned in roomInfo.otherObjectToBeSpawned)
+    {
+        Instantiate(objectToBeSpawned.prefabObjectToSpawn, objectToBeSpawned.position, objectToBeSpawned.rotation);
+    }
 }
 
 #endregion

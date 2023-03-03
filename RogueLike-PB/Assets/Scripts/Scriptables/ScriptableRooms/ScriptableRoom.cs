@@ -10,14 +10,12 @@ public class ScriptableRoom : ScriptableObject
 
 [SerializeField] public int difficulty;
 [SerializeField] public GameObject frontWall;
-[SerializeField] public GameObject leftWall;
 [SerializeField] public GameObject rightWall;
-[SerializeField] public GameObject backWall;
 [SerializeField] public Vector3 playerAlignmentPosition;
 [SerializeField] public Vector3 playerAttackPosition;
 [SerializeField] public List<StructEnemyCombact> enemyList;
 [SerializeField] public List<StructChest> chestList;
-
+[SerializeField] public List<GameObjectRoomStruct> otherObjectToBeSpawned;
 
 #endregion
 
