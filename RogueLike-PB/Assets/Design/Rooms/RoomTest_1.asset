@@ -28,4 +28,4 @@ MonoBehaviour:
     attackEnemyPosition: {x: -3.3, y: 3, z: 7.65}
   chestList:
   - chest: {fileID: 2625566710361416691, guid: adb0a2ae81f499246821b2ed32e78325, type: 3}
-    chestPosition: {x: -1, y: 1.5, z: 1.5}
+    chestPosition: {x: -1, y: 1.5, z: 0.9}
