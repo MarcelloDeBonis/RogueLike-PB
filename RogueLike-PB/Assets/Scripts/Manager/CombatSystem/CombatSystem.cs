@@ -250,7 +250,6 @@ private IEnumerator MoveCharacter(GameObject character, Vector3 end)
 
 private IEnumerator PlayerDefend()
 {
-
     yield return StartCoroutine(PrepareUiForMove(player));
     yield return StartCoroutine(StartMoveOnScreen(player));
     //TODO dannometro a schermo
@@ -277,6 +276,7 @@ private IEnumerator ChooseMove(GameObject character)
 
     Destroy(moveSpriteGameObject);
     moveSpriteGameObject = Instantiate(choosenMove.GetMove().GetPrefab());
+    moveSpriteGameObject.GetComponent<Move2DSprite>().SetScale(0);
     moveSpriteGameObject.SetActive(false);
 }
 
@@ -349,6 +349,10 @@ private IEnumerator DoMoveAnimation()
     //Play Sound Hit
     SoundManager.Instance.PlayEffect(opponentSelected.GetComponent<Character>().GetCombatInfo().clipHitted);
 
+    //TODO ANIMATION BY CAMERA
+    
+    //TODO ANIMATION OF CRIT
+    
     //TODO ANIMATION HITTED and wait until is finished
     moveSpriteGameObject.GetComponent<Move2DSprite>().HitAnimation(FindSpriteDependingOfMultiplier(GetTotalMultiplier()));
 
