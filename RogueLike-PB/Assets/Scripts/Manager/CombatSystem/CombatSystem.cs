@@ -374,7 +374,8 @@ private void CalculateDamage(GameObject character)
     percentage = percentage / (character.GetComponent<Character>().GetCombatInfo().GetDefence() * 2);
     
     
-    percentage = percentage * CalculateMultiplier();
+    
+    percentage = percentage * GetNumberMultiplier();
     
     if (Crit())
     {
@@ -384,58 +385,117 @@ private void CalculateDamage(GameObject character)
     currentDamage = (int)Math.Ceiling(percentage);
 }
 
-private float CalculateMultiplier()
-{
-    float multiplier = 1f;
+#region MultiplierMethods
 
-    
-    
-    
-    
+
+private float GetNumberMultiplier()
+{
+    foreach (EffectTypeMultiplierStruct multiplier in scriptableEffective.effectTypeMultiplierList)
+    {
+        if (GetTotalMultiplier() == multiplier.effectType)
+        {
+            return multiplier.mutiplier;
+        }
+    }
+
+    return 1;
+}
+
+private EnumEffectType GetElementalMultiplier()
+{
     //Elemental Multiplier
     if (choosenMove.GetMove().GetElementTyping().normalEffectiveList
         .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceElementTyping))
     {
-        
+        return EnumEffectType.Normal;
     }
     else if (choosenMove.GetMove().GetElementTyping().superEffectiveList
              .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceElementTyping))
     {
-        //TODO DELETE THOSE MAGIC NUMBERS!!!
-        multiplier *= 2;
+        return EnumEffectType.Effective;
     }
     else if (choosenMove.GetMove().GetElementTyping().notEffectiveList
              .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceElementTyping))
     {
-        multiplier *= 0.5f;
+        return EnumEffectType.NotVeryEffective;
     }
 
-    
-    
-    
-    
-    
-    
-    
+    return EnumEffectType.Normal;
+}
+
+private EnumEffectType GetSoundMultiplier()
+{
     //SoundMultiplier
     if (characterIsDoingMove.GetComponent<Character>().GetCombatInfo().GetStrumentSoundTyping().normalEffectiveList
         .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceSoundTyping))
     {
-        
+        return EnumEffectType.Normal;
     }
     else if ((characterIsDoingMove.GetComponent<Character>().GetCombatInfo().GetStrumentSoundTyping().superEffectiveList
                  .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceSoundTyping)))
     {
-        multiplier *= 2;
+        return EnumEffectType.Effective;
     }
     else if (((characterIsDoingMove.GetComponent<Character>().GetCombatInfo().GetStrumentSoundTyping().notEffectiveList
                  .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceSoundTyping))))
     {
-        multiplier *= 0.5f;
+        return EnumEffectType.NotVeryEffective;
+    }
+
+    return EnumEffectType.Normal;
+}
+
+private EnumEffectType GetTotalMultiplier()
+{
+
+    EnumEffectType multiplierEnum= EnumEffectType.Normal;
+
+//TODO YOU NEED THIS
+    GetElementalMultiplier();
+
+    //Also this
+    GetSoundMultiplier();
+
+
+    if (GetElementalMultiplier() == EnumEffectType.Effective)
+    {
+        if (GetSoundMultiplier() == EnumEffectType.Effective)
+        {
+            return EnumEffectType.SuperEffective;
+        }
+        else if (GetSoundMultiplier() == EnumEffectType.Normal)
+        {
+            return EnumEffectType.Effective;
+        }
+        else if (GetSoundMultiplier() == EnumEffectType.NotVeryEffective)
+        {
+            return EnumEffectType.Normal;
+        }
+    }
+    else if (GetElementalMultiplier() == EnumEffectType.Normal)
+    {
+        return GetSoundMultiplier();
+    }
+    else if(GetElementalMultiplier() == EnumEffectType.NotVeryEffective)
+    {
+        if (GetSoundMultiplier() == EnumEffectType.Effective)
+        {
+            return EnumEffectType.Normal;
+        }
+        else if (GetSoundMultiplier() == EnumEffectType.Normal)
+        {
+            return EnumEffectType.NotVeryEffective;
+        }
+        else if (GetSoundMultiplier() == EnumEffectType.NotVeryEffective)
+        {
+            return EnumEffectType.NotEffective;
+        }
     }
     
-    return multiplier;
 }
+
+#endregion
+
 
 private bool Crit()
 {
