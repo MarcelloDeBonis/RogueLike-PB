@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Move2DSprite : MonoBehaviour
 {
@@ -9,6 +11,11 @@ public class Move2DSprite : MonoBehaviour
 
 [SerializeField] private Vector3 startScale;
 [SerializeField] private Vector3 endScale;
+[SerializeField] public Image moveSprite;
+[SerializeField] public Image iconSprite;
+
+[HideInInspector]
+public bool doingAnimation = false;
 
 #endregion
 
@@ -19,14 +26,22 @@ public void SetScale(float t)
     transform.localScale = Vector3.Lerp(startScale, endScale, t);
 }
 
-public Vector3 GetStartScale()
+public void HitAnimation(Sprite icon)
 {
-    return startScale;
+
+    iconSprite.sprite = icon;
+    iconSprite.gameObject.SetActive(true);
+    
+    //TODO WITH ARTIST
+    StartCoroutine(DoAnimation());
 }
 
-public Vector3 GetEndScale()
+private IEnumerator DoAnimation()
 {
-    return endScale;
+    doingAnimation = true;
+    yield return new WaitForSeconds(3);
+    doingAnimation = false;
+    iconSprite.gameObject.SetActive(false);
 }
 
 #endregion

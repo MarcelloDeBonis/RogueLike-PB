@@ -340,7 +340,13 @@ private IEnumerator DoMoveAnimation()
     //Play Sound Hit
     SoundManager.Instance.PlayEffect(opponentSelected.GetComponent<Character>().GetCombatInfo().clipHitted);
 
-    //TODO ANIMATION HITTED
+    //TODO ANIMATION HITTED and wait until is finished
+    moveSpriteGameObject.GetComponent<Move2DSprite>().HitAnimation(FindSpriteDependingOfMultiplier(GetTotalMultiplier()));
+
+    while (moveSpriteGameObject.GetComponent<Move2DSprite>().doingAnimation)
+    {
+        yield return null;
+    }
 }
 
 private IEnumerator ApplyDamage(GameObject character)
@@ -364,6 +370,19 @@ private IEnumerator ApplyDamage(GameObject character)
         character.GetComponent<Character>().Die();
     }
     yield return null;
+}
+
+private Sprite FindSpriteDependingOfMultiplier(EnumEffectType effectType)
+{
+    foreach (EffecTypeIconStruct iconStruct in scriptableEffective.effectTypeIconList)
+    {
+        if (iconStruct.effectType == effectType)
+        {
+            return iconStruct.sprite;
+        }
+    }
+
+    return null;
 }
 
 private void CalculateDamage(GameObject character)
@@ -448,15 +467,6 @@ private EnumEffectType GetSoundMultiplier()
 private EnumEffectType GetTotalMultiplier()
 {
 
-    EnumEffectType multiplierEnum= EnumEffectType.Normal;
-
-//TODO YOU NEED THIS
-    GetElementalMultiplier();
-
-    //Also this
-    GetSoundMultiplier();
-
-
     if (GetElementalMultiplier() == EnumEffectType.Effective)
     {
         if (GetSoundMultiplier() == EnumEffectType.Effective)
@@ -491,7 +501,8 @@ private EnumEffectType GetTotalMultiplier()
             return EnumEffectType.NotEffective;
         }
     }
-    
+
+    return EnumEffectType.Normal;
 }
 
 #endregion
