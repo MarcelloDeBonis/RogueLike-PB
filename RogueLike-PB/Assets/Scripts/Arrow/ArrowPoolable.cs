@@ -11,6 +11,7 @@ private float speed;
 private EnumArrow enumArrow;
 private KeyCode key;
 private int points = 0;
+private AudioClip clip;
 
 #endregion
 
@@ -21,11 +22,23 @@ private void SetSpeed(float newSpeed)
     speed = newSpeed;
 }
 
-public void StartArrow(GameObject colliderDeleteArrow ,float newSpeed, KeyCode newKey)
+public void StartArrow(GameObject colliderDeleteArrow ,float newSpeed, KeyCode newKey, AudioClip newClip)
 {
+    ResetPoints();
     SetKey(newKey);
     SetSpeed(newSpeed);
+    SetClip(newClip);
     StartCoroutine(MoveDown(colliderDeleteArrow));
+}
+
+private void SetClip(AudioClip newClip)
+{
+    clip = newClip;
+}
+
+private void ResetPoints()
+{
+    points = 0;
 }
 
 private void SetKey(KeyCode newKey)
@@ -55,6 +68,11 @@ public void SetPoints(int newPoints)
 public int GetPoints()
 {
         return points;
+}
+
+public void SoundArrow()
+{
+    SoundManager.Instance.PlaySound(clip);
 }
 
 #endregion

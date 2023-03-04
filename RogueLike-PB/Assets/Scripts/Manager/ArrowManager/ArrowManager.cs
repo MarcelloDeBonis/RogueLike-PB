@@ -63,28 +63,28 @@ public IEnumerator SpawnArrowsInTime(ScriptableMove move)
             case EnumArrow.LeftArrow:
                 
                 arrowSpawned=leftArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteLeft, arrow.GetSpeed(), arrow.Getkey());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteLeft, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
             
             case EnumArrow.DownArrow:
                 
                 arrowSpawned=downArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteDown, arrow.GetSpeed(), arrow.Getkey());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteDown, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
             
             case EnumArrow.UpArrow:
                 
                 arrowSpawned=upArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteUp, arrow.GetSpeed(), arrow.Getkey());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteUp, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
             
             case EnumArrow.RightArrow:
                 
                 arrowSpawned=rightArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteRight, arrow.GetSpeed(), arrow.Getkey());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteRight, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
         }
@@ -104,6 +104,8 @@ private IEnumerator CheckInput()
             {
                 if (arrow.GetComponent<ArrowPoolable>().KeyIsPressed())
                 {
+                    arrow.GetComponent<ArrowPoolable>().SoundArrow();
+                    
                     if (CombatSystem.Instance.GetEnumBattlePhase() == EnumBattlePhase.CharacterAttackingPhase)
                     {
                         CombatSystem.Instance.AddPointsToDamageCalculator(arrow.GetComponent<ArrowPoolable>().GetPoints());
