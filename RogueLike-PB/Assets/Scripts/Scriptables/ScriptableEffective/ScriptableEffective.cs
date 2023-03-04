@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "New Effective Struct")]
+[CreateAssetMenu(menuName = "New Effective Type Struct")]
 public class ScriptableEffective: ScriptableObject
 {
 

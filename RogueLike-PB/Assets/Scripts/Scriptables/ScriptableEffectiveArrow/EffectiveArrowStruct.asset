@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37450ddf936b1194091ef914d5bfb2a1, type: 3}
+  m_Name: EffectiveArrowStruct
+  m_EditorClassIdentifier: 
+  structEffectiveArrowsList:
+  - effectiveArrow: 0
+    points: 0
+    clip: {fileID: 0}
+  - effectiveArrow: 1
+    points: 0
+    clip: {fileID: 0}
+  - effectiveArrow: 2
+    points: 0
+    clip: {fileID: 0}
+  - effectiveArrow: 3
+    points: 0
+    clip: {fileID: 0}
