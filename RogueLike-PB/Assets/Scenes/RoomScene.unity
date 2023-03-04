@@ -2331,6 +2331,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 446604795}
     - target: {fileID: 8763785975576318583, guid: 1fb10b59ad5fe7644b57dd4aa9ff7ecc, type: 3}
+      propertyPath: scriptableEffective
+      value: 
+      objectReference: {fileID: 11400000, guid: b5374243e378aad4d9179a5e9a760669, type: 2}
+    - target: {fileID: 8763785975576318583, guid: 1fb10b59ad5fe7644b57dd4aa9ff7ecc, type: 3}
       propertyPath: moveSpriteGameObject
       value: 
       objectReference: {fileID: 1479603852}

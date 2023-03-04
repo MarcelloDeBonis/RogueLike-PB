@@ -12,3 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688c83fbd69ee1a40aff17c80293e085, type: 3}
   m_Name: EffectiveStruct
   m_EditorClassIdentifier: 
+  effectTypeIconList:
+  - effectType: 0
+    sprite: {fileID: 0}
+  - effectType: 1
+    sprite: {fileID: 0}
+  - effectType: 2
+    sprite: {fileID: 0}
+  - effectType: 3
+    sprite: {fileID: 0}
+  - effectType: 4
+    sprite: {fileID: 0}
+  effectTypeMultiplierList:
+  - effectType: 0
+    mutiplier: 0
+  - effectType: 1
+    mutiplier: 0
+  - effectType: 2
+    mutiplier: 0
+  - effectType: 3
+    mutiplier: 0
+  - effectType: 4
+    mutiplier: 0
