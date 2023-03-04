@@ -23,7 +23,7 @@ public bool doingAnimation = false;
 
 public void SetScale(float t)
 {
-    transform.localScale = Vector3.Lerp(startScale, endScale, t);
+    moveSprite.transform.localScale = Vector3.Lerp(startScale, endScale, t);
 }
 
 public void HitAnimation(Sprite icon)
@@ -31,6 +31,7 @@ public void HitAnimation(Sprite icon)
 
     iconSprite.sprite = icon;
     iconSprite.gameObject.SetActive(true);
+    doingAnimation = true;
     
     //TODO WITH ARTIST
     StartCoroutine(DoAnimation());

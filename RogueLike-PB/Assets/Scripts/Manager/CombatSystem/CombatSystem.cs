@@ -157,9 +157,9 @@ private IEnumerator EnemiesPhase()
         {
             yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAttackPosition()));
         }
-            
+        
+        yield return StartCoroutine(ChooseMove(enemy)); 
         yield return StartCoroutine(PrepareUiForMove(enemy));
-        yield return StartCoroutine(ChooseMove(enemy));
         battlePhase = EnumBattlePhase.CharacterAttackingPhase;
         yield return StartCoroutine(StartMoveOnScreen(enemy));
         battlePhase = EnumBattlePhase.PlayerDefendingPhase;
@@ -288,15 +288,22 @@ public void ChooseMove(ScriptableMove _move)
 
 private IEnumerator PrepareUiForMove(GameObject character)
 {
-    damageSliderReference.value = 0;
+    if (battlePhase != EnumBattlePhase.PlayerDefendingPhase)
+    {
+        damageSliderReference.value = 0;
+        moveSpriteGameObject.GetComponent<Move2DSprite>().SetScale(0);
+    }
+    
     damageSliderReference.gameObject.SetActive(true);
-
-    moveSpriteGameObject.GetComponent<Move2DSprite>().SetScale(0);
     
     if (character.GetComponent<Player>() != null)
     {
-        moveSpriteGameObject.transform.position = screenPlayerMove.transform.position;
-        moveSpriteGameObject.SetActive(true);
+        if (battlePhase != EnumBattlePhase.PlayerDefendingPhase)
+        {
+            moveSpriteGameObject.transform.position = screenPlayerMove.transform.position;
+            moveSpriteGameObject.SetActive(true);
+        }
+
         ArrowManager.Instance.GetUiArrow().transform.position = screenArrowPlayer.transform.position;
     }
     else
@@ -324,8 +331,11 @@ private IEnumerator StartMoveOnScreen(GameObject character)
         yield return null;
     }
 
-    yield return DoMoveAnimation();
-    
+    if (!enemyList.Contains(character))
+    {
+        yield return DoMoveAnimation();
+    }
+
     damageSliderReference.gameObject.SetActive(false);
 }
 
@@ -333,8 +343,7 @@ private IEnumerator DoMoveAnimation()
 {
     //TODO BY CODE, BUT IN THE FUTURE, DONE BY DESIGN/2D ARTIST
     yield return MoveCharacter(moveSpriteGameObject, opponentSelected.transform.position);
-    moveSpriteGameObject.SetActive(false);
-    
+
     //TODO ANIMATION VFX WHEN ENEMY IS HITTED
     
     //Play Sound Hit
@@ -347,6 +356,8 @@ private IEnumerator DoMoveAnimation()
     {
         yield return null;
     }
+    
+    moveSpriteGameObject.SetActive(false);
 }
 
 private IEnumerator ApplyDamage(GameObject character)
