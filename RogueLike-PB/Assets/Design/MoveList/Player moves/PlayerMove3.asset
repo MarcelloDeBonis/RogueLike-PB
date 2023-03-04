@@ -15,6 +15,7 @@ MonoBehaviour:
   move:
     name: Un' altra ancora
     clip: {fileID: 0}
+    moveImage: {fileID: 7612939500183778575, guid: 61725d077ffb77f4e86f5a78cb219774, type: 3}
     elementTyping: {fileID: 11400000, guid: 7a928354eaac3f245a3d0bf3dafadf5c, type: 2}
     damage: 60
     arrowPropertiesList:
