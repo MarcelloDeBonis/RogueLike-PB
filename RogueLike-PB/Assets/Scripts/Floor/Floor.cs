@@ -22,8 +22,6 @@ public class Floor
 [SerializeField] public int minNumberRoom;
 [SerializeField] public int percentageRoomsWithEnemiesAtLeast;
 
-private ScriptableRoom currentRoom;
-
 //TODO for setting every room scene
 [SerializeField] private Sprite BackGorundsprite;
 
@@ -32,6 +30,7 @@ private int enemyRoomNumber;
 private int lootRoomNumber;
 
 //Don't Touch in Editor
+[SerializeField] private ScriptableRoom currentRoom;
 [SerializeField] private List<ScriptableRoom> roomList;
 
 #endregion
@@ -85,9 +84,6 @@ private void GenerateRoomSequence()
 {
     roomList.Add(startingRoom);
 
-    Debug.Log(lootRoomNumber + " loot room created");
-    Debug.Log(enemyRoomNumber + " enemy room created");
-    
     for (int i = 0; i < roomNumbers; i++)
     {
         if (enemyRoomNumber > 0 && lootRoomNumber > 0)

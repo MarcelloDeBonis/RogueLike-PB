@@ -24,6 +24,8 @@ public class CombatInfo : ICloneable<CombatInfo>
     [SerializeField] public ScriptableElementTyping defenceElementTyping;
     [SerializeField] public ScriptableSoundTyping defenceSoundTyping;
 
+    [SerializeField] public AudioClip clipHitted;
+    
     private PrimaryStrument primaryStrumentEquipped = new PrimaryStrument();
     private SecondaryStrument secondaryStrument = new SecondaryStrument();
 
@@ -39,6 +41,7 @@ public class CombatInfo : ICloneable<CombatInfo>
         clone.life = this.life;
         clone.alignmentPosition = this.alignmentPosition;
         clone.attackPosition = this.attackPosition;
+        clone.clipHitted = clipHitted;
         clone.startDefence = this.startDefence;
         //TODO BE careful with defence, That is modified if someone could use a move to upgrade this, or by the player adding/ removing armor
         clone.defence = clone.startDefence;
