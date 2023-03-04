@@ -12,6 +12,7 @@ public class Move2DComponent : MonoBehaviour
 private ScriptableMove scriptableMove;
 private Move move = new Move();
 [SerializeField] private Text text;
+[SerializeField] private AudioClip clipClick;
 private bool isSelected=false;
 
 #endregion
@@ -55,6 +56,7 @@ private void SetMoveName()
 public void Click()
 {
     CombatSystem.Instance.ChooseMove(scriptableMove);
+    SoundManager.Instance.PlayEffect(clipClick);
 }
 
 #endregion

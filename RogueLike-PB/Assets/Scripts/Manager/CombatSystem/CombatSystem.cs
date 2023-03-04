@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -22,13 +23,18 @@ private EnumBattlePhase battlePhase = EnumBattlePhase.NoBattlePhase;
 private GameObject characterIsDoingMove;
 private GameObject opponentSelected;
 
+[SerializeField] private ScriptableEffective scriptableEffective;
 [SerializeField] private GameObject screenArrowPlayer;
 [SerializeField] private GameObject screenArrowEnemies;
+[SerializeField] private GameObject screenPlayerMove;
+[SerializeField] private GameObject screenEnemyMove;
+[SerializeField] private GameObject moveSpriteGameObject;
+
 private ScriptableMove choosenMove;
 private int strumentDamage;
 
 [SerializeField] private GameObject moveCollector;
-[SerializeField] private GameObject move2DObjectPrefab;
+[FormerlySerializedAs("move2DObject")] [SerializeField] private GameObject move2DObjectPrefab;
 
 [SerializeField] private Slider damageSliderReference;
 
@@ -268,8 +274,10 @@ private IEnumerator ChooseMove(GameObject character)
             yield return null;
         }
     }
-    
-    
+
+    Destroy(moveSpriteGameObject);
+    moveSpriteGameObject = Instantiate(choosenMove.GetMove().GetPrefab());
+    moveSpriteGameObject.SetActive(false);
 }
 
 public void ChooseMove(ScriptableMove _move)
@@ -280,14 +288,21 @@ public void ChooseMove(ScriptableMove _move)
 
 private IEnumerator PrepareUiForMove(GameObject character)
 {
+    damageSliderReference.value = 0;
     damageSliderReference.gameObject.SetActive(true);
 
+    moveSpriteGameObject.GetComponent<Move2DSprite>().SetScale(0);
+    
     if (character.GetComponent<Player>() != null)
     {
+        moveSpriteGameObject.transform.position = screenPlayerMove.transform.position;
+        moveSpriteGameObject.SetActive(true);
         ArrowManager.Instance.GetUiArrow().transform.position = screenArrowPlayer.transform.position;
     }
     else
     {
+        moveSpriteGameObject.transform.position = screenEnemyMove.transform.position;
+        moveSpriteGameObject.SetActive(true);
         ArrowManager.Instance.GetUiArrow().transform.position = screenArrowEnemies.transform.position;
     }
 
@@ -308,17 +323,29 @@ private IEnumerator StartMoveOnScreen(GameObject character)
     {
         yield return null;
     }
-    
-    //TODO Apply feedbacks for move, like spirte do animation ecc.
-    
-    //After all
+
+    yield return DoMoveAnimation();
     
     damageSliderReference.gameObject.SetActive(false);
 }
 
+private IEnumerator DoMoveAnimation()
+{
+    //TODO BY CODE, BUT IN THE FUTURE, DONE BY DESIGN/2D ARTIST
+    yield return MoveCharacter(moveSpriteGameObject, opponentSelected.transform.position);
+    moveSpriteGameObject.SetActive(false);
+    
+    //TODO ANIMATION VFX WHEN ENEMY IS HITTED
+    
+    //Play Sound Hit
+    SoundManager.Instance.PlayEffect(opponentSelected.GetComponent<Character>().GetCombatInfo().clipHitted);
+
+    //TODO ANIMATION HITTED
+}
+
 private IEnumerator ApplyDamage(GameObject character)
 {
-    Debug.Log(currentDamage);
+    Debug.Log("damage before calculation: " + currentDamage);
     
     CalculateDamage(character);
     
@@ -431,18 +458,25 @@ public void RemovePointsToDamageCalculator(int damagePoints)
 {
     currentDamage -= damagePoints;
     UpgradeDamageSlider();
+    UpgradeMoveScale();
 }
 
 public void AddPointsToDamageCalculator(int damagePoints)
 {
     currentDamage += damagePoints;
     UpgradeDamageSlider();
+    UpgradeMoveScale();
 }
 
 private void ResetDamage()
 {
     currentDamage = 0;
     damageSliderReference.value = 0;
+}
+
+private void UpgradeMoveScale()
+{
+    moveSpriteGameObject.GetComponent<Move2DSprite>().SetScale((float)currentDamage / (float)choosenMove.GetMove().GetMaxDamagePossible());
 }
 
 private void UpgradeDamageSlider()
