@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7685188681276171774}
   - component: {fileID: 3286673892688615762}
   m_Layer: 0
-  m_Name: Image
+  m_Name: IconSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 1128346479368659304}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4.29779, y: 4.29779, z: 4.29779}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2845116429278011318}
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 5.74}
+  m_AnchoredPosition: {x: 0, y: 16.6}
   m_SizeDelta: {x: 3.0843, y: 2.9997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7685188681276171774
@@ -104,7 +104,7 @@ RectTransform:
   m_GameObject: {fileID: 5116845953559294890}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.18703124, y: 0.08988536, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1694388981201337957}
@@ -203,14 +203,14 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7176385766698537730}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4285535, y: 0.23570442, z: 0.4285535}
+  m_LocalScale: {x: 1.0021057, y: 0.81755114, z: 1.3361409}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2845116429278011318}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.000024796, y: 0}
@@ -299,8 +299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 442a3ade17449794398a442548b48aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScale: {x: 1, y: 1, z: 1}
-  endScale: {x: 2, y: 2, z: 2}
+  startScale: {x: 1.0021057, y: 0.81755114, z: 1.3361409}
+  endScale: {x: 2.004212, y: 1.6351022, z: 2.672282}
   moveSprite: {fileID: 770703921671468103}
   iconSprite: {fileID: 3286673892688615762}
   doingAnimation: 0
