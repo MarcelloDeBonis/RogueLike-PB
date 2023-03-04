@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 6045201616447112264}
+  clipClick: {fileID: 8300000, guid: 8591e869bf676214aa1410337f771fc4, type: 3}
 --- !u!114 &1100070382561157102
 MonoBehaviour:
   m_ObjectHideFlags: 0

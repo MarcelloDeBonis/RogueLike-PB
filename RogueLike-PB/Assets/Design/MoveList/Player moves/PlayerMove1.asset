@@ -15,7 +15,7 @@ MonoBehaviour:
   move:
     name: La mossa
     clip: {fileID: 0}
-    moveImage: {fileID: 7612939500183778575, guid: 2998bc32de540624a8f60d10c7f2429c, type: 3}
+    moveImage: {fileID: 7612939500183778575, guid: 5928275d02cbfd6498d64db589fe084c, type: 3}
     elementTyping: {fileID: 11400000, guid: 95bbcd9595191aa49b82ad0b760651c1, type: 2}
     damage: 60
     arrowPropertiesList:

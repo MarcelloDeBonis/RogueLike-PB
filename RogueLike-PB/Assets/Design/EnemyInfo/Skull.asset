@@ -21,3 +21,4 @@ MonoBehaviour:
     scriptableReliantPrimaryStruments: {fileID: 0}
     defenceElementTyping: {fileID: 11400000, guid: 83b0091983311be46962e73fa54a367f, type: 2}
     defenceSoundTyping: {fileID: 11400000, guid: 7b7b28c49956727498f092882d1e0e93, type: 2}
+    clipHitted: {fileID: 8300000, guid: 63553d02e0dd16147a52e47c3d778a91, type: 3}
