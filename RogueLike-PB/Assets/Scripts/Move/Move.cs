@@ -37,8 +37,7 @@ public string GetName()
 
 public int GetMaxDamagePossible()
 {
-    //TODO FOR THE MOMENT BEST SCORE YOU CAN DO WITH A MOVE IS THREE
-    return arrowPropertiesList.Count * 3;
+    return arrowPropertiesList.Count * ArrowManager.Instance.GetPointsKnowingEffectiveArrow(EnumEffectiveArrow.Perfect);
 }
 
 public int GetDamage()

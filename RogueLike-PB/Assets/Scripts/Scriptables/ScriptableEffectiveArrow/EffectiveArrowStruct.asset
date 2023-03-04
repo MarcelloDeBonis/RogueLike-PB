@@ -17,11 +17,11 @@ MonoBehaviour:
     points: 0
     clip: {fileID: 0}
   - effectiveArrow: 1
-    points: 0
+    points: 1
     clip: {fileID: 0}
   - effectiveArrow: 2
-    points: 0
+    points: 2
     clip: {fileID: 0}
   - effectiveArrow: 3
-    points: 0
+    points: 3
     clip: {fileID: 0}

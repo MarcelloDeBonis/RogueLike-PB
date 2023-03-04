@@ -581,7 +581,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 961296524}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8940db1ffc022ac4bb8045cac8d1e45c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectiveArrow: 0
+  effectiveArrow: 1
 --- !u!50 &616594430
 Rigidbody2D:
   serializedVersion: 4
@@ -1089,7 +1089,7 @@ RectTransform:
   - {fileID: 1922353672}
   - {fileID: 283444606}
   m_Father: {fileID: 961296524}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1287,7 +1287,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 961296524}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1306,7 +1306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8940db1ffc022ac4bb8045cac8d1e45c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectiveArrow: 0
+  effectiveArrow: 2
 --- !u!50 &827537779
 Rigidbody2D:
   serializedVersion: 4
@@ -1538,7 +1538,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 961296524}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1557,7 +1557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8940db1ffc022ac4bb8045cac8d1e45c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectiveArrow: 0
+  effectiveArrow: 2
 --- !u!50 &924296507
 Rigidbody2D:
   serializedVersion: 4
@@ -1633,12 +1633,12 @@ RectTransform:
   m_LocalScale: {x: 2.0106747, y: 2.0106747, z: 2.0106747}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 779367487}
   - {fileID: 616594428}
   - {fileID: 827537777}
-  - {fileID: 2036190814}
-  - {fileID: 924296505}
   - {fileID: 1070942836}
+  - {fileID: 924296505}
+  - {fileID: 2036190814}
+  - {fileID: 779367487}
   - {fileID: 1463021225}
   - {fileID: 364483025}
   - {fileID: 1015936748}
@@ -1749,7 +1749,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 961296524}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1768,7 +1768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8940db1ffc022ac4bb8045cac8d1e45c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectiveArrow: 0
+  effectiveArrow: 3
 --- !u!50 &1070942838
 Rigidbody2D:
   serializedVersion: 4
@@ -2898,7 +2898,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 961296524}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2917,7 +2917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8940db1ffc022ac4bb8045cac8d1e45c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectiveArrow: 0
+  effectiveArrow: 1
 --- !u!50 &2036190816
 Rigidbody2D:
   serializedVersion: 4
