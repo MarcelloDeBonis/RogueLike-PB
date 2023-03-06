@@ -33,6 +33,11 @@ public void ExitGame()
 #endif
 }
 
+public void OpenCredits()
+{
+    SceneManager.LoadScene("CreditsScene");
+}
+
 #endregion
 
 }
