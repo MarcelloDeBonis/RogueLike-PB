@@ -17,4 +17,4 @@ MonoBehaviour:
     - {fileID: 11400000, guid: acc9a4d1368c1d047a99345972ac6e17, type: 2}
     - {fileID: 11400000, guid: a98fd24b5a322de4c9a71566132fee02, type: 2}
     soundTyping: {fileID: 11400000, guid: d54035af0fccd864f920b19c8d37548a, type: 2}
-    damage: 15
+    damage: 20

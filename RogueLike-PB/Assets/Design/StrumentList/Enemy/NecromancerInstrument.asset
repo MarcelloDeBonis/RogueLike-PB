@@ -16,4 +16,4 @@ MonoBehaviour:
     moveList:
     - {fileID: 11400000, guid: 150bccaf000753849a594dc17bf85ed0, type: 2}
     soundTyping: {fileID: 11400000, guid: d1b59811785e12248bd75af5e346c742, type: 2}
-    damage: 20
+    damage: 40
