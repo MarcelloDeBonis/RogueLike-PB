@@ -140,6 +140,11 @@ public void SetNextRoom()
     currentRoom = roomList[index + 1];
 }
 
+public ScriptableRoom GetFirstRoom()
+{
+    return roomList[0];
+}
+
 #endregion
 
 }

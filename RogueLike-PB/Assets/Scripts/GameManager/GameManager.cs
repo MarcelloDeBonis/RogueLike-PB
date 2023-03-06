@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "New Save File")]
-public class ScriptableSaves : ScriptableObject
+public class GameManager : Singleton<GameManager>
 {
 
 #region Variables & Properties
 
-[SerializeField] public List<Dungeon> dungeonList;
+[SerializeField] private ScriptableSaves saveData;
+[SerializeField] private List<Dungeon> dungeonList;
+
+//Don't Touch in editor
+public Dungeon currentDungeon;
 
 #endregion
 
@@ -36,7 +39,11 @@ public class ScriptableSaves : ScriptableObject
 
 #region Methods
 
-
+private void StartNewGame()
+{
+    //TODO SAVING FILES
+    //saveData.dungeonList= DungeonGenerator.Instance.GenerateDungeonList(dungeonList);
+}
 
 #endregion
 

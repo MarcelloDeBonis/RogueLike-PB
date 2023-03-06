@@ -35,7 +35,7 @@ private GameObject frontWall;
     // Start is called before the first frame update
     void Start()
     {
-        PrepareNewRoom(DungeonGenerator.Instance.GetCurrentDungeon().GetCurrentFloor().GetCurrentRoom());
+        LoadNewRoom();
     }
 
     // Update is called once per frame
@@ -47,6 +47,20 @@ private GameObject frontWall;
 #endregion
 
 #region Methods
+
+public void LoadNewRoom()
+{
+    if (DungeonGenerator.Instance.IsFirstRoom(DungeonGenerator.Instance.GetCurrentDungeon().GetCurrentFloor()
+            .GetCurrentRoom()))
+    {
+        LoadingManager.Instance.NewRoom();
+    }
+    else
+    {
+        LoadingManager.Instance.SetActivation(false);
+        PrepareNewRoom(DungeonGenerator.Instance.GetCurrentDungeon().GetCurrentFloor().GetCurrentRoom());
+    }
+}
 
 public void PrepareNewRoom(ScriptableRoom _room)
 {
