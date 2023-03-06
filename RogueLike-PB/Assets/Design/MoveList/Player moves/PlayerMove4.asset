@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerMove4
   m_EditorClassIdentifier: 
   move:
-    name: E un altra ancora
+    name: Fireball +
     clip: {fileID: 0}
     moveImage: {fileID: 7612939500183778575, guid: 5928275d02cbfd6498d64db589fe084c, type: 3}
     elementTyping: {fileID: 11400000, guid: 95bbcd9595191aa49b82ad0b760651c1, type: 2}
@@ -23,47 +23,59 @@ MonoBehaviour:
       speed: 450
       enumArrow: 0
       key: 276
+      clipWhenKeyPressed: {fileID: 0}
     - waitingTime: 0.5
       speed: 450
       enumArrow: 0
       key: 276
+      clipWhenKeyPressed: {fileID: 0}
     - waitingTime: 0.5
       speed: 450
       enumArrow: 2
       key: 273
+      clipWhenKeyPressed: {fileID: 0}
     - waitingTime: 0
       speed: 450
       enumArrow: 1
       key: 274
+      clipWhenKeyPressed: {fileID: 0}
     - waitingTime: 0.5
       speed: 450
       enumArrow: 3
       key: 275
+      clipWhenKeyPressed: {fileID: 0}
     - waitingTime: 0.5
       speed: 450
       enumArrow: 3
       key: 275
+      clipWhenKeyPressed: {fileID: 0}
     - waitingTime: 0.5
       speed: 450
       enumArrow: 1
       key: 274
+      clipWhenKeyPressed: {fileID: 0}
     - waitingTime: 0
       speed: 450
       enumArrow: 2
       key: 273
+      clipWhenKeyPressed: {fileID: 0}
     - waitingTime: 0.5
       speed: 450
       enumArrow: 0
       key: 276
+      clipWhenKeyPressed: {fileID: 0}
     - waitingTime: 0
       speed: 450
       enumArrow: 3
       key: 275
+      clipWhenKeyPressed: {fileID: 0}
     - waitingTime: 0.5
       speed: 450
       enumArrow: 0
       key: 276
+      clipWhenKeyPressed: {fileID: 0}
     - waitingTime: 0
       speed: 450
       enumArrow: 3
       key: 275
+      clipWhenKeyPressed: {fileID: 0}
