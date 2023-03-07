@@ -299,8 +299,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 442a3ade17449794398a442548b48aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScale: {x: 0.46083, y: 0.46083, z: 0.46083}
-  endScale: {x: 0.92166, y: 0.92166, z: 0.92166}
+  startScale: {x: 0.07420222, y: 0.07420222, z: 0.07420222}
+  endScale: {x: 0.14840443, y: 0.14840443, z: 0.14840443}
   moveSprite: {fileID: 2797831354607564095}
   iconSprite: {fileID: 6555470927379447826}
   secondsIconActived: 2
