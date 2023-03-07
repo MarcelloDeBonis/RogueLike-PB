@@ -306,6 +306,30 @@ PrefabInstance:
       propertyPath: IsPersistent
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[1].maxNumberRoom
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[1].minNumberRoom
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[2].maxNumberRoom
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[2].minNumberRoom
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[1].percentageRoomsWithEnemiesAtLeast
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: dungeonList.Array.data[0].floorList.Array.data[2].percentageRoomsWithEnemiesAtLeast
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5929971288816147768, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
       propertyPath: m_Name
       value: DungeonGenerator
