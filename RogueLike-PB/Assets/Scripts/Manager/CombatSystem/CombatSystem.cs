@@ -13,6 +13,8 @@ public class CombatSystem : Singleton<CombatSystem>
 
 #region Variables & Properties
 
+[SerializeField] private ScriptablePlayerInfo playerSaveData;
+
 private int currentDamage = 0;
 
 private GameObject player;
@@ -135,7 +137,7 @@ private IEnumerator PlayerPhase()
     }
     else
     {
-        yield return StartCoroutine(MoveCharacter(player, player.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
+        yield return StartCoroutine(MoveCharacter(player, player.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition(), speedMovementEntities));
     }
 }
 
@@ -155,7 +157,7 @@ private IEnumerator EnemiesPhase()
         }
         else
         {
-            yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAttackPosition()));
+            yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAttackPosition(),speedMovementEntities));
         }
         
         yield return StartCoroutine(ChooseMove(enemy)); 
@@ -177,7 +179,7 @@ private IEnumerator EnemiesPhase()
         }
         else
         {
-            yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
+            yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition(), speedMovementEntities));
         }
 
     }
@@ -239,11 +241,11 @@ private IEnumerator MoveCharacterAndEnemySelected(GameObject character1, Vector3
     
 }
 
-private IEnumerator MoveCharacter(GameObject character, Vector3 end)
+private IEnumerator MoveCharacter(GameObject character, Vector3 end, float speed)
 {
     while (character.transform.position != end)
     {
-        character.transform.position = Vector3.MoveTowards(character.transform.position, end, speedMovementEntities * Time.deltaTime);
+        character.transform.position = Vector3.MoveTowards(character.transform.position, end, speed * Time.deltaTime);
         yield return null;
     } 
 }
@@ -342,7 +344,7 @@ private IEnumerator StartMoveOnScreen(GameObject character)
 private IEnumerator DoMoveAnimation()
 {
     //TODO BY CODE, BUT IN THE FUTURE, DONE BY DESIGN/2D ARTIST
-    yield return MoveCharacter(moveSpriteGameObject, opponentSelected.transform.position);
+    yield return MoveCharacter(moveSpriteGameObject, opponentSelected.transform.position, moveSpriteGameObject.GetComponent<Move2DSprite>().speedMoving);
 
     //TODO ANIMATION VFX WHEN ENEMY IS HITTED
     
@@ -355,14 +357,10 @@ private IEnumerator DoMoveAnimation()
     
     //TODO ANIMATION HITTED and wait until is finished
     moveSpriteGameObject.GetComponent<Move2DSprite>().HitAnimation(FindSpriteDependingOfMultiplier(GetTotalMultiplier()));
-
-    while (moveSpriteGameObject.GetComponent<Move2DSprite>().doingAnimation)
-    {
-        yield return null;
-    }
     
-    moveSpriteGameObject.SetActive(false);
 }
+
+
 
 private IEnumerator ApplyDamage(GameObject character)
 {
@@ -588,6 +586,7 @@ private void EndCombat()
     }
     else if (enemyList.Count == 0)
     {
+        playerSaveData.SetCombactInfo(player.GetComponent<Character>().GetCombatInfo());
         RoomManager.Instance.RoomEmpty();
     }
     

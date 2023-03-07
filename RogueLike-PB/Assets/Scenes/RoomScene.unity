@@ -2311,6 +2311,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1232160587}
     - target: {fileID: 8763785975576318583, guid: 1fb10b59ad5fe7644b57dd4aa9ff7ecc, type: 3}
+      propertyPath: playerSaveData
+      value: 
+      objectReference: {fileID: 11400000, guid: 22e8782e60d9b9742966cc0663aa2ee1, type: 2}
+    - target: {fileID: 8763785975576318583, guid: 1fb10b59ad5fe7644b57dd4aa9ff7ecc, type: 3}
       propertyPath: screenEnemyMove
       value: 
       objectReference: {fileID: 993562761}

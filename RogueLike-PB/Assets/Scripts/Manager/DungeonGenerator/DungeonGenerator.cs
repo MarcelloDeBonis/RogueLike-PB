@@ -71,6 +71,10 @@ public void NextRoom()
     {
         currentDungeon.GetCurrentFloor().SetNextRoom();
     }
+    else
+    {
+        //if()
+    }
     
     GenerateNewScene();
 }
