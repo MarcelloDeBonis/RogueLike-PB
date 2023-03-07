@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,9 @@ public class Dungeon
 
 [SerializeField] private List<Floor> floorList;
 private Floor currentFloor;
+
+//Don't Touch in editor
+[SerializeField] private int index = 0;
 
 #endregion
 
@@ -49,14 +53,13 @@ public void GenerateDungeon()
 
 public void SetNextFloor()
 {
-    int index = floorList.IndexOf(currentFloor);
-    currentFloor = floorList[index + 1];
+    index++;
+    currentFloor = floorList[index];
 }
 
 public bool ExistNextFloor()
 {
-    int index = floorList.IndexOf(currentFloor);
-    return (floorList[index + 1] != null);
+    return (index != floorList.Count-1);
 }
 
 public Floor GetCurrentFloor()

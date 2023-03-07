@@ -42,6 +42,8 @@ private int strumentDamage;
 
 bool choosen = false;
 
+private List<Move2DComponent> move2dList = new List<Move2DComponent>();
+
 #endregion
 
 #region MonoBehaviour
@@ -91,13 +93,20 @@ private void PrepareCombat(GameObject _player, List<GameObject> _enemylist)
     
     moveCollector.SetActive(true);
     
+    SetPlayerMovesButtons();
+}
+
+private void SetPlayerMovesButtons()
+{
+    move2dList.Clear();
+    
     foreach (ScriptableMove scriptableMove in player.GetComponent<Player>().GetCombatInfo().GetScriptableMove())
     {
-      //  //TODO BUG MOVES
         GameObject newCollectorMove = Instantiate(move2DObjectPrefab);
         newCollectorMove.transform.position = moveCollector.transform.position;
         newCollectorMove.transform.SetParent(moveCollector.transform);
         newCollectorMove.GetComponent<Move2DComponent>().InitObject(scriptableMove);
+        move2dList.Add(newCollectorMove.GetComponent<Move2DComponent>());
     }
 }
 
@@ -149,8 +158,8 @@ private IEnumerator EnemiesPhase()
     foreach (GameObject enemy in enemyList)
     {
         characterIsDoingMove = enemy;
-        yield return StartCoroutine(ChooseTarget(enemy));
             
+        yield return StartCoroutine(ChooseTarget(enemy));
         if (enemy== firsteEnemy)
         {
             yield return StartCoroutine(MoveCharacterAndEnemySelected(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAttackPosition(), opponentSelected, opponentSelected.GetComponent<Character>().GetCombatInfo().GetAttackPosition()));
@@ -160,7 +169,7 @@ private IEnumerator EnemiesPhase()
             yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAttackPosition(),speedMovementEntities));
         }
         
-        yield return StartCoroutine(ChooseMove(enemy)); 
+        yield return StartCoroutine(ChooseMove(enemy));
         yield return StartCoroutine(PrepareUiForMove(enemy));
         battlePhase = EnumBattlePhase.CharacterAttackingPhase;
         yield return StartCoroutine(StartMoveOnScreen(enemy));
@@ -226,9 +235,16 @@ private IEnumerator ChooseTarget(GameObject character)
         
         moveCollector.SetActive(false);
     }
-    
+
 }
 
+private void GenerateMoveSprite()
+{
+    Destroy(moveSpriteGameObject);
+    moveSpriteGameObject = Instantiate(choosenMove.GetMove().GetPrefab());
+    moveSpriteGameObject.GetComponent<Move2DSprite>().SetScale(0);
+    moveSpriteGameObject.SetActive(false);
+}
 
 private IEnumerator MoveCharacterAndEnemySelected(GameObject character1, Vector3 end1, GameObject character2, Vector3 end2)
 {
@@ -254,7 +270,6 @@ private IEnumerator PlayerDefend()
 {
     yield return StartCoroutine(PrepareUiForMove(player));
     yield return StartCoroutine(StartMoveOnScreen(player));
-    //TODO dannometro a schermo
     yield return null;
 }
 
@@ -265,6 +280,7 @@ private IEnumerator ChooseMove(GameObject character)
     if (enemyList.Contains(character))
     {
         choosenMove = character.GetComponent<Character>().GetCombatInfo().GetRandomScriptableMove();
+        GenerateMoveSprite();
     }
     else
     {
@@ -275,17 +291,22 @@ private IEnumerator ChooseMove(GameObject character)
             yield return null;
         }
     }
-
-    Destroy(moveSpriteGameObject);
-    moveSpriteGameObject = Instantiate(choosenMove.GetMove().GetPrefab());
-    moveSpriteGameObject.GetComponent<Move2DSprite>().SetScale(0);
-    moveSpriteGameObject.SetActive(false);
 }
 
 public void ChooseMove(ScriptableMove _move)
 {
+    foreach (Move2DComponent move in move2dList)
+    {
+        if (move.scriptableMove!=_move)
+        {
+            move.DeactiveSelection();
+        }
+    }
+    
     choosenMove = _move;
     choosen = true;
+
+    GenerateMoveSprite();
 }
 
 private IEnumerator PrepareUiForMove(GameObject character)

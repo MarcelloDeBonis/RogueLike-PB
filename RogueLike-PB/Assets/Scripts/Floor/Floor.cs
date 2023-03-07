@@ -32,6 +32,7 @@ private int lootRoomNumber;
 //Don't Touch in Editor
 [SerializeField] private ScriptableRoom currentRoom;
 [SerializeField] private List<ScriptableRoom> roomList;
+[SerializeField] private int index = 0;
 
 #endregion
 
@@ -130,14 +131,13 @@ public ScriptableRoom GetCurrentRoom()
 
 public bool ExistNextRoom()
 {
-    int index = roomList.IndexOf(currentRoom);
-    return (roomList[index + 1] != null);
+    return (index != roomList.Count-1);
 }
 
 public void SetNextRoom()
 {
-    int index = roomList.IndexOf(currentRoom);
-    currentRoom = roomList[index + 1];
+    index++;
+    currentRoom = roomList[index];
 }
 
 public ScriptableRoom GetFirstRoom()

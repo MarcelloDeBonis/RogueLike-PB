@@ -9,11 +9,13 @@ public class Move2DComponent : MonoBehaviour
 
 #region Variables & Properties
 
-private ScriptableMove scriptableMove;
+[HideInInspector]
+public ScriptableMove scriptableMove;
+
 private Move move = new Move();
 [SerializeField] private Text text;
 [SerializeField] private AudioClip clipClick;
-private bool isSelected=false;
+[SerializeField] private GameObject lightPressedImage;
 
 #endregion
 
@@ -41,6 +43,11 @@ private bool isSelected=false;
 
 #region Methods
 
+public void SetActivationLightAroundMove(bool active)
+{
+    lightPressedImage.SetActive(active);
+}
+
 public void InitObject(ScriptableMove newMove)
 {
     scriptableMove = newMove;
@@ -53,8 +60,16 @@ private void SetMoveName()
     text.text = move.GetName();
 }
 
+public void DeactiveSelection()
+{
+    SetActivationLightAroundMove(false);
+}
+
+
+
 public void Click()
 {
+    SetActivationLightAroundMove(true);
     CombatSystem.Instance.ChooseMove(scriptableMove);
     SoundManager.Instance.PlayEffect(clipClick);
 }
