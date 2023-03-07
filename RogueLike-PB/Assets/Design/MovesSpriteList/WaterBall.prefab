@@ -228,6 +228,7 @@ MonoBehaviour:
   moveSprite: {fileID: 770703921671468103}
   iconSprite: {fileID: 8766022144201898518}
   secondsIconActived: 2
+  speedMoving: 7
 --- !u!1 &8185387873867650248
 GameObject:
   m_ObjectHideFlags: 0

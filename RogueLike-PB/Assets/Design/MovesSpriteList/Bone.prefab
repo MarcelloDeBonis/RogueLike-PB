@@ -304,3 +304,4 @@ MonoBehaviour:
   moveSprite: {fileID: 770703921671468103}
   iconSprite: {fileID: 6555470927379447826}
   secondsIconActived: 2
+  speedMoving: 7
