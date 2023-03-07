@@ -12,13 +12,17 @@ public class ArrowProperties
 [SerializeField] private float speed;
 [SerializeField] private EnumArrow enumArrow;
 [SerializeField] private KeyCode key;
+[SerializeField] private AudioClip clipWhenKeyPressed;
 
 #endregion
 
+public AudioClip GetClip()
+{
+    return clipWhenKeyPressed;
+}
 
 public KeyCode Getkey()
 {
-    
     return key;
 }
 

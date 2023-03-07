@@ -45,3 +45,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPersistent: 0
+  dungeonList:
+  - floorList:
+    - bossFloor: 0
+      encounterRoom: 0
+      allPossibleEnemiesRooms:
+      - {fileID: 11400000, guid: f238ac273a9aa4d439749f19ece109d0, type: 2}
+      - {fileID: 11400000, guid: f4434b14cea8d6c4fbbe766086c93e21, type: 2}
+      - {fileID: 11400000, guid: 3a11bed74516b9f42bc1874dcef722c1, type: 2}
+      - {fileID: 11400000, guid: c82c16a54d30ace4b899ecc68d7ecdd6, type: 2}
+      - {fileID: 11400000, guid: 0849f1ca0beaba646baa9fa619030682, type: 2}
+      allPossibleLootOnlyRooms: []
+      startingRoom: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+      endRoom: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+      bossRoom: {fileID: 0}
+      maxNumberRoom: 3
+      minNumberRoom: 2
+      percentageRoomsWithEnemiesAtLeast: 100
+      BackGorundsprite: {fileID: 0}
+      currentRoom: {fileID: 0}
+      roomList: []
+    - bossFloor: 0
+      encounterRoom: 0
+      allPossibleEnemiesRooms:
+      - {fileID: 11400000, guid: 6330a8d219c60094dabec9beb9e23ba1, type: 2}
+      - {fileID: 11400000, guid: 6bd63ff1f49e48642a3363096b4f240d, type: 2}
+      - {fileID: 11400000, guid: 56e0c283820c0dd4db21b9110aa4589a, type: 2}
+      - {fileID: 11400000, guid: 6f89266f1a28baf43bea5227d6fd76d6, type: 2}
+      - {fileID: 11400000, guid: 8fd821d6ac6332540af624b1b4949cb6, type: 2}
+      allPossibleLootOnlyRooms: []
+      startingRoom: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+      endRoom: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+      bossRoom: {fileID: 0}
+      maxNumberRoom: 0
+      minNumberRoom: 0
+      percentageRoomsWithEnemiesAtLeast: 0
+      BackGorundsprite: {fileID: 0}
+      currentRoom: {fileID: 0}
+      roomList: []
+    - bossFloor: 0
+      encounterRoom: 0
+      allPossibleEnemiesRooms:
+      - {fileID: 11400000, guid: 7f4033e2ae1e20f40be1be64c02b39aa, type: 2}
+      - {fileID: 11400000, guid: 215fb744bf05b8343ab75b7593ff9a7e, type: 2}
+      - {fileID: 11400000, guid: 5d960d798f1abc847a7be7c542b44c18, type: 2}
+      - {fileID: 11400000, guid: 3aba865554419fa4093528bae782f299, type: 2}
+      - {fileID: 11400000, guid: 47cfabceba9b963409dceea4b05d18c9, type: 2}
+      allPossibleLootOnlyRooms: []
+      startingRoom: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+      endRoom: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+      bossRoom: {fileID: 0}
+      maxNumberRoom: 0
+      minNumberRoom: 0
+      percentageRoomsWithEnemiesAtLeast: 0
+      BackGorundsprite: {fileID: 0}
+      currentRoom: {fileID: 0}
+      roomList: []

@@ -21,6 +21,8 @@ private List<GameObject> arrowSpawnedList = new List<GameObject>();
 [SerializeField] private GameObject colliderDeleteLeft;
 [SerializeField] private GameObject colliderDeleteRight;
 
+[SerializeField] public ScriptableEffectiveArrow effectiveArrowStruct;
+
 private GameObject attackingEntity;
 
 private bool arrowsGoOn = false;
@@ -63,28 +65,28 @@ public IEnumerator SpawnArrowsInTime(ScriptableMove move)
             case EnumArrow.LeftArrow:
                 
                 arrowSpawned=leftArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteLeft, arrow.GetSpeed(), arrow.Getkey());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteLeft, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
             
             case EnumArrow.DownArrow:
                 
                 arrowSpawned=downArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteDown, arrow.GetSpeed(), arrow.Getkey());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteDown, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
             
             case EnumArrow.UpArrow:
                 
                 arrowSpawned=upArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteUp, arrow.GetSpeed(), arrow.Getkey());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteUp, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
             
             case EnumArrow.RightArrow:
                 
                 arrowSpawned=rightArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteRight, arrow.GetSpeed(), arrow.Getkey());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteRight, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
         }
@@ -104,13 +106,17 @@ private IEnumerator CheckInput()
             {
                 if (arrow.GetComponent<ArrowPoolable>().KeyIsPressed())
                 {
+                    arrow.GetComponent<ArrowPoolable>().SoundArrow();
+                    
+                    SoundManager.Instance.PlaySound(GetAudioClipKnowingEffectiveArrow(arrow.GetComponent<ArrowPoolable>().GetEffectiveArrow()));
+                    
                     if (CombatSystem.Instance.GetEnumBattlePhase() == EnumBattlePhase.CharacterAttackingPhase)
                     {
-                        CombatSystem.Instance.AddPointsToDamageCalculator(arrow.GetComponent<ArrowPoolable>().GetPoints());
+                        CombatSystem.Instance.AddPointsToDamageCalculator(GetPointsKnowingEffectiveArrow(arrow.GetComponent<ArrowPoolable>().GetEffectiveArrow()));
                     }
                     else if(CombatSystem.Instance.GetEnumBattlePhase() == EnumBattlePhase.PlayerDefendingPhase)
                     {
-                        CombatSystem.Instance.RemovePointsToDamageCalculator(arrow.GetComponent<ArrowPoolable>().GetPoints());
+                        CombatSystem.Instance.RemovePointsToDamageCalculator(GetPointsKnowingEffectiveArrow(arrow.GetComponent<ArrowPoolable>().GetEffectiveArrow()));
                     }
                     DeleteFromArrowInSceneList(arrow);
                     break;
@@ -120,6 +126,32 @@ private IEnumerator CheckInput()
         
         yield return null;
     }
+}
+
+public AudioClip GetAudioClipKnowingEffectiveArrow(EnumEffectiveArrow effectiveArrow)
+{
+    foreach (StructEffectiveArrow structEffectiveArrow in effectiveArrowStruct.structEffectiveArrowsList)
+    {
+        if (structEffectiveArrow.effectiveArrow == effectiveArrow)
+        {
+            return structEffectiveArrow.clip;
+        }
+    }
+
+    return null;
+}
+
+public int GetPointsKnowingEffectiveArrow(EnumEffectiveArrow effectiveArrow)
+{
+    foreach (StructEffectiveArrow structEffectiveArrow in effectiveArrowStruct.structEffectiveArrowsList)
+    {
+        if (structEffectiveArrow.effectiveArrow == effectiveArrow)
+        {
+            return structEffectiveArrow.points;
+        }
+    }
+
+    return -1;
 }
 
 private IEnumerator CheckAllListsEmpty()

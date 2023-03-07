@@ -11,31 +11,10 @@ public class Move
 
 [SerializeField] private string name;
 [SerializeField] private AudioClip clip;
+[SerializeField] private GameObject moveImage;
 [SerializeField] private ScriptableElementTyping elementTyping;
 [SerializeField] private int damage;
 [SerializeField] private List<ArrowProperties> arrowPropertiesList;
-
-#endregion
-
-#region MonoBehaviour
-
-    // Awake is called when the script instance is being loaded
-    void Awake()
-    {
-	
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 #endregion
 
@@ -58,8 +37,7 @@ public string GetName()
 
 public int GetMaxDamagePossible()
 {
-    //TODO FOR THE MOMENT BEST SCORE YOU CAN DO WITH A MOVE IS THREE
-    return arrowPropertiesList.Count * 3;
+    return arrowPropertiesList.Count * ArrowManager.Instance.GetPointsKnowingEffectiveArrow(EnumEffectiveArrow.Perfect);
 }
 
 public int GetDamage()
@@ -70,6 +48,11 @@ public int GetDamage()
 public ScriptableElementTyping GetElementTyping()
 {
     return elementTyping;
+}
+
+public GameObject GetPrefab()
+{
+    return moveImage;
 }
 
 #endregion

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -11,6 +12,8 @@ public class CombatSystem : Singleton<CombatSystem>
 {
 
 #region Variables & Properties
+
+[SerializeField] private ScriptablePlayerInfo playerSaveData;
 
 private int currentDamage = 0;
 
@@ -22,15 +25,20 @@ private EnumBattlePhase battlePhase = EnumBattlePhase.NoBattlePhase;
 private GameObject characterIsDoingMove;
 private GameObject opponentSelected;
 
+[SerializeField] private ScriptableEffective scriptableEffective;
 [SerializeField] private GameObject screenArrowPlayer;
 [SerializeField] private GameObject screenArrowEnemies;
+[SerializeField] private GameObject screenPlayerMove;
+[SerializeField] private GameObject screenEnemyMove;
+[SerializeField] private GameObject moveSpriteGameObject;
+
 private ScriptableMove choosenMove;
 private int strumentDamage;
 
 [SerializeField] private GameObject moveCollector;
-[SerializeField] private GameObject move2DObjectPrefab;
+[FormerlySerializedAs("move2DObject")] [SerializeField] private GameObject move2DObjectPrefab;
 
-//[SerializeField] private Text 
+[SerializeField] private Slider damageSliderReference;
 
 bool choosen = false;
 
@@ -129,7 +137,7 @@ private IEnumerator PlayerPhase()
     }
     else
     {
-        yield return StartCoroutine(MoveCharacter(player, player.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
+        yield return StartCoroutine(MoveCharacter(player, player.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition(), speedMovementEntities));
     }
 }
 
@@ -149,11 +157,11 @@ private IEnumerator EnemiesPhase()
         }
         else
         {
-            yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAttackPosition()));
+            yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAttackPosition(),speedMovementEntities));
         }
-            
+        
+        yield return StartCoroutine(ChooseMove(enemy)); 
         yield return StartCoroutine(PrepareUiForMove(enemy));
-        yield return StartCoroutine(ChooseMove(enemy));
         battlePhase = EnumBattlePhase.CharacterAttackingPhase;
         yield return StartCoroutine(StartMoveOnScreen(enemy));
         battlePhase = EnumBattlePhase.PlayerDefendingPhase;
@@ -171,7 +179,7 @@ private IEnumerator EnemiesPhase()
         }
         else
         {
-            yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition()));
+            yield return StartCoroutine(MoveCharacter(enemy, enemy.GetComponent<Character>().GetCombatInfo().GetAlignmentPosition(), speedMovementEntities));
         }
 
     }
@@ -233,18 +241,17 @@ private IEnumerator MoveCharacterAndEnemySelected(GameObject character1, Vector3
     
 }
 
-private IEnumerator MoveCharacter(GameObject character, Vector3 end)
+private IEnumerator MoveCharacter(GameObject character, Vector3 end, float speed)
 {
     while (character.transform.position != end)
     {
-        character.transform.position = Vector3.MoveTowards(character.transform.position, end, speedMovementEntities * Time.deltaTime);
+        character.transform.position = Vector3.MoveTowards(character.transform.position, end, speed * Time.deltaTime);
         yield return null;
     } 
 }
 
 private IEnumerator PlayerDefend()
 {
-
     yield return StartCoroutine(PrepareUiForMove(player));
     yield return StartCoroutine(StartMoveOnScreen(player));
     //TODO dannometro a schermo
@@ -268,8 +275,11 @@ private IEnumerator ChooseMove(GameObject character)
             yield return null;
         }
     }
-    
-    
+
+    Destroy(moveSpriteGameObject);
+    moveSpriteGameObject = Instantiate(choosenMove.GetMove().GetPrefab());
+    moveSpriteGameObject.GetComponent<Move2DSprite>().SetScale(0);
+    moveSpriteGameObject.SetActive(false);
 }
 
 public void ChooseMove(ScriptableMove _move)
@@ -280,14 +290,28 @@ public void ChooseMove(ScriptableMove _move)
 
 private IEnumerator PrepareUiForMove(GameObject character)
 {
-    //TODO
-
+    if (battlePhase != EnumBattlePhase.PlayerDefendingPhase)
+    {
+        damageSliderReference.value = 0;
+        moveSpriteGameObject.GetComponent<Move2DSprite>().SetScale(0);
+    }
+    
+    damageSliderReference.gameObject.SetActive(true);
+    
     if (character.GetComponent<Player>() != null)
     {
+        if (battlePhase != EnumBattlePhase.PlayerDefendingPhase)
+        {
+            moveSpriteGameObject.transform.position = screenPlayerMove.transform.position;
+            moveSpriteGameObject.SetActive(true);
+        }
+
         ArrowManager.Instance.GetUiArrow().transform.position = screenArrowPlayer.transform.position;
     }
     else
     {
+        moveSpriteGameObject.transform.position = screenEnemyMove.transform.position;
+        moveSpriteGameObject.SetActive(true);
         ArrowManager.Instance.GetUiArrow().transform.position = screenArrowEnemies.transform.position;
     }
 
@@ -308,11 +332,39 @@ private IEnumerator StartMoveOnScreen(GameObject character)
     {
         yield return null;
     }
+
+    if (!enemyList.Contains(character))
+    {
+        yield return DoMoveAnimation();
+    }
+
+    damageSliderReference.gameObject.SetActive(false);
 }
+
+private IEnumerator DoMoveAnimation()
+{
+    //TODO BY CODE, BUT IN THE FUTURE, DONE BY DESIGN/2D ARTIST
+    yield return MoveCharacter(moveSpriteGameObject, opponentSelected.transform.position, moveSpriteGameObject.GetComponent<Move2DSprite>().speedMoving);
+
+    //TODO ANIMATION VFX WHEN ENEMY IS HITTED
+    
+    //Play Sound Hit
+    SoundManager.Instance.PlayEffect(opponentSelected.GetComponent<Character>().GetCombatInfo().clipHitted);
+
+    //TODO ANIMATION BY CAMERA
+    
+    //TODO ANIMATION OF CRIT
+    
+    //TODO ANIMATION HITTED and wait until is finished
+    moveSpriteGameObject.GetComponent<Move2DSprite>().HitAnimation(FindSpriteDependingOfMultiplier(GetTotalMultiplier()));
+    
+}
+
+
 
 private IEnumerator ApplyDamage(GameObject character)
 {
-    Debug.Log(currentDamage);
+    Debug.Log("damage before calculation: " + currentDamage);
     
     CalculateDamage(character);
     
@@ -333,6 +385,19 @@ private IEnumerator ApplyDamage(GameObject character)
     yield return null;
 }
 
+private Sprite FindSpriteDependingOfMultiplier(EnumEffectType effectType)
+{
+    foreach (EffecTypeIconStruct iconStruct in scriptableEffective.effectTypeIconList)
+    {
+        if (iconStruct.effectType == effectType)
+        {
+            return iconStruct.sprite;
+        }
+    }
+
+    return null;
+}
+
 private void CalculateDamage(GameObject character)
 {
     float percentage =(float)currentDamage / (float)choosenMove.GetMove().GetMaxDamagePossible() * 100;
@@ -341,9 +406,9 @@ private void CalculateDamage(GameObject character)
     percentage = percentage / (character.GetComponent<Character>().GetCombatInfo().GetDefence() * 2);
     
     
-    percentage = percentage * CalculateMultiplier();
-
-   //TODO
+    
+    percentage = percentage * GetNumberMultiplier();
+    
     if (Crit())
     {
         percentage *= 2;
@@ -352,58 +417,109 @@ private void CalculateDamage(GameObject character)
     currentDamage = (int)Math.Ceiling(percentage);
 }
 
-private float CalculateMultiplier()
-{
-    float multiplier = 1f;
+#region MultiplierMethods
 
-    
-    
-    
-    
+
+private float GetNumberMultiplier()
+{
+    foreach (EffectTypeMultiplierStruct multiplier in scriptableEffective.effectTypeMultiplierList)
+    {
+        if (GetTotalMultiplier() == multiplier.effectType)
+        {
+            return multiplier.mutiplier;
+        }
+    }
+
+    return 1;
+}
+
+private EnumEffectType GetElementalMultiplier()
+{
     //Elemental Multiplier
     if (choosenMove.GetMove().GetElementTyping().normalEffectiveList
         .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceElementTyping))
     {
-        
+        return EnumEffectType.Normal;
     }
     else if (choosenMove.GetMove().GetElementTyping().superEffectiveList
              .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceElementTyping))
     {
-        //TODO DELETE THOSE MAGIC NUMBERS!!!
-        multiplier *= 2;
+        return EnumEffectType.Effective;
     }
     else if (choosenMove.GetMove().GetElementTyping().notEffectiveList
              .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceElementTyping))
     {
-        multiplier *= 0.5f;
+        return EnumEffectType.NotVeryEffective;
     }
 
-    
-    
-    
-    
-    
-    
-    
+    return EnumEffectType.Normal;
+}
+
+private EnumEffectType GetSoundMultiplier()
+{
     //SoundMultiplier
     if (characterIsDoingMove.GetComponent<Character>().GetCombatInfo().GetStrumentSoundTyping().normalEffectiveList
         .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceSoundTyping))
     {
-        
+        return EnumEffectType.Normal;
     }
     else if ((characterIsDoingMove.GetComponent<Character>().GetCombatInfo().GetStrumentSoundTyping().superEffectiveList
                  .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceSoundTyping)))
     {
-        multiplier *= 2;
+        return EnumEffectType.Effective;
     }
     else if (((characterIsDoingMove.GetComponent<Character>().GetCombatInfo().GetStrumentSoundTyping().notEffectiveList
                  .Contains(opponentSelected.GetComponent<Character>().GetCombatInfo().defenceSoundTyping))))
     {
-        multiplier *= 0.5f;
+        return EnumEffectType.NotVeryEffective;
     }
-    
-    return multiplier;
+
+    return EnumEffectType.Normal;
 }
+
+private EnumEffectType GetTotalMultiplier()
+{
+
+    if (GetElementalMultiplier() == EnumEffectType.Effective)
+    {
+        if (GetSoundMultiplier() == EnumEffectType.Effective)
+        {
+            return EnumEffectType.SuperEffective;
+        }
+        else if (GetSoundMultiplier() == EnumEffectType.Normal)
+        {
+            return EnumEffectType.Effective;
+        }
+        else if (GetSoundMultiplier() == EnumEffectType.NotVeryEffective)
+        {
+            return EnumEffectType.Normal;
+        }
+    }
+    else if (GetElementalMultiplier() == EnumEffectType.Normal)
+    {
+        return GetSoundMultiplier();
+    }
+    else if(GetElementalMultiplier() == EnumEffectType.NotVeryEffective)
+    {
+        if (GetSoundMultiplier() == EnumEffectType.Effective)
+        {
+            return EnumEffectType.Normal;
+        }
+        else if (GetSoundMultiplier() == EnumEffectType.Normal)
+        {
+            return EnumEffectType.NotVeryEffective;
+        }
+        else if (GetSoundMultiplier() == EnumEffectType.NotVeryEffective)
+        {
+            return EnumEffectType.NotEffective;
+        }
+    }
+
+    return EnumEffectType.Normal;
+}
+
+#endregion
+
 
 private bool Crit()
 {
@@ -424,19 +540,32 @@ private bool Crit()
 
 public void RemovePointsToDamageCalculator(int damagePoints)
 {
-    //TODO DANNOMETRO
     currentDamage -= damagePoints;
+    UpgradeDamageSlider();
+    UpgradeMoveScale();
 }
 
 public void AddPointsToDamageCalculator(int damagePoints)
 {
-    //TODO DANNOMETRO
     currentDamage += damagePoints;
+    UpgradeDamageSlider();
+    UpgradeMoveScale();
 }
 
 private void ResetDamage()
 {
     currentDamage = 0;
+    damageSliderReference.value = 0;
+}
+
+private void UpgradeMoveScale()
+{
+    moveSpriteGameObject.GetComponent<Move2DSprite>().SetScale((float)currentDamage / (float)choosenMove.GetMove().GetMaxDamagePossible());
+}
+
+private void UpgradeDamageSlider()
+{
+    damageSliderReference.value = (float)currentDamage / (float)choosenMove.GetMove().GetMaxDamagePossible();
 }
 
 private bool TeamWon()
@@ -457,6 +586,7 @@ private void EndCombat()
     }
     else if (enemyList.Count == 0)
     {
+        playerSaveData.SetCombactInfo(player.GetComponent<Character>().GetCombatInfo());
         RoomManager.Instance.RoomEmpty();
     }
     

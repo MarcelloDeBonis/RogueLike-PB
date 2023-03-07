@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -51,7 +52,17 @@ public void GenerateDungeonList()
         dungeon.GenerateDungeon();
     }
 
-    currentDungeon=dungeonList[0];
+    SetCurrentDungeon(dungeonList[0]);
+}
+
+private void SetCurrentDungeon(Dungeon dungeon)
+{
+    currentDungeon = dungeon;
+}
+
+public bool IsFirstRoom(ScriptableRoom room)
+{
+    return currentDungeon.GetCurrentFloor().GetFirstRoom() == room;
 }
 
 public void NextRoom()
@@ -59,6 +70,10 @@ public void NextRoom()
     if (currentDungeon.GetCurrentFloor().ExistNextRoom())
     {
         currentDungeon.GetCurrentFloor().SetNextRoom();
+    }
+    else
+    {
+        //if()
     }
     
     GenerateNewScene();

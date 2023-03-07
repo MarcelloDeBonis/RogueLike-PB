@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a0faaff8a999c438fafe1b14a8b129, type: 3}
+  m_Name: Grass Necromancer
+  m_EditorClassIdentifier: 
+  combactinfo:
+    name: Grass Necromancer
+    difficult: 1
+    life: 70
+    startDefence: 15
+    scriptableAlonePrimaryStruments: {fileID: 11400000, guid: fc44c0033558f4a47a712026bfb37217, type: 2}
+    scriptableReliantPrimaryStruments: {fileID: 0}
+    defenceElementTyping: {fileID: 11400000, guid: dc6442a5a8701e14eb06699b583958c3, type: 2}
+    defenceSoundTyping: {fileID: 11400000, guid: d1b59811785e12248bd75af5e346c742, type: 2}
+    clipHitted: {fileID: 8300000, guid: 450bed6c62edd754ebc8bc1a27cac359, type: 3}

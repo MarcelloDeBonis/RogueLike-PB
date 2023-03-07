@@ -8,7 +8,7 @@ public class ArrowColliderComponent : MonoBehaviour
 
 #region Variables & Properties
 
-[SerializeField] private int pointsWhenPlayerClick;
+[SerializeField] private EnumEffectiveArrow effectiveArrow;
 
 #endregion
 
@@ -18,22 +18,23 @@ private void OnCollisionEnter2D(Collision2D collision)
 {
     if (collision.gameObject.GetComponent<ArrowPoolable>() != null)
     {
-        if(pointsWhenPlayerClick == 0)
+        if(effectiveArrow == EnumEffectiveArrow.Bad)
         {
             ArrowManager.Instance.DeleteFromArrowInSceneList(collision.gameObject);
             return;
         }
         
+        //TODO AI ABOUT DIFFICULTY
         if (ArrowManager.Instance.GetAttackingEntity().GetComponent<Enemy>() != null && this.gameObject.name== "Collider Perfect")
         {
-            CombatSystem.Instance.AddPointsToDamageCalculator(pointsWhenPlayerClick);
+            CombatSystem.Instance.AddPointsToDamageCalculator(ArrowManager.Instance.GetPointsKnowingEffectiveArrow(EnumEffectiveArrow.Perfect));
             ArrowManager.Instance.DeleteFromArrowInSceneList(collision.gameObject);
             return;
         }
         
-        if (pointsWhenPlayerClick != 0)
+        if (effectiveArrow != EnumEffectiveArrow.Bad)
         {
-            collision.gameObject.GetComponent<ArrowPoolable>().SetPoints(pointsWhenPlayerClick);
+            collision.gameObject.GetComponent<ArrowPoolable>().SetEffective(effectiveArrow);
             return;
         }
         

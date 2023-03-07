@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a0faaff8a999c438fafe1b14a8b129, type: 3}
+  m_Name: Fire Skull
+  m_EditorClassIdentifier: 
+  combactinfo:
+    name: Fire Skull
+    difficult: 1
+    life: 50
+    startDefence: 15
+    scriptableAlonePrimaryStruments: {fileID: 11400000, guid: 0666e14e5cb14204482161b84b17658b, type: 2}
+    scriptableReliantPrimaryStruments: {fileID: 0}
+    defenceElementTyping: {fileID: 11400000, guid: 95bbcd9595191aa49b82ad0b760651c1, type: 2}
+    defenceSoundTyping: {fileID: 11400000, guid: 7b7b28c49956727498f092882d1e0e93, type: 2}
+    clipHitted: {fileID: 8300000, guid: 63553d02e0dd16147a52e47c3d778a91, type: 3}

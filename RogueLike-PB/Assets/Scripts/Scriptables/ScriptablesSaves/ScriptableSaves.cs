@@ -8,7 +8,7 @@ public class ScriptableSaves : ScriptableObject
 
 #region Variables & Properties
 
-
+[SerializeField] public List<Dungeon> dungeonList;
 
 #endregion
 

@@ -10,7 +10,8 @@ public class ArrowPoolable : ObjectPoolable
 private float speed;
 private EnumArrow enumArrow;
 private KeyCode key;
-private int points = 0;
+private EnumEffectiveArrow effectiveArrow;
+private AudioClip clip;
 
 #endregion
 
@@ -21,11 +22,23 @@ private void SetSpeed(float newSpeed)
     speed = newSpeed;
 }
 
-public void StartArrow(GameObject colliderDeleteArrow ,float newSpeed, KeyCode newKey)
+public void StartArrow(GameObject colliderDeleteArrow ,float newSpeed, KeyCode newKey, AudioClip newClip)
 {
+    ResetPoints();
     SetKey(newKey);
     SetSpeed(newSpeed);
+    SetClip(newClip);
     StartCoroutine(MoveDown(colliderDeleteArrow));
+}
+
+private void SetClip(AudioClip newClip)
+{
+    clip = newClip;
+}
+
+private void ResetPoints()
+{
+    effectiveArrow = EnumEffectiveArrow.Bad;
 }
 
 private void SetKey(KeyCode newKey)
@@ -47,14 +60,19 @@ public bool KeyIsPressed()
     return (Input.GetKeyDown(key));
 }
 
-public void SetPoints(int newPoints)
+public void SetEffective(EnumEffectiveArrow newEffectivearrow)
 {
-    points = newPoints;
+    effectiveArrow = newEffectivearrow;
 }
 
-public int GetPoints()
+public EnumEffectiveArrow GetEffectiveArrow()
 {
-        return points;
+    return effectiveArrow;
+}
+
+public void SoundArrow()
+{
+    SoundManager.Instance.PlaySound(clip);
 }
 
 #endregion
