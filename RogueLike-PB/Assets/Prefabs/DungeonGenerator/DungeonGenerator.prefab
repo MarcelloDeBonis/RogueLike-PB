@@ -57,7 +57,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 0849f1ca0beaba646baa9fa619030682, type: 2}
       allPossibleLootOnlyRooms: []
       startingRoom: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
-      endRoom: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+      endRoom: {fileID: 11400000, guid: d8a3a12e61eeae84a91464b80c375cd1, type: 2}
       bossRoom: {fileID: 0}
       maxNumberRoom: 3
       minNumberRoom: 2
@@ -75,7 +75,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 8fd821d6ac6332540af624b1b4949cb6, type: 2}
       allPossibleLootOnlyRooms: []
       startingRoom: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
-      endRoom: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+      endRoom: {fileID: 11400000, guid: d8a3a12e61eeae84a91464b80c375cd1, type: 2}
       bossRoom: {fileID: 0}
       maxNumberRoom: 0
       minNumberRoom: 0
@@ -93,7 +93,7 @@ MonoBehaviour:
       - {fileID: 11400000, guid: 47cfabceba9b963409dceea4b05d18c9, type: 2}
       allPossibleLootOnlyRooms: []
       startingRoom: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
-      endRoom: {fileID: 11400000, guid: 3d20e3a62e264be4894821e06d00b56b, type: 2}
+      endRoom: {fileID: 11400000, guid: d8a3a12e61eeae84a91464b80c375cd1, type: 2}
       bossRoom: {fileID: 0}
       maxNumberRoom: 0
       minNumberRoom: 0

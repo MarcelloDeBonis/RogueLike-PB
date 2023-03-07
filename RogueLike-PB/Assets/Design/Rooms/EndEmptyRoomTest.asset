@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a74d5d03100a04f41a662a7ebb98eea1, type: 3}
-  m_Name: EmptyRoomTest
+  m_Name: EndEmptyRoomTest
   m_EditorClassIdentifier: 
   difficulty: 0
   frontWall: {fileID: 5982309805323285166, guid: cfd01bbf20865974292de391db7764f4, type: 3}
