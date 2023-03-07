@@ -10,6 +10,7 @@ public class DungeonGenerator : Singleton<DungeonGenerator>
 
 #region Variables & Properties
 
+[SerializeField] private ScriptablePlayerInfo player;
 [SerializeField] private List<Dungeon> dungeonList;
 private Dungeon currentDungeon;
 
@@ -75,6 +76,8 @@ public void NextRoom()
     {
         if (currentDungeon.ExistNextFloor())
         {
+            //TODO TO DELETE FOR FINAL BUILD
+            player.GetCombactInfo().HealTotally();
             currentDungeon.SetNextFloor();
         }
         else

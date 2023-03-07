@@ -28,12 +28,14 @@ public void SetScale(float t)
     moveSprite.transform.localScale = Vector3.Lerp(startScale, endScale, t);
 }
 
-public void HitAnimation(Sprite icon)
+public void HitAnimation(Sprite icon, EnumEffectType effectType)
 {
-
-    iconSprite.sprite = icon;
-    iconSprite.gameObject.SetActive(true);
-
+    if (effectType != EnumEffectType.Normal)
+    {
+        iconSprite.sprite = icon;
+        iconSprite.gameObject.SetActive(true);
+    }
+    
     //TODO WITH ARTIST
     StartCoroutine(DoAnimation());
 }

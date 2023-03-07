@@ -13,6 +13,7 @@ public class CombatInfo : ICloneable<CombatInfo>
 
     [SerializeField] private string name;
     [SerializeField] private int difficult;
+    [SerializeField] private int maxLife;
     [SerializeField] private int life;
     [SerializeField] private int startDefence;
     private int defence;
@@ -38,6 +39,7 @@ public class CombatInfo : ICloneable<CombatInfo>
         CombatInfo clone = new CombatInfo();
         clone.name = this.name;
         clone.difficult = this.difficult;
+        clone.maxLife = maxLife;
         clone.life = this.life;
         clone.alignmentPosition = this.alignmentPosition;
         clone.attackPosition = this.attackPosition;
@@ -119,6 +121,13 @@ public class CombatInfo : ICloneable<CombatInfo>
         return life == 0;
     }
 
+    public void HealTotally()
+    {
+        life = maxLife;
+    }
+    
+    #region Getters
+
     public int GetStrumentDamage()
     {
         if (primaryStrumentEquipped is ReliantPrimaryStrument)
@@ -156,7 +165,8 @@ public class CombatInfo : ICloneable<CombatInfo>
     {
         return defence;
     }
-
+#endregion
+    
 #endregion
 
 }

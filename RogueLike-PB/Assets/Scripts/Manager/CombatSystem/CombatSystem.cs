@@ -377,7 +377,7 @@ private IEnumerator DoMoveAnimation()
     //TODO ANIMATION OF CRIT
     
     //TODO ANIMATION HITTED and wait until is finished
-    moveSpriteGameObject.GetComponent<Move2DSprite>().HitAnimation(FindSpriteDependingOfMultiplier(GetTotalMultiplier()));
+    moveSpriteGameObject.GetComponent<Move2DSprite>().HitAnimation(FindSpriteDependingOfMultiplier(GetTotalMultiplier()), GetTotalMultiplier());
     
 }
 
