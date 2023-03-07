@@ -73,7 +73,14 @@ public void NextRoom()
     }
     else
     {
-        //if()
+        if (currentDungeon.ExistNextFloor())
+        {
+            currentDungeon.SetNextFloor();
+        }
+        else
+        {
+            SceneManager.LoadScene("WinGame");
+        }
     }
     
     GenerateNewScene();

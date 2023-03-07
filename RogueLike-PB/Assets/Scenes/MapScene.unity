@@ -244,7 +244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
       propertyPath: dungeonList.Array.data[0].floorList.Array.data[1].percentageRoomsWithEnemiesAtLeast
-      value: 60
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
       propertyPath: dungeonList.Array.data[0].floorList.Array.data[2].percentageRoomsWithEnemiesAtLeast
