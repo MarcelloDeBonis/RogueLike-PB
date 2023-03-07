@@ -303,4 +303,4 @@ MonoBehaviour:
   endScale: {x: 2, y: 2, z: 2}
   moveSprite: {fileID: 770703921671468103}
   iconSprite: {fileID: 6555470927379447826}
-  doingAnimation: 0
+  secondsIconActived: 2

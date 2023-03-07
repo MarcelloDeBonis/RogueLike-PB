@@ -14,8 +14,10 @@ public class Move2DSprite : MonoBehaviour
 [SerializeField] public Image moveSprite;
 [SerializeField] public Image iconSprite;
 
-[HideInInspector]
-public bool doingAnimation = false;
+[SerializeField] public float secondsIconActived;
+
+    //TODO ATTENCTION!!! THIS COULD BE WITH AN ARTIST, NOT BY TWEEN
+[SerializeField] public float speedMoving;
 
 #endregion
 
@@ -31,18 +33,17 @@ public void HitAnimation(Sprite icon)
 
     iconSprite.sprite = icon;
     iconSprite.gameObject.SetActive(true);
-    doingAnimation = true;
-    
+
     //TODO WITH ARTIST
     StartCoroutine(DoAnimation());
 }
 
 private IEnumerator DoAnimation()
 {
-    doingAnimation = true;
-    yield return new WaitForSeconds(3);
-    doingAnimation = false;
-    iconSprite.gameObject.SetActive(false);
+    moveSprite.gameObject.SetActive(false);
+    iconSprite.gameObject.SetActive(true);
+    yield return new WaitForSeconds(secondsIconActived);
+    this.gameObject.SetActive(false);
 }
 
 #endregion

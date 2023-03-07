@@ -47,6 +47,11 @@ public void GenerateDungeon()
     currentFloor = floorList[0];
 }
 
+public bool ExistNextFloor()
+{
+    return false;
+}
+
 public Floor GetCurrentFloor()
 {
     return currentFloor;

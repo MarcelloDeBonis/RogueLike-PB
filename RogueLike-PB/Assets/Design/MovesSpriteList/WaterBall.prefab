@@ -227,7 +227,7 @@ MonoBehaviour:
   endScale: {x: 1.4667884, y: 1.955718, z: 1.1504225}
   moveSprite: {fileID: 770703921671468103}
   iconSprite: {fileID: 8766022144201898518}
-  doingAnimation: 0
+  secondsIconActived: 2
 --- !u!1 &8185387873867650248
 GameObject:
   m_ObjectHideFlags: 0
