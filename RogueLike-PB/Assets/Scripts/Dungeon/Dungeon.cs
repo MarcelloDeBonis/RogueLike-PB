@@ -47,9 +47,16 @@ public void GenerateDungeon()
     currentFloor = floorList[0];
 }
 
+public void SetNextFloor()
+{
+    int index = floorList.IndexOf(currentFloor);
+    currentFloor = floorList[index + 1];
+}
+
 public bool ExistNextFloor()
 {
-    return false;
+    int index = floorList.IndexOf(currentFloor);
+    return (floorList[index + 1] != null);
 }
 
 public Floor GetCurrentFloor()
