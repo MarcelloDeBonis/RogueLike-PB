@@ -15,7 +15,7 @@ MonoBehaviour:
   move:
     name: 
     clip: {fileID: 0}
-    moveImage: {fileID: 7612939500183778575, guid: ec2c065477a17ee40817bc9e693f72a9, type: 3}
+    moveImage: {fileID: 7612939500183778575, guid: 40ab4d3e81e17d9458c2974b7eb97190, type: 3}
     elementTyping: {fileID: 11400000, guid: 83b0091983311be46962e73fa54a367f, type: 2}
     damage: 100
     arrowPropertiesList:
