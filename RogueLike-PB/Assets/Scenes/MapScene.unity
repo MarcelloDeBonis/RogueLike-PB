@@ -303,6 +303,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 11400000, guid: 22e8782e60d9b9742966cc0663aa2ee1, type: 2}
+    - target: {fileID: 5811435209481618873, guid: 89e8d55e67a26524bb19c4098af721d3, type: 3}
       propertyPath: IsPersistent
       value: 1
       objectReference: {fileID: 0}
