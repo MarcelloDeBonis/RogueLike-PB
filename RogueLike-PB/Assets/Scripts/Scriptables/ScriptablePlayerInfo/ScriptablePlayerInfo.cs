@@ -9,6 +9,9 @@ public class ScriptablePlayerInfo : ScriptableCombactInfo
     //TODO
     //STARTING INVENTORY
     //THIS CLASS WILL BE USED ALSO FOR SAVING FILES
+    
+    
+    
     // Start is called before the first frame update
     void Start()
     {
