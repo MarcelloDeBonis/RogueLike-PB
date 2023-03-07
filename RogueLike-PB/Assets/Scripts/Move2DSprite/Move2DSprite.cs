@@ -43,7 +43,6 @@ public void HitAnimation(Sprite icon, EnumEffectType effectType)
 private IEnumerator DoAnimation()
 {
     moveSprite.gameObject.SetActive(false);
-    iconSprite.gameObject.SetActive(true);
     yield return new WaitForSeconds(secondsIconActived);
     this.gameObject.SetActive(false);
 }
