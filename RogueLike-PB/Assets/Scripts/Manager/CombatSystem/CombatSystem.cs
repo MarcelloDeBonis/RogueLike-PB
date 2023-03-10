@@ -232,7 +232,11 @@ private IEnumerator ChooseTarget(GameObject character)
 
             yield return null;
         }
-        
+
+        foreach (Move2DComponent move in move2dList)
+        {
+            move.SetActivationLightAroundMove(false);
+        }
         moveCollector.SetActive(false);
     }
 
