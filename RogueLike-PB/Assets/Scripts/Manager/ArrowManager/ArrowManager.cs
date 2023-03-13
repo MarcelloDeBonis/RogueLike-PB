@@ -102,24 +102,23 @@ private IEnumerator CheckInput()
     {
         if (arrowSpawnedList.Count > 0)
         {
-            foreach (GameObject arrow in arrowSpawnedList)
+            for (int i = arrowSpawnedList.Count - 1; i >= 0; i--)
             {
-                if (arrow.GetComponent<ArrowPoolable>().KeyIsPressed())
+                if (arrowSpawnedList[i].GetComponent<ArrowPoolable>().KeyIsPressed())
                 {
-                    arrow.GetComponent<ArrowPoolable>().SoundArrow();
+                    arrowSpawnedList[i].GetComponent<ArrowPoolable>().SoundArrow();
                     
-                    SoundManager.Instance.PlaySound(GetAudioClipKnowingEffectiveArrow(arrow.GetComponent<ArrowPoolable>().GetEffectiveArrow()));
+                    SoundManager.Instance.PlaySound(GetAudioClipKnowingEffectiveArrow(arrowSpawnedList[i].GetComponent<ArrowPoolable>().GetEffectiveArrow()));
                     
                     if (CombatSystem.Instance.GetEnumBattlePhase() == EnumBattlePhase.CharacterAttackingPhase)
                     {
-                        CombatSystem.Instance.AddPointsToDamageCalculator(GetPointsKnowingEffectiveArrow(arrow.GetComponent<ArrowPoolable>().GetEffectiveArrow()));
+                        CombatSystem.Instance.AddPointsToDamageCalculator(GetPointsKnowingEffectiveArrow(arrowSpawnedList[i].GetComponent<ArrowPoolable>().GetEffectiveArrow()));
                     }
                     else if(CombatSystem.Instance.GetEnumBattlePhase() == EnumBattlePhase.PlayerDefendingPhase)
                     {
-                        CombatSystem.Instance.RemovePointsToDamageCalculator(GetPointsKnowingEffectiveArrow(arrow.GetComponent<ArrowPoolable>().GetEffectiveArrow()));
+                        CombatSystem.Instance.RemovePointsToDamageCalculator(GetPointsKnowingEffectiveArrow(arrowSpawnedList[i].GetComponent<ArrowPoolable>().GetEffectiveArrow()));
                     }
-                    DeleteFromArrowInSceneList(arrow);
-                    break;
+                    DeleteFromArrowInSceneList(arrowSpawnedList[i]);
                 }
             }
         }

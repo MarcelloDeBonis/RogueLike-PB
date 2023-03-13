@@ -8,7 +8,7 @@ public class ArrowPoolable : ObjectPoolable
 #region Variables & Properties
 
 private float speed;
-private EnumArrow enumArrow;
+
 private KeyCode key;
 private EnumEffectiveArrow effectiveArrow;
 private AudioClip clip;
@@ -73,6 +73,11 @@ public EnumEffectiveArrow GetEffectiveArrow()
 public void SoundArrow()
 {
     SoundManager.Instance.PlaySound(clip);
+}
+
+public KeyCode GetEnumArrow()
+{
+    return key;
 }
 
 #endregion
