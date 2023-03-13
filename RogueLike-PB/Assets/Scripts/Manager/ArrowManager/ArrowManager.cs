@@ -118,6 +118,7 @@ private IEnumerator CheckInput()
                     {
                         CombatSystem.Instance.RemovePointsToDamageCalculator(GetPointsKnowingEffectiveArrow(arrowSpawnedList[i].GetComponent<ArrowPoolable>().GetEffectiveArrow()));
                     }
+                    
                     DeleteFromArrowInSceneList(arrowSpawnedList[i]);
                 }
             }
