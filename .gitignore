@@ -8,10 +8,8 @@
 [Oo]bj/
 [Ll]ogs/
 [Aa]ssets/AssetStoreTools*
-[Aa]ssets/Pentacon_Framework*
-[Aa]ssets/Pentacon*
-[Aa]ssets/DataCityAssets*
-[Aa]ssets/Data City Assets*
+[Ll]ayouts/
+
 
 # Visual Studio cache directory
 .vs/
