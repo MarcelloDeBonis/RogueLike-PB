@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum EnumArrow
 {
+    None,
     LeftArrow,
     DownArrow,
     UpArrow,

@@ -33,8 +33,6 @@ public class Enemy : Character
 
 #region Methods
 
-
-
 #endregion
 
 }

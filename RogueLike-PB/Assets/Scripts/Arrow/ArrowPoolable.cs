@@ -8,7 +8,7 @@ public class ArrowPoolable : ObjectPoolable
 #region Variables & Properties
 
 private float speed;
-
+private EnumArrow enumArrow;
 private KeyCode key;
 private EnumEffectiveArrow effectiveArrow;
 private AudioClip clip;
@@ -22,13 +22,19 @@ private void SetSpeed(float newSpeed)
     speed = newSpeed;
 }
 
-public void StartArrow(GameObject colliderDeleteArrow ,float newSpeed, KeyCode newKey, AudioClip newClip)
+public void StartArrow(GameObject colliderDeleteArrow ,float newSpeed, KeyCode newKey, AudioClip newClip, EnumArrow enumArrow)
 {
     ResetPoints();
     SetKey(newKey);
     SetSpeed(newSpeed);
     SetClip(newClip);
+    SetEnumArrow(enumArrow);
     StartCoroutine(MoveDown(colliderDeleteArrow));
+}
+
+private void SetEnumArrow(EnumArrow enumArrow)
+{
+    this.enumArrow = enumArrow;
 }
 
 private void SetClip(AudioClip newClip)
@@ -75,9 +81,9 @@ public void SoundArrow()
     SoundManager.Instance.PlaySound(clip);
 }
 
-public KeyCode GetEnumArrow()
+public EnumArrow GetEnumArrow()
 {
-    return key;
+    return enumArrow;
 }
 
 #endregion
