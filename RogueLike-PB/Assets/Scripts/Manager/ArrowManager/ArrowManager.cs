@@ -65,28 +65,28 @@ public IEnumerator SpawnArrowsInTime(ScriptableMove move)
             case EnumArrow.LeftArrow:
                 
                 arrowSpawned=leftArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteLeft, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteLeft, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip(), arrow.GetEnumArrow());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
             
             case EnumArrow.DownArrow:
                 
                 arrowSpawned=downArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteDown, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteDown, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip(), arrow.GetEnumArrow());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
             
             case EnumArrow.UpArrow:
                 
                 arrowSpawned=upArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteUp, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteUp, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip(), arrow.GetEnumArrow());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
             
             case EnumArrow.RightArrow:
                 
                 arrowSpawned=rightArrowPooler.SpawnArrow();
-                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteRight, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip());
+                arrowSpawned.GetComponent<ArrowPoolable>().StartArrow(colliderDeleteRight, arrow.GetSpeed(), arrow.Getkey(), arrow.GetClip(), arrow.GetEnumArrow());
                 arrowSpawnedList.Add(arrowSpawned);
                 break;
         }
