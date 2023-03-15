@@ -128,6 +128,51 @@ private IEnumerator CheckInput()
     }
 }
 
+
+/*
+
+private IEnumerator CheckInput()
+{
+    //TODO BUG
+    
+    EnumArrow lastArrow=EnumArrow.None;
+
+    while (arrowsGoOn)
+    {
+        if (arrowSpawnedList.Count > 0)
+        {
+            for (int i = arrowSpawnedList.Count - 1; i >= 0; i--)
+            {
+                if (arrowSpawnedList[i].GetComponent<ArrowPoolable>().KeyIsPressed() && lastArrow!=arrowSpawnedList[i].GetComponent<ArrowPoolable>().GetEnumArrow())
+                {
+                    lastArrow = arrowSpawnedList[i].GetComponent<ArrowPoolable>().GetEnumArrow();
+                    
+                    arrowSpawnedList[i].GetComponent<ArrowPoolable>().SoundArrow();
+                    
+                    SoundManager.Instance.PlaySound(GetAudioClipKnowingEffectiveArrow(arrowSpawnedList[i].GetComponent<ArrowPoolable>().GetEffectiveArrow()));
+                    
+                    if (CombatSystem.Instance.GetEnumBattlePhase() == EnumBattlePhase.CharacterAttackingPhase)
+                    {
+                        CombatSystem.Instance.AddPointsToDamageCalculator(GetPointsKnowingEffectiveArrow(arrowSpawnedList[i].GetComponent<ArrowPoolable>().GetEffectiveArrow()));
+                    }
+                    else if(CombatSystem.Instance.GetEnumBattlePhase() == EnumBattlePhase.PlayerDefendingPhase)
+                    {
+                        CombatSystem.Instance.RemovePointsToDamageCalculator(GetPointsKnowingEffectiveArrow(arrowSpawnedList[i].GetComponent<ArrowPoolable>().GetEffectiveArrow()));
+                    }
+                    
+                    DeleteFromArrowInSceneList(arrowSpawnedList[i]);
+                }
+                
+                lastArrow=EnumArrow.None;
+            }
+        }
+        
+        yield return null;
+    }
+}
+
+*/
+
 public AudioClip GetAudioClipKnowingEffectiveArrow(EnumEffectiveArrow effectiveArrow)
 {
     foreach (StructEffectiveArrow structEffectiveArrow in effectiveArrowStruct.structEffectiveArrowsList)
